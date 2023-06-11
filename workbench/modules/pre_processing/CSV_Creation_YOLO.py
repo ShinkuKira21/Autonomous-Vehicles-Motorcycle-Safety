@@ -1,5 +1,7 @@
 import os
 from PIL import Image
+import glob
+import yaml
 
 def read_image(file_path: str) -> Image:
     return Image.open(file_path)
@@ -28,6 +30,16 @@ def normalise_labels(labels: list[tuple], image_size: list):
         ))
     return normalised_labels
 
+def get_config(directory: str) -> dict:
+    conf_file: list[str] = glob.glob(os.path.join(directory, '*.yml'))
+
+    if conf_file:
+        with open(conf_file[0], 'r') as file:
+            config = yaml.safe_load(file)
+        return config
+    
+    return None
+
 def get_data(directory: str) -> list[tuple]:
     image_files: list[str] = sorted([f for f in os.listdir(directory) if f.endswith('.jpg')])
     
@@ -38,6 +50,14 @@ def get_data(directory: str) -> list[tuple]:
 
         if label_file in os.listdir(directory):
             labels: list[tuple] = read_labels(os.path.join(directory, label_file))
+            
+            # If a config is provided, only keep the labels that are in the config
+            config: dict = get_config(directory)
+            if config is not None:
+                class_name_to_id = {name: idx for idx, name in enumerate(config['names'])}
+                labels = [(class_name_to_id[class_id], x_center, y_center, width, height) for class_id, x_center, y_center, width, height in labels if class_id in class_name_to_id]
+
+            
             image: Image = read_image(os.path.join(directory, image_file))
             labels = normalise_labels(labels, image.size)
             
