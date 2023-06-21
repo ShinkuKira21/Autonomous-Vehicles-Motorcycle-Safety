@@ -48,14 +48,22 @@ def get_config(directory: str) -> dict:
 
 
 def get_data(directory: str, bNormalise: bool = False) -> list[tuple]:
-    image_dir = os.path.join(directory, 'images')
-    label_dir = os.path.join(directory, 'labels')
+    image_dir = os.path.join(directory, "images")
+    label_dir = os.path.join(directory, "labels")
 
     image_files: list[str] = sorted(
-        [os.path.join(image_dir, f) for f in os.listdir(image_dir) if f.endswith(".jpg")]
+        [
+            os.path.join(image_dir, f)
+            for f in os.listdir(image_dir)
+            if f.endswith(".jpg")
+        ]
     )
     label_files: list[str] = sorted(
-        [os.path.join(label_dir, f) for f in os.listdir(label_dir) if f.endswith(".txt")]
+        [
+            os.path.join(label_dir, f)
+            for f in os.listdir(label_dir)
+            if f.endswith(".txt")
+        ]
     )
 
     data: list = []

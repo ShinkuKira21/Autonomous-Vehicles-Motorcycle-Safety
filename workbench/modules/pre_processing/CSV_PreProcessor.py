@@ -2,9 +2,7 @@ import csv
 from PIL import Image
 import os
 import keras
-from modules.pre_processing.CSV_Creation_YOLO import (
-    get_data
-)
+from modules.pre_processing.CSV_Creation_YOLO import get_data
 
 import csv
 
