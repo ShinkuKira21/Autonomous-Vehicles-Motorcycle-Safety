@@ -32,7 +32,7 @@ class TestPreprocessing(unittest.TestCase):
         os.makedirs(self.label_dir, exist_ok=True)
 
         # Create a dummy config file
-        self.config_path: str = os.path.join(self.test_dir, "data.yml")
+        self.config_path: str = os.path.join(self.test_dir, "data.yaml")
         with open(self.config_path, "w") as f:
             f.write("names: ['car', 'bus', 'bike', 'motorcycle', 'hgv']\nnc: 5")
 
