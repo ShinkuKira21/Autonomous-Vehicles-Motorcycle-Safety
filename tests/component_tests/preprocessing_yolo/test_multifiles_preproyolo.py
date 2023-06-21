@@ -20,32 +20,35 @@ class TestPreprocessing(unittest.TestCase):
         # Create a temporary directory
         self.test_dir: str = tempfile.mkdtemp()
 
-        # Create a dummy config file
-        self.config_path: str = os.path.join(self.test_dir, 'data.yml')
-        with open(self.config_path, 'w') as f:
-            f.write("names: ['car', 'bus', 'bike', 'motorcycle', 'hgv']\nnc: 5")
+        # Create images and labels subdirectories
+        self.image_dir: str = os.path.join(self.test_dir, 'images')  # Use self.image_dir
+        self.label_dir: str = os.path.join(self.test_dir, 'labels')  # Use self.label_dir
+        os.makedirs(self.image_dir, exist_ok=True)
+        os.makedirs(self.label_dir, exist_ok=True)
 
-        # Create a name to index mapping
-        self.name_to_index = {'car': 0, 'bus': 1, 'bike': 2, 'motorcycle': 3, 'hgv': 4}
+        # Create a dummy config file
+        self.config_path: str = os.path.join(self.test_dir, "data.yml")
+        with open(self.config_path, "w") as f:
+            f.write("names: ['car', 'bus', 'bike', 'motorcycle', 'hgv']\nnc: 5")
 
         # Create dummy image files and corresponding label files
         self.image_paths = []
         self.label_paths = []
         for i in range(5):
             # Create a dummy image file
-            image_path: str = os.path.join(self.test_dir, f'image{i}.jpg')
-            image: Image = Image.new('RGB', (100, 100))
+            image_path: str = os.path.join(self.image_dir, f"image{i}.jpg")
+            image: Image = Image.new("RGB", (100, 100))
             image.save(image_path)
             self.image_paths.append(image_path)
 
             # Create a dummy label file
-            label_path: str = os.path.join(self.test_dir, f'image{i}.txt')
-            with open(label_path, 'w') as f:
+            label_path: str = os.path.join(self.label_dir, f"image{i}.txt")
+            with open(label_path, "w") as f:
                 f.write(f"{i} 0.{i+1} 0.{i+1} 0.{(i+2)%10} 0.{(i+2)%10}")
             self.label_paths.append(label_path)
 
         # Define output_path as a temporary CSV file
-        self.output_dir: str = os.path.join(self.test_dir, 'output.csv')
+        self.output_dir: str = os.path.join(self.test_dir, "output.csv")
 
     def test_read_image(self) -> None:
         for i, image_path in enumerate(self.image_paths):

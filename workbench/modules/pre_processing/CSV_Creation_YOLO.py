@@ -48,35 +48,35 @@ def get_config(directory: str) -> dict:
 
 
 def get_data(directory: str, bNormalise: bool = False) -> list[tuple]:
+    image_dir = os.path.join(directory, 'images')
+    label_dir = os.path.join(directory, 'labels')
+
     image_files: list[str] = sorted(
-        [f for f in os.listdir(directory) if f.endswith(".jpg")]
+        [os.path.join(image_dir, f) for f in os.listdir(image_dir) if f.endswith(".jpg")]
+    )
+    label_files: list[str] = sorted(
+        [os.path.join(label_dir, f) for f in os.listdir(label_dir) if f.endswith(".txt")]
     )
 
     data: list = []
-    for image_file in image_files:
-        base_name = os.path.splitext(image_file)[0]
-        label_file = base_name + ".txt"
+    for image_file, label_file in zip(image_files, label_files):
+        labels: list[tuple] = read_labels(label_file)
 
-        if label_file in os.listdir(directory):
-            labels: list[tuple] = read_labels(os.path.join(directory, label_file))
+        # If a config is provided, only keep the labels that are in the config
+        config: dict = get_config(directory)
+        if config is not None:
+            id_to_class_name: dict[int, any] = {
+                idx: name for idx, name in enumerate(config["names"])
+            }
+            labels: list[tuple] = [
+                (class_id, x_center, y_center, width, height)
+                for class_id, x_center, y_center, width, height in labels
+                if class_id in id_to_class_name
+            ]
 
-            # If a config is provided, only keep the labels that are in the config
-            config: dict = get_config(directory)
-            if config is not None:
-                id_to_class_name: dict[int, any] = {
-                    idx: name for idx, name in enumerate(config["names"])
-                }
-                labels: list[tuple] = [
-                    (class_id, x_center, y_center, width, height)
-                    for class_id, x_center, y_center, width, height in labels
-                    if class_id in id_to_class_name
-                ]
+        if bNormalise:
+            labels = normalise_labels(labels, Image.open(image_file).size)
 
-            image_path: str = os.path.join(directory, image_file)
-
-            if bNormalise:
-                labels = normalise_labels(labels, Image.open(image_path).size)
-
-            data.append((image_path, labels))
+        data.append((image_file, labels))
 
     return data

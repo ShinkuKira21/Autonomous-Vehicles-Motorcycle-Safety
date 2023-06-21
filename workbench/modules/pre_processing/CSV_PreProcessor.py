@@ -3,21 +3,17 @@ from PIL import Image
 import os
 import keras
 from modules.pre_processing.CSV_Creation_YOLO import (
-    read_image,
-    read_labels,
-    normalise_labels,
-    get_config,
-    get_data,
+    get_data
 )
 
 import csv
 
 
-def preprocess_to_csv(input_dir, output_dir):
+def preprocess_to_csv(input_dir: str, output_file: str):
     try:
         data: list[tuple] = get_data(input_dir)
 
-        with open(output_dir, "w", newline="") as f:
+        with open(output_file, "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["Image Path", "Label"])
 

@@ -21,21 +21,24 @@ class TestPreprocessing(unittest.TestCase):
         # Create a temporary directory
         self.test_dir: str = tempfile.mkdtemp()
 
+        # Create images and labels subdirectories
+        self.images_dir: str = os.path.join(self.test_dir, 'images')
+        self.labels_dir: str = os.path.join(self.test_dir, 'labels')
+        os.makedirs(self.images_dir, exist_ok=True)
+        os.makedirs(self.labels_dir, exist_ok=True)
+
         # Create a dummy config file
         self.config_path: str = os.path.join(self.test_dir, "data.yml")
         with open(self.config_path, "w") as f:
             f.write("names: ['car', 'bus', 'bike']\nnc: 3")
 
-        # Create a name to index mapping
-        self.name_to_index = {"car": 0, "bus": 1, "bike": 2, "motorcycle": 3}
-
-        # Create a dummy image file
-        self.image_path: str = os.path.join(self.test_dir, "image.jpg")
+        # Create a dummy image file in the images subdirectory
+        self.image_path: str = os.path.join(self.images_dir, "image.jpg")
         image: Image = Image.new("RGB", (100, 100))
         image.save(self.image_path)
 
-        # Create a dummy label file
-        self.label_path: str = os.path.join(self.test_dir, "image.txt")
+        # Create a dummy label file in the labels subdirectory
+        self.label_path: str = os.path.join(self.labels_dir, "image.txt")
         with open(self.label_path, "w") as f:
             f.write("0 0.5 0.5 0.2 0.2\n1 0.7 0.7 0.3 0.3")
 
@@ -73,6 +76,18 @@ class TestPreprocessing(unittest.TestCase):
 
     # Test 1: Failed (No Implementation)
     # Test 2: Passed (Implemented)
+    # Test 3: Failed (Changed setup to support sub-directories images/ & labels/)
+    def test_get_data(self) -> None:
+        data: list[tuple] = get_data(self.test_dir)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(len(data[0][1]), 2)
+        self.assertEqual(data[0][1][0][0], 0)
+        self.assertEqual(data[0][1][1][0], 1)
+
+
+    # Test 1: Failed (No Implementation)
+    # Test 2: Passed (Implemented)
+     # Test 3: Failed (Changed setup to support sub-directories images/ & labels/)
     def test_preprocess_to_csv(self) -> None:
         preprocess_to_csv(self.test_dir, self.output_dir)
         self.assertTrue(os.path.exists(self.output_dir))
@@ -84,15 +99,6 @@ class TestPreprocessing(unittest.TestCase):
         self.assertEqual(lines[0], ["Image Path", "Label"])
         self.assertEqual(lines[1], [self.image_path, "0 0.5 0.5 0.2 0.2"])
         self.assertEqual(lines[2], [self.image_path, "1 0.7 0.7 0.3 0.3"])
-
-    # Test 1: Failed (No Implementation)
-    # Test 2: Passed (Implemented)
-    def test_get_data(self) -> None:
-        data: list[tuple] = get_data(self.test_dir)
-        self.assertEqual(len(data), 1)
-        self.assertEqual(len(data[0][1]), 2)
-        self.assertEqual(data[0][1][0][0], 0)
-        self.assertEqual(data[0][1][1][0], 1)
 
     def tearDown(self) -> None:
         # Remove temporary directory and all its contents
