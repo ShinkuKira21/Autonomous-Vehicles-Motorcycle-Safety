@@ -79,6 +79,7 @@ class TestPreprocessing(unittest.TestCase):
     # Test 3: Failed (Changed setup to support sub-directories images/ & labels/)
     # Test 4: Passed
     # Test 5: Failed (Updated test configuration to address labelling issues)
+    # Test 6: Passed
     def test_get_data(self) -> None:
         config: dict = get_config(self.test_dir)
         data: list[tuple] = get_data(self.test_dir)
@@ -92,6 +93,7 @@ class TestPreprocessing(unittest.TestCase):
     # Test 3: Failed (Changed setup to support sub-directories images/ & labels/)
     # Test 4: Passed
     # Test 5: Failed (Updated test configuration to address labelling issues)
+    # Test 6: Passed
     def test_preprocess_to_csv(self) -> None:
         preprocess_to_csv(self.test_dir, self.output_dir)
         self.assertTrue(os.path.exists(self.output_dir))

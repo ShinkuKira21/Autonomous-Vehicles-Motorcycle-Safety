@@ -37,7 +37,9 @@ def normalise_labels(labels: list[tuple], image_size: list):
 
 
 def get_config(directory: str) -> dict:
-    conf_file: list[str] = glob.glob(os.path.join(directory, "*.yml"))
+    # Error: only checks for .yml and not yaml files
+    # Fixed, now checks for yml and
+    conf_file: list[str] = glob.glob(os.path.join(directory, "*.y*ml"))
 
     if conf_file:
         with open(conf_file[0], "r") as file:
@@ -77,7 +79,7 @@ def get_data(directory: str, bNormalise: bool = False) -> list[tuple]:
                 idx: name for idx, name in enumerate(config["names"])
             }
             labels: list[tuple] = [
-                (class_id, x_center, y_center, width, height)
+                (id_to_class_name[class_id], x_center, y_center, width, height)
                 for class_id, x_center, y_center, width, height in labels
                 if class_id in id_to_class_name
             ]
