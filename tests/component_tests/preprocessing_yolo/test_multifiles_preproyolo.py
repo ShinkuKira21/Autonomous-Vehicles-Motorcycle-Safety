@@ -114,6 +114,42 @@ class TestPreprocessing(unittest.TestCase):
             expected_line = [image_path, f"{label_name} {label_values}"]
             self.assertEqual(lines[i], expected_line)
 
+    def test_preprocess_to_csv_with_allowed_classes(self) -> None:
+        allowed_classes = ["car", "motorcycle"]
+        preprocess_to_csv(self.test_dir, self.output_dir, allowed_classes)
+        self.assertTrue(os.path.exists(self.output_dir))
+
+        with open(self.output_dir, "r") as f:
+            reader: csv._reader = csv.reader(f)
+            lines: list[csv._reader] = list(reader)
+
+        self.assertEqual(lines[0], ["Image Path", "Label"])
+        config: dict = get_config(self.test_dir)
+
+        # Get all the allowed indices
+        allowed_indices = [config["names"].index(cls) for cls in allowed_classes]
+
+        # Only consider labels that are allowed
+        for i in allowed_indices:
+            image_path = self.image_paths[i]
+            label_name = config["names"][i]
+            label_values = " ".join(
+                map(
+                    str,
+                    [
+                        round(0.1 * (i + 1), 1),
+                        round(0.1 * (i + 1), 1),
+                        round(0.1 * ((i + 2) % 10), 1),
+                        round(0.1 * ((i + 2) % 10), 1),
+                    ],
+                )
+            )
+            expected_line = [image_path, f"{label_name} {label_values}"]
+
+            # Find the line in the lines list
+            actual_line = next(line for line in lines if line[0] == image_path)
+            self.assertEqual(actual_line, expected_line)
+
     def tearDown(self) -> None:
         # Remove temporary directory and all its contents
         import shutil
