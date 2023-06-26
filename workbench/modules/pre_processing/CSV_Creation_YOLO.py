@@ -49,6 +49,18 @@ def get_config(directory: str) -> dict:
     return None
 
 
+def get_class_id_from_class_name(class_name: str, directory: str) -> int:
+    config: dict = get_config(directory)
+
+    if config is not None:
+        class_names: list[str] = config["names"]
+
+        if class_name in class_names:
+            return class_names.index(class_name)
+
+    return None
+
+
 def get_data(directory: str, bNormalise: bool = False) -> list[tuple]:
     image_dir = os.path.join(directory, "images")
     label_dir = os.path.join(directory, "labels")
