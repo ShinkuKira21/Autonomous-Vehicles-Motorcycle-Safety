@@ -132,3 +132,5 @@ dmypy.json
 .pytype/
 .vscode/
 raw/
+workbench/datasets/model/output.yolo/*
+workbench/datasets/model/output.f_rcnn/*
