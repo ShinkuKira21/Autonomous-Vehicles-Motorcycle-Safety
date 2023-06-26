@@ -1,4 +1,5 @@
-# Autonomous-Vehicles-Motorcycle-Safety Authored by Edward Patch
+# Autonomous-Vehicles-Motorcycle-Safety
+## Authored by Edward Patch
 Research project on dangers and safety of AVs with motorcycles. Addresses research gap by examining object classification methods, and identifying potential solutions or issues. 
 
 ## Steps ##
