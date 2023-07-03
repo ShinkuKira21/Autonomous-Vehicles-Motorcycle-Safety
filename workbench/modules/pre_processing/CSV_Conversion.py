@@ -1,48 +1,63 @@
 import csv
 import os
 from collections import defaultdict
-from modules.pre_processing.CSV_Creation_YOLO import ( get_config, get_class_id_from_class_name )
+from modules.pre_processing.CSV_Creation_YOLO import (
+    get_config,
+    get_class_id_from_class_name,
+)
 
-def csv_to_model_format(csv_path: str, output_folder: str, format: str = 'YOLO') -> None:
+
+def csv_to_model_format(
+    csv_path: str, output_folder: str, format: str = "YOLO"
+) -> None:
     config_directory: str = os.path.dirname(csv_path)
     data_dict: dict = defaultdict(list)
     output_data: list = []
 
-    with open(csv_path, 'r') as f:
+    with open(csv_path, "r") as f:
         reader: csv.reader = csv.reader(f)
         next(reader)
 
         for row in reader:
             img_path, labels = row[0], row[1].split()
             class_name: str = labels[0]
-            class_id: int = get_class_id_from_class_name(class_name, config_directory)
-            bbox: list[float] = labels[1:]
 
-            if format == 'RCNN' :
-                bbox = yolo_to_rcnn_bbox(bbox)
-                output_data.append([img_path, class_id] + bbox)
+            if format == "RCNN":
+                class_id = class_name
+            else:
+                class_id = get_class_id_from_class_name(class_name, config_directory)
+
+            bbox: list[float] = list(map(float, labels[1:]))
+
+            if format == "RCNN":
+                x_center, y_center, width, height = bbox
+                x_min = x_center - (width / 2)
+                x_max = x_center + (width / 2)
+                y_min = y_center - (height / 2)
+                y_max = y_center + (height / 2)
+                output_data.append([img_path, class_id, x_min, y_min, x_max, y_max])
             else:
                 data_dict[img_path].append([class_id] + bbox)
-            
-    if format == 'RCNN':
+
+    if format == "RCNN":
         os.makedirs(output_folder, exist_ok=True)
-        output_filepath = os.path.join(output_folder, 'annotations.csv')
-        with open(output_filepath, 'w', newline='') as f:
+        output_filepath = os.path.join(output_folder, "annotations.csv")
+        with open(output_filepath, "w", newline="") as f:
             writer = csv.writer(f)
             for data in output_data:
                 writer.writerow(data)
 
-    elif format == 'YOLO':
+    elif format == "YOLO":
         for img_path, bboxes in data_dict.items():
-            txt_filename: str = os.path.splitext(os.path.basename(img_path))[0] + '.txt'
+            txt_filename: str = os.path.splitext(os.path.basename(img_path))[0] + ".txt"
             txt_filepath: str = os.path.join(output_folder, txt_filename)
 
             os.makedirs(os.path.dirname(txt_filepath), exist_ok=True)
 
-            with open(txt_filepath, 'w') as f:
+            with open(txt_filepath, "w") as f:
                 for bbox in bboxes:
-                    # Write each bounding box on a separate line
-                    f.write(' '.join(map(str, bbox)) + '\n')
+                    f.write(" ".join(map(str, bbox)) + "\n")
+
 
 def yolo_to_rcnn_bbox(yolo_bbox: list):
     x_center, y_center, width, height = map(float, yolo_bbox)

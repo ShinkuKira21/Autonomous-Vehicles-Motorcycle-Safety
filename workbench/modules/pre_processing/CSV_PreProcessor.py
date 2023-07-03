@@ -50,12 +50,17 @@ def combine_csv(fDir: list[str], output_file: str) -> None:
 
 
 def load_csv_from_path(
-    path: str, test_size: float = 0.2, random_state: int = 42
+    path: str,
+    test_size: float = 0.2,
+    random_state: int = 42,
+    headers: bool = True,
+    mode: bool = True,
 ) -> tuple:
     data: list = []
 
     with open(path, "r") as f:
-        next(f)
+        if headers:
+            next(f)
 
         config_directory = dirname(path)
 
@@ -65,7 +70,8 @@ def load_csv_from_path(
             if len(label_parts) >= 5:
                 class_, x_center, y_center, width, height = label_parts[:5]
 
-                class_ = get_class_id_from_class_name(class_, config_directory)
+                if mode:
+                    class_ = get_class_id_from_class_name(class_, config_directory)
 
                 data.append(
                     {
@@ -79,6 +85,11 @@ def load_csv_from_path(
                 )
 
     df = pd.DataFrame(data)
+
+    if df.empty:
+        print("Dataframe is empty. Please check the CSV file.")
+        return None, None
+
     train_df, test_df = train_test_split(
         df, test_size=test_size, random_state=random_state
     )
