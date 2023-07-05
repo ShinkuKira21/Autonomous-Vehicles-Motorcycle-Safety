@@ -22,5 +22,5 @@ Run workbench/notebooks/pre_processing/CSV_Conversion notebook to convert the pr
 **Step 6 (Optional for YOLO):**
 Run workbench/notebooks/pre_processing/CSV_TrainTestSplit notebook to sort the data.
 
-**Step 6:**
+**Step 7:**
 Still in development.
