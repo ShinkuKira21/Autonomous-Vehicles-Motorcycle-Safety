@@ -19,5 +19,8 @@ Run workbench/notebooks/pre_processing/CSV_Creation notebook to create, filter a
 **Step 5:**
 Run workbench/notebooks/pre_processing/CSV_Conversion notebook to convert the preprocessed dataset into YOLO or R-CNN format.
 
+**Step 6 (Optional for YOLO):**
+Run workbench/notebooks/pre_processing/CSV_TrainTestSplit notebook to sort the data.
+
 **Step 6:**
 Still in development.
