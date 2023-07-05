@@ -1,2 +1,2 @@
 nc: 16
-names: ['motorcycle', 'person', 'three_wheelers_-CNG-', 'van', 'taxi', 'pickup', 'bus', 'suv', 'car', 'truck', 'rickshaw', 'minivan', 'policecar', 'ambulance', 'minibus', 'scooter']
+names: ['motorcycle', 'person', 'tricycle', 'van', 'taxi', 'pickup', 'bus', 'suv', 'car', 'truck', 'rickshaw', 'minivan', 'policecar', 'ambulance', 'minibus', 'scooter']
