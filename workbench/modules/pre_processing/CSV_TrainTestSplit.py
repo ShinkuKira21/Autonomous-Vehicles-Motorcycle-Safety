@@ -35,6 +35,7 @@ def yolo_train_test_split(
     input_dir: str,
     test_size: list[float] = [0.2, 0.5],
     random_state: list[int] = [42, 42],
+    train_proportion: float = 1
 ) -> tuple:
     filenames: list[str] = [
         os.path.splitext(f)[0] for f in os.listdir(input_dir) if f.endswith(".jpg")
@@ -46,6 +47,10 @@ def yolo_train_test_split(
     train_files, test_files = train_test_split(
         filenames, test_size=test_size[0], random_state=random_state[0]
     )
+
+    train_size = int(len(train_files) * train_proportion)
+    train_files = train_files[:train_size]
+
     val_files, test_files = train_test_split(
         test_files, test_size=test_size[1], random_state=random_state[1]
     )
