@@ -161,3 +161,6 @@ workbench/datasets/model/output.f_rcnn/*
 *.vrb
 *.xmpi
 *.bbl
+
+# YOLOv5 - Weights
+weights/
