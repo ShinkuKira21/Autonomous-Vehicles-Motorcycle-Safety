@@ -23,4 +23,10 @@ Run workbench/notebooks/pre_processing/CSV_Conversion notebook to convert the pr
 Run workbench/notebooks/pre_processing/CSV_TrainTestSplit notebook to sort the data.
 
 **Step 7:**
-Still in development.
+After dataset/model/output.yolo is created, copy the contents into your Ultralytics YOLO model and then run the train.py and the detect.py commands. (Remember to tell Ultralytics YOLO to find a selected model weight.)
+
+**Step 8:**
+Use Ultralytics YOLOv5, copy the contents of dataset/model/output.yolo to the Ultralytics YOLO directory and begin training/testing. (other ways available too!)
+
+**Development Process**
+Not optimised for Darknet anmd F_RCNN has not been focused on, so far.
