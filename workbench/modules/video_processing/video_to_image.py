@@ -18,7 +18,7 @@ def video_to_frames(
     output_dir: str,
     sample_name: str,
     start_time: float = 0,
-    end_time: float = None,
+    end_time: float = 0,
     limiter: float = None,
 ) -> None:
     # updates the parameters
@@ -34,11 +34,11 @@ def video_to_frames(
 
     # Limiter so we don't end up with too many test files
     frame_rate = vidcap.get(cv2.CAP_PROP_FPS)
-    start_frame = int((start_time / 1000) * frame_rate)
-    end_frame = int((end_time / 1000) * frame_rate)
+    start_frame = int((start_time / 1000) * frame_rate) if start_time else 0
+    end_frame = int((end_time / 1000) * frame_rate) if end_time else int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_total = end_frame - start_frame
     frames = select_frames(frame_total, limiter=limiter)
-
+    frames = [frame + start_frame for frame in frames]
     success, image = vidcap.read()
 
     frames_idx: int = 0
@@ -46,9 +46,7 @@ def video_to_frames(
         vidcap.set(cv2.CAP_PROP_POS_FRAMES, frames[frames_idx])
         success, image = vidcap.read()
         if success:
-            output_file_path = os.path.join(
-                output_dir, f"{sample_name}-{frames[frames_idx]}.jpg"
-            )
+            output_file_path = os.path.join(output_dir, f"{sample_name}-{frames_idx}.jpg")
             cv2.imwrite(output_file_path, image)
             print(f"Saved frame as {os.path.abspath(output_file_path)}")
         frames_idx += 1
