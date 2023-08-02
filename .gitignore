@@ -163,3 +163,5 @@ workbench/datasets/model/output.f_rcnn/*
 *.bbl
 
 y-weights/
+indian-all1/
+indian-all2/
