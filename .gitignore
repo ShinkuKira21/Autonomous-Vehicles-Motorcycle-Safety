@@ -161,3 +161,5 @@ workbench/datasets/model/output.f_rcnn/*
 *.vrb
 *.xmpi
 *.bbl
+
+y-weights/

@@ -153,32 +153,67 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\end{figure}
 
 \section{Current Findings}
-	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use visual aid to see. However, this raises concerns about the reliability of Tesla's AVs that solely use visual input. For instance, in situations where the camera's view might be obscured by wet patches or heavy fog, a human driver could potentially outperform the technology.
+	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of Tesla's AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
 
-	Image of a motorcycle in wet weather condition, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle. 
-	\begin{figure}[htp]
-        \centering
-        \includegraphics[width=\columnwidth]{Figures/wet_correct.png}
-        \caption{Good Detection of Motorcycle - Wet and Multi Lane}
-        \label{fig:detectionOfMotorcycleW1}
-    \end{figure}
+	Figure~\ref{fig:detectionOfMotorcycleW1} of a motorcycle in wet weather conditions, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle.
 
-	Image of a motorcycle in wet weather condition, the architecture failed to find the motorcycle. This happened when the camera was blurred from the water content, which could simulate current problems with vision technology within AVs.
-	\begin{figure}[htp]
-        \centering
-        \includegraphics[width=\columnwidth]{Figures/wet_incorrect.png}
-        \caption{Classification Error - Camera Blinded}
-        \label{fig:detectionOfMotorcycleW2}
-    \end{figure}
+	Figure~\ref{fig:detectionOfMotorcycleW2} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. This scenario happened when the water content blurred the camera, which could simulate current problems with vision technology within AVs.
 
-	Image of a motorcycle in wet weather condition, the architecture failed to find the motorcycle. The visibility is moderate, human eyesights could easy see more than eight to ten meters ahead. Another observation of this footage was that the vehicles are visible, although, the architecture failed to recognise the motorcycle.
-	\begin{figure}[htp]
-        \centering
-        \includegraphics[width=\columnwidth]{Figures/wet_danger.png}
-        \caption{Classification Error - Camera Blinded}
-        \label{fig:detectionOfMotorcycleW3}
-    \end{figure}
+	Figure~\ref{fig:detectionOfMotorcycleW3} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. The visibility is moderate; human eyesight can easily see more than eight to ten meters ahead. Another observation of this footage was that the vehicles are visible, although the architecture failed to recognise the motorcycle.
+	\begin{figure}[h]
+		\centering
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/wet_correct.png}
+			\caption{Good Detection of Motorcycle - Wet and Multi Lane}
+			\label{fig:detectionOfMotorcycleW1}
+		\end{minipage}\hfill
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/wet_incorrect.png}
+			\caption{Classification Error - Camera Blinded}
+			\label{fig:detectionOfMotorcycleW2}
+		\end{minipage}\hfill
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/wet_danger.png}
+			\caption{Classification Error - Water Spray from Other Vehicles}
+			\label{fig:detectionOfMotorcycleW3}
+		\end{minipage}
+	\end{figure}	
 
+    Figure~\ref{fig:detectionOfOneMotorcycle} of detecting one motorcycle may not seem dangerous. However, if an AV misclassifies or does not detect the motorcycle after the first motorcycle, the AV may not be able to foresee any sudden traffic actions, causing fatal collisions.
+
+    Figures~\ref{fig:lateClassificationP1},~\ref{fig:lateClassificationP2} demonstrates the dangers of motorcycle misclassification near a junction. If the AV were to turn right, coming out of the junction, then due to the AV not anticipating the motorcyclist, then the AV may pull out on the motorcycle, causing a fatality. The Object Classification did, however, detect the motorcycle when it was closer to the motorcycle.
+	\begin{figure}[h]
+		\centering
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/fail.png}
+			\caption{Detection of One Motorcycle}
+			\label{fig:detectionOfOneMotorcycle}
+		\end{minipage}\hfill
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/left_turn.png}
+			\caption{Late Classification - Part 1}
+			\label{fig:lateClassificationP1}
+		\end{minipage}\hfill
+		\begin{minipage}{0.15\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Figures/motorcycle.png}
+			\caption{Late Classification - Part 2}
+			\label{fig:lateClassificationP2}
+		\end{minipage}
+	\end{figure}	
+
+	Figure~\ref{fig:overtakingSequence} shows a 75\% accuracy of correctly identifying two motorcycles after two overtakes. However, the last sequence shows an overtaking procedure involving two tractors and two motorcycles. The classification process is concerning, considering the motorcycles were not detected. This concern arises from a few things, the AV could perform an overtaking manoeuvre and accelerate unsafely, or if an AV started approaching at the speed limit, the AV might not slow down, even though other traffic is overtaking behind the riders to get by tractors safely.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\columnwidth]{Figures/motorcycle_overtaking_sequence.png}
+		\caption{Overtaking Sequence}
+		\label{fig:overtakingSequence}
+	\end{figure}
 \section{Discussion}
 	
 \section{Conclusion}
@@ -194,7 +229,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\item AV - Autonomous Vehicles.
 	\end{itemize}
 
-%\nocite{*}
+\nocite{*}
 \renewcommand\refname{\section{Reference List}}
 \small{\bibliographystyle{IEEEtran}
 	\bibliography{ref}}

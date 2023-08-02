@@ -1,4 +1,4 @@
-ref copy%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % a0poster Portrait Poster 
 % LaTeX Template
 % with University Copenhagen logo
@@ -114,7 +114,11 @@ ref copy%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\color{DarkRed} % SaddleBrown color for the introduction
 
     \section*{Introduction}
-       
+        Autonomous Vehicles (AVs) are scheduled to roll out to the United Kingdom roads by 2025.~\cite{govuk_self-driving_2022} With the rise of automated vehicles, a safety concern arises, which affects the development of AVs, including government bodies and manufacturers, public safety and the National Health Service (NHS), when it comes to motorcycles and AVs. The research focuses on issues that may have been overlooked already with motorcycles, with new scenarios introduced in many US states, like road widths, filtering and poor weather conditions with British vehicles. 
+
+        Addressing these issues could be problematic; however, with Object Classification, which is not entirely accurate compared to AV standard, the research could push more extensive research in this area. The study's objectives are to understand the existing dangers with AVs and motorcycles, establish appropriate datasets to train and test the selected models, remove any vehicles that are not necessary for the study, and evaluate the test results of the study.
+        
+        A few study results are showcased to illustrate the current issues that may arise, describing the reasoning the model may have not detected. These results will be cross-referenced to research that did similar tests to support the argument to drive the safety issues that may still exist with AV manufacturers or newly established UK AV manufacturers.
 	
 	%----------------------------------------------------------------------------------------
 	%	OBJECTIVES
@@ -197,26 +201,26 @@ ref copy%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\end{center}\vspace{1cm}
 		
 		A few examples of mis-classification errors; raises a serious question if a AV were to make a turn or a sudden movement, would this mean putting a motorcyclist in danger?
-			\begin{center}\vspace{1cm}
-				\begin{minipage}{0.15\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{fail.png}
-					\captionof{figure}{\color{Green} Detection of One Motorcycle}
-					\label{fig:detectionOfOne}
-				\end{minipage}\hfill
-				\begin{minipage}{0.15\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{left_turn.png}
-					\captionof{figure}{\color{Green} Late Classification - Part 1}
-					\label{fig:lateClassificationP1}
-				\end{minipage}\hfill
-				\begin{minipage}{0.15\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{motorcycle.png}
-					\captionof{figure}{\color{Green} Late Classification - Part 2}
-					\label{fig:lateClassificationP2}
-				\end{minipage}\vspace{1cm}
-			\end{center}\vspace{1cm}
+		\begin{center}\vspace{1cm}
+			\begin{minipage}{0.15\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{fail.png}
+				\captionof{figure}{\color{Green} Detection of One Motorcycle}
+				\label{fig:detectionOfOne}
+			\end{minipage}\hfill
+			\begin{minipage}{0.15\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{left_turn.png}
+				\captionof{figure}{\color{Green} Late Classification - Part 1}
+				\label{fig:lateClassificationP1}
+			\end{minipage}\hfill
+			\begin{minipage}{0.15\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{motorcycle.png}
+				\captionof{figure}{\color{Green} Late Classification - Part 2}
+				\label{fig:lateClassificationP2}
+			\end{minipage}\vspace{1cm}
+		\end{center}\vspace{1cm}
 
 	%----------------------------------------------------------------------------------------
 	%	CONCLUSIONS
