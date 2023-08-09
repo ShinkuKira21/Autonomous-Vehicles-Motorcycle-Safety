@@ -107,12 +107,34 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 	A few study results are showcased to illustrate the current issues that may arise, describing the reasoning the model may have not detected. These results will be cross-referenced to research that did similar tests to support the argument to drive the safety issues that may still exist with AV manufacturers or newly established UK AV manufacturers.
 
 \section{Literature Review}
+	\subsection{Autonmous Vehicle Paradigm}
+		An `intelligent vehicles' paradigm has three logical rule statements to follow. Firstly, the system will collect data from the driver, developing the knowledge from itself and the driver. Second, the system will have to perform some judgement. Silviu Ionita~\cite{ionita_autonomous_2017} mentions that it is paramount to filter the data through logical statements and apply multivalent logic to handle uncertainty better, creating a better judgement. ADAS require consistent autonomous behaviour to collect and handle the data even when the system is not in control. This behaviour means that the developers can collect data on what the system would have done if it were in control, allowing any refinement down the line and enabling AVs to work more efficiently.
+
+		Figure~\ref{fig:adasFunctionsIonita} provides the structure of Advanced Driver Assistance Systems (ADAS) functions linking the responsibilities to the decision and action. Strategic Processes are near real-time, Tactical Processes are real-time, and Direct are short as possible. These three functionalities are fundamental when understanding how an ADAS vehicle copes and how an AV will tend to handle situations.~\cite{ionita_autonomous_2017} It is necessary to establish that the AV will only rely on its judgement after the decision to remove human interaction. Some of these system paradigms reflect the capabilities of AVs involving blindspots, low-light and poor weather conditions.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\columnwidth]{Figures/SystemFunctionality-3.png}
+			\caption{Classes of ADAS and their Requirements for Decision and Execution~\cite{ionita_autonomous_2017}}
+			\label{fig:adasFunctionsIonita}
+		\end{figure}
+
 	\subsection{Vision Technology and Techniques}
-		Light Detection and Ranging (LiDAR) uses a pulsed laser to gather information about the object surroundings, providing depth that images cannot capture. Within the paper, `Pedestrian recognition and tracking using 3D LiDAR for autonomous vehicle' by Heng Wang~\cite{wang_pedestrian_2017}, a quote `'`LiDARs are another kind of commonly used sensors for pedestrian recognition, compared with cameras, LiDARs can provide accurate range information and larger field of view.''. Heng Wang points out that the use of LiDAR widens the field of view.
+		When investigating how AVs handle blindspot handling compared to human drivers, the paper `Automated driving: Safety blind spots' by Ian Y. Noy~\cite{noy_automated_2018} suggests the current implementations within ADAS and compares it to standard driving errors. Although, the paper does not directly reflect on motorcycles, the paper details ADAS systems and how the transition from ADAS to AVs is possible. An important quote from the paper is that `AD technologies are suboptimal in that they fail to address critical blind spots and will likely lead to unnecessary losses and injuries because insufficient consideration is given to integrating the human element into overall sociotechnical road transportation system'~\cite{noy_automated_2018} suggests that transitioning from ADAS to AVs is relatively dangerous if blindspot judgements are overlooked. With further research in this area, it will provide more information to understand if AVs are safer than human drivers on the road.
+
+		Light Detection and Ranging (LiDAR) uses a pulsed laser to gather information about the object surroundings, providing depth that images cannot capture. Within the paper, `Pedestrian recognition and tracking using 3D LiDAR for autonomous vehicle' by Heng Wang~\cite{wang_pedestrian_2017}, a quote ``LiDARs are another kind of commonly used sensors for pedestrian recognition, compared with cameras, LiDARs can provide accurate range information and larger field of view.''. Heng Wang points out that the use of LiDAR widens the field of view.
 		
 		After researching some extra information, it was found within the report `What Happens for a ToF LiDAR in Fog?'~\cite{li_what_2021} that the failure rate of detection is Diffuse Reflection Targets: 2.1\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m, Diffuse Reflection Targets: 10.3\% and Retro-Reflective Objects: 1.1\% in the range of 10-15m, Diffuse Reflection Targets: 15.1\% and Retro-Reflective Objects: 1.1\% in the range of 15-20m, and Diffuse Reflection Targets: 19.5\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m~\cite{royo_overview_2019}
 
 \section{Methodology}
+	\subsection{Research Hypothesis}
+		These hypothesis statements assist the explore the research question, `Are AVs a Danger to Motorcycles?':
+
+		\begin{enumerate}
+		\item Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.
+		\item In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.
+		\item Poor weather conditions, such as heavy rain, snow, or fog, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.
+		\end{enumerate}
+
 	\subsection{Objectives}
 	The main objectives of this project are to develop an accurate FER model using CNNs and to improve the model's performance on specific tasks. The following steps be undertaken to achieve these objectives:-
 
@@ -123,9 +145,14 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\item Evaluation Techniques: A few methods to analyse and evaluate the model's performance and accuracy regarding the learning and predictive classifications. Classification Reports and Confusion Matrices to identify optimisation issues to improve accuracy results. Training and validation evaluation methods are required to determine the model's learning quality. The Python libraries involved includes history when a model is fitted, which includes `loss' and `val\_loss' to determine the optimisation of the learning state of the model. An evaluation of validation data is essential to highlight any errors within the preparation phase.
 	\end{enumerate}
 
+	\subsection{Sourcing and Preparation}
+		The datasets being used are arranged in YOLOv7 format and would require additional modifications to work before the training phase. The datasets that have been decided to train the models are `Motorcycle Samples - v1 VMT-V1', sourced from Roboflow~\cite{roboflow_motorcycle_nodate}, and `Road Vehicle Images Dataset', sourced from Kaggle, authored by Ashfak Yeafi~\cite{ashfak_yeafi_road_nodate}.
+
+		The training materials are split into `images' and `labels' categories, which require some preparation. Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get other road conditions and various types of motorcycles. Using the two datasets helped increase the accuracy during the validation process. The materials are separated and combined into a CSV file format, and another Python Snippet can reconstruct the CSV and Image Data into a new directory.
+
 	\subsection{Pre-Processing}
 	\label{subsec:preprocessing}
-		Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get different road conditions and different types of motorcycles. Using the two datasets helped increase the accuracy during the validation process.
+	
 
 		Training of two datasets, dataset A with the filter of `bus', `car', `minivan', `motorcycle', `pickup', `scooter', `trike', `truck', `van', `person', whereas dataset B involves; `motorcycle', `tricycle' and `person' filters. The `yolov5s.pts' and `yolov5l.pts' were used during testing, with better results on the `yolov5l.pts' by 25\% when identifying motorcycles. Both weights used a batch of thirty-two and ten epochs.
 
@@ -218,13 +245,28 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\label{fig:overtakingSequence}
 	\end{figure}
 \section{Discussion}
-	
+	\subsection{Training Sequence}
+		The trained classification uses Asian and US footage to train the model. According to the classification models found in figures (\ref{fig:ukDatasetYolov5LargeWeight}~\ref{fig:mtpDatasetYolov5LargeWeight}), the motorcycle had a 81\% accuracy within fig~\ref{fig:ukDatasetYolov5LargeWeight}, with 39\% outliers identifying motorcycle objects as Scooters, with a minimal of 15\% outliers identifying as background. Comparison to the Motorcycle, Trike and Person model, found in fig~\ref{fig:mtpDatasetYolov5LargeWeight}, the motorcycle had a 77\% accuracy, with 32\% of outliers identifying as background.
+
+		During the testing sequence, the larger trained model was selected. In argument, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than the majority of motorcycles being identified as a background. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK. It is also important to note that gathering such materials in Britain could infringe the Data Protection Act 2018~\cite{govuk_data_2018} law, including but not limited to:
+
+		\begin{itemize}
+			\item Must inform the member of public how the data is being used.
+			\item Must allow the member of public to access personal data.
+			\item Must have incorrect data updated. - This is important for the member of public to access personal data.
+			\item Must allow the member of public to erase data. Which can impede the training process in one way or another.
+			\item Member of public has right to stop or restrict processing of your data. - Which impacts the training process.
+			\item Data portability, to allow the data to be used for different purposes.
+			\item Member of public has rights to object to how your data is processed in certain situations.
+		\end{itemize}
+
+		Furthermore, the member of public has rights when it comes to automated decision-making processes (without human involvment), which could suggest Machine Learning purposes, and profiling, to predict behaviour or interests. These all matter when it comes to the British legalisation, and could impede AVs from being trained in the UK when it comes to fetching video data from pedestrians, cyclists, car drivers and other motorists. Collection of registration plates are illegal in the UK, as it can lead to members of public cloning number plates and could be considered a breach of personal information. This could indicate the lack of public datasets available for motorcyclists or any other UK vehicles in the UK, which made the training process difficult.
+	\subsection{Testing Sequence}
+		A few issues come to light after running through the gathered test results. The footage involves mixed scenarios including wet, dry and overtaking procedures. 
 \section{Conclusion}
 
 \section{Further Research}
-	After reviewing some of the findings so far within the research, it imposes some serious questions, such as `Will an AV detect a motorcycle at
-	
-	last minute, having to emergency break when it had plenty of time beforehand?', `Can a AV turn in the path of a motorcycle with current blindspot risks?' and `Can motorcyclists do more to get in safer positions when AVs are on the UK roads?'. These questions will expand the leading dissertation research, helping to ask many unanswered questions or draw attention to a perhaps overlooked subject area of AV development.
+	After reviewing some of the findings so far within the research, it imposes some serious questions, such as `Will an AV detect a motorcycle at last minute, having to emergency break when it had plenty of time beforehand?', `Can a AV turn in the path of a motorcycle with current blindspot risks?' and `Can motorcyclists do more to get in safer positions when AVs are on the UK roads?'. These questions will expand the leading dissertation research, helping to ask many unanswered questions or draw attention to a perhaps overlooked subject area of AV development.
 
 \section{Terminology}
 	List of terminologies used in this document:-
@@ -233,7 +275,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\item LiDAR - Light Detection and Ranging.
 	\end{itemize}
 
-\nocite{*}
+%\nocite{*}
 \renewcommand\refname{\section{Reference List}}
 \small{\bibliographystyle{IEEEtran}
 	\bibliography{ref}}
