@@ -163,25 +163,39 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 	\subsection{Model Architecture}
 		With the challenge of setting up a high-end model equivalent to a leading AV manufacturer like Tesla, it is essential to use detailed Object Classification training material. Using the Qualitative Research method with video frames and labels to classify the different objects in the video is required. Roboflow and other materials are outsourced and looked into using different sources found in various research journals.
 
-\section{Results}
-	\subsection{YOLOv5 Architecture | YOLOv5 Large Weight | Dataset A}
+		Using Qualitative Research methods enhances the development of engaging with better architecture concepts. These give us a broad understanding of 
+
+\section{Training Results}
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=\columnwidth]{Figures/a_confusion_matrix.png}
+			\includegraphics[width=\columnwidth]{Figures/dataset_a/a_confusion_matrix.png}
 			\caption{Dataset A: Confusion Matrix of YOLOv5 model}
 			\label{fig:ukDatasetYolov5LargeWeight}
 		\end{figure}
-
-	\subsection{YOLOv5 Architecture | YOLOv5 Large Weight | Dataset B}
+		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=\columnwidth]{Figures/b_confusion_matrix.png}
+			\includegraphics[width=\columnwidth]{Figures/dataset_a/PR_curve.png}
+			\caption{Dataset A: Performance and Recall Curve of YOLOv5 model}
+			\label{fig:ukDatasetYolov5LargeWeightPRCurve}
+		\end{figure}
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\columnwidth]{Figures/dataset_b/b_confusion_matrix.png}
 			\caption{Dataset B: Confusion Matrix of YOLOv5 model}
 			\label{fig:mtpDatasetYolov5LargeWeight}
 		\end{figure}
 
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\columnwidth]{Figures/dataset_b/PR_curve.png}
+			\caption{Dataset B: Performance and Recall of YOLOv5 model}
+			\label{fig:mtpDatasetYolov5LargeWeightPRCurve}
+		\end{figure}
+
 \section{Current Findings}
-	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of Tesla's AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
+	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
 
 	Figure~\ref{fig:detectionOfMotorcycleW1} of a motorcycle in wet weather conditions, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle.
 
@@ -246,36 +260,82 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 	\subsection{Training Sequence}
 	The trained classification uses Asian and US footage to train the model. According to the classification models found in figures (\ref{fig:ukDatasetYolov5LargeWeight}~\ref{fig:mtpDatasetYolov5LargeWeight}), the motorcycle had an 81\% accuracy within fig~\ref{fig:ukDatasetYolov5LargeWeight}, with 39\% outliers identifying motorcycle objects as Scooters, with a minimal of 15\% outliers identifying as background. In comparison to the Motorcycle, Trike and Person model, found in fig~\ref{fig:mtpDatasetYolov5LargeWeight}, the motorcycle had a 77\% accuracy, with 32\% of outliers identifying as background.
 
-	During the testing sequence, the larger trained model was selected. In argument, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than most motorcycles being identified as a background. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK. It is also important to note that gathering such materials in Britain could infringe the Data Protection Act 2018 (...meeting the standards to the EU GDPR guidelines)~\cite{govuk_data_2018} law, including but not limited to:
+    Figures (\ref{fig:ukDatasetYolov5LargeWeightPRCurve}~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}) show the Precision and Recall curves plotted on a graph, giving information on any performance issues with the training models. The PR curves for both models demonstrate high precision across varying levels of recall, indicative of robust performance. Although, figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve} appears to have a higher precision for the longer part of the training process, compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The worse performers of the model are scooters, vans, person and minivans in precision and perform well when it comes to recall. In comparison, figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve} shows a similar illustration. According to the key of figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve}, motorcycles had a higher precision peak at 77.5\% compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The model architecture performs well when training the given dataset scenarios. Perhaps larger weights could increase the precision and recall curve during training. It is worth mentioning that the preparation of the datasets functions well during the training process, and no underlying problems are showing, especially for motorcycle data.
+
+	During the testing sequence, the larger trained model was selected. Arguably, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than having most motorcycles identified as background objects. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK. It is also important to note that gathering and publishing such materials publicly in Britain could infringe the Data Protection Act 2018 (...meeting the standards to the EU GDPR guidelines)~\cite{govuk_data_2018} law, including but not limited to:
 
 		\begin{itemize}
 			\item Must inform the member of public how the data is being used.
 			\item Must allow the member of public to access personal data.
 			\item Must have incorrect data updated. - This is important for the member of public to access personal data.
 			\item Must allow the member of public to erase data. Which can impede the training process in one way or another.
-			\item Member of public has right to stop or restrict processing of your data. - Which impacts the training process.
+			\item The member of public has right to stop or restrict processing of your data. - Which impacts the training process.
 			\item Data portability, to allow the data to be used for different purposes.
 			\item Member of public has rights to object to how your data is processed in certain situations.
 		\end{itemize}
 
-		Furthermore, member of the public has rights when it comes to automated decision-making processes (without human involvement), which could suggest Machine Learning purposes, and profiling, to predict behaviour or interests. These all matter regarding British legalisation and could impede AVs from being trained in the UK when fetching video data from pedestrians, cyclists, car drivers and other motorists. The collection of registration plates is illegal in the UK, as it can lead to members of the public cloning number plates and could be considered a breach of personal information. This finding could indicate the lack of public datasets available for motorcyclists or any other UK vehicles in the UK, which made the training process difficult.
+		Furthermore, member of the public has rights when it comes to automated decision-making processes (without human involvement), which could suggest Machine Learning purposes, and profiling, to predict behaviour or interests. These all matter regarding British legislation and could impede AVs from being trained in the UK when fetching video data from pedestrians, cyclists, car drivers and other motorists. This finding could indicate the lack of public datasets available for motorcyclists or any other vehicles in the UK, complicating the training process.
+
 	\subsection{Testing Sequence}
-		A few issues come to light after running through the gathered test results. The footage involves mixed scenarios including wet, dry and overtaking procedures. 
+		A few issues come to light after running through the gathered test results. The footage involves mixed scenarios including wet, dry and overtaking procedures. There is a few prospectives that need addressing when observing the test footage. Before going into a deeper level of understanding why accurate classifications are important, and it does not stop at detecting a motorcycle, as hand gestures, and person's bodies are equally important, when it comes to indicating, warning they are braking, or if a fortunate accident were to happen, including a pillion (passenger of the vehicle) or operator was to suddenly come off in the road. A important emphasis would include, would the AV detect this, or would it only register the motorcycle still riding in a straightline, causing the AV not to stop, avoiding potential death. 
+		
+		The Ministry of Transport (MOT) has different requirements for a motorcycle. Motorcycles can potentially lack of headlamps, main beam, and offers a range of colours; white, yellow and mainly white light with a blue tinge. Direction indicators are not required to pass the MOT, if the said vehicle, in-particular, `do not have front and rear position lamps'. However, there is other exemptions too. Motorcycles electronics are not always reliable, in some cases, riders accept this `risk', and even though it is stated a `Minor', `Major' to `Dangerous' categories on the MOT, motorcycles may use hand signals to communicate to other road users that the vehicle is slowing down. That said, this is a common practice we are taught as British road users, if any indication equipment goes wrong to keep the vehicles on the road safe. These are things the British road users deal with sub-conciously, and AVs should be expected to have understanding of the road safety rulings, especially when it comes to more vulnerable users such as motorcyclists, cyclists, and horse riders.
+		
+		In figures (\ref{fig:detectionOfMotorcycleW1}~\ref{fig:detectionOfMotorcycleW2}~\ref{fig:detectionOfMotorcycleW3}) display three scenarios. A problem that is evident is the camera used kept getting water on, so the camera used in AVs have to have resilliance to repel water in order to remain safe on the road. However, the camera fails to pick up the motorcycle in figure~\ref{fig:detectionOfMotorcycleW3}, showing the importance of noting that not all motorcycles may have their lights on, in this case the light is on. However, fog lights were not required, so even having any sort of implementation on the vehicle would not help, as it was not the right conditions for the given scenario, and could cause blindness and eye-fatigue to other road users.
 
+		In figures (\ref{fig:detectionOfOneMotorcycle}~\ref{fig:lateClassificationP1}~\ref{fig:lateClassificationP2}) displays the importantance of safety when rolling out AVs within the UK. The detection of motorcycles seems to be limited, however, with some sort of tracking implementation when detection is detected it could help the process. Although, tracking doesn't gurantee the motorcycles are always in sight. A common theme found when performing these detections, is when a motorcycle started to be further in the distance detection was useless. This leads to figure~\ref{fig:lateClassificationP1} and~\ref{fig:lateClassificationP2} where the on-coming motorcycle was not immediately detected, and if for some reason the AV had to make a right turn or a swerve to the right, rather than applying the braking system, then the misunfortunate rider would have zero to no time to react the intention of the AV.
 
+		% mention fog lights and safety features
+		
 \section{Conclusion}
 
 \section{Further Research}
-	After reviewing some of the findings so far within the research, it imposes some serious questions, such as `Will an AV detect a motorcycle at last minute, having to emergency break when it had plenty of time beforehand?', `Can a AV turn in the path of a motorcycle with current blindspot risks?' and `Can motorcyclists do more to get in safer positions when AVs are on the UK roads?'. These questions will expand the leading dissertation research, helping to ask many unanswered questions or draw attention to a perhaps overlooked subject area of AV development.
+	The increasing prevalence of AVs on the roads presents a wide array of challenges and questions, particularly when it comes to their interactions with vulnerable road users like motorcyclists. The mentioned questions and concerns provide an excellent starting point for further research. Here's a deeper dive into the potential areas of research:
+
+	\begin{enumerate}
+		\item Emergency Braking Systems and Motorcycles:
+		\begin{itemize}
+			\item How do AVs' emergency braking systems currently detect and react to motorcycles?
+			\item What circumstances could lead an AV to detect a motorcycle late, necessitating emergency braking?
+			\item Does the size, speed, or color of the motorcycle affect detection?
+		\end{itemize}
+		\item Blindspot Detection and Mitigation:
+		\begin{itemize}
+			\item To what extent do AVs recognize motorcycles in their blindspots?
+			\item How does the AV's software differentiate between a motorcycle and other vehicles or objects in its blindspot?
+			\item What are the current solutions to this problem, and how effective are they?
+		\end{itemize}
+		\item Behavioral Adaptations by Motorcyclists:
+		\begin{itemize}
+			\item How can motorcyclists adapt their riding behaviour to ensure safety as AVs become prevalent on UK roads?
+			\item What education or training can be provided to motorcyclists regarding AV behaviour?
+			\item Are there specific manoeuvres or positions that motorcyclists should adopt or avoid when in the vicinity of an AV?
+		\end{itemize}
+		\item Night and Fog Driving:
+		\begin{itemize}
+			\item How do AV sensors and software handle low-visibility conditions, such as night driving or fog, especially without LiDAR technology?
+			\item Given their smaller size and potentially reduced visibility, are there specific challenges posed by motorcycles under these conditions?
+			\item How do current AV systems compare regarding their effectiveness in these conditions?
+		\end{itemize}
+
+		\item Safety Protocols for New Market Entrants:
+		\begin{itemize}
+			\item As more companies enter the AV market, what safety protocols or standards exist regarding motorcycle detection and safe management?
+			\item How can regulatory bodies ensure that new entrants prioritize the safety of motorcyclists in their software and hardware development?
+		\end{itemize}
+	\end{enumerate}
+
+	Given the potential ramifications of a collision between an AV and a motorcycle or other vulnerable road users, it is paramount that these questions be addressed thoroughly. Research in this area not only contributes to the academic community but also has the potential to inform public policy, industry standards, and public education efforts.
 
 \section{Terminology}
 	List of terminologies used in this document:-
 	\begin{itemize}
 		\item AV - Autonomous Vehicles.
 		\item LiDAR - Light Detection and Ranging.
+		\item MOT - Ministry of Transport.
 	\end{itemize}
 
-%\nocite{*}
+\nocite{*}
 \renewcommand\refname{\section{Reference List}}
 \small{\bibliographystyle{IEEEtran}
 	\bibliography{ref}}
