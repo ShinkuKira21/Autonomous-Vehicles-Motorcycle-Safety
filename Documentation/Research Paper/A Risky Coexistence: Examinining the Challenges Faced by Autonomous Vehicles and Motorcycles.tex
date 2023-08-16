@@ -78,7 +78,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{A Risky Coexistence: Examining the Challenges Faced by Autonomous Vehicles and Motorcycles}
+\title{A Risky Co-existence: Examining the Challenges Faced by Autonomous Vehicles and Motorcycles}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Given Edward Patch}
 	\IEEEauthorblockA{\textit{Software Engineering and Artificial Intelligence (of MSc Year 4)} \\
@@ -92,25 +92,25 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \pagestyle{plain}
 
 \begin{abstract}
-
+ This extended dissertation abstract focuses on the safety development of Autonomous Vehicles and Motorcycles using Artificial Neural Networks. The research question involves, `Are AVs a danger to motorcyclists?' hypothesising the safety aspects of blindspots, poor visibility and poor weather conditions to support the research question. The datasets used a combination of Asian and US road footage. The training performance of the model within the report achieves 81\% accuracy for motorcycles in a filtered dataset A; involving pedestrians and a wide range of vehicles, and 77.5\% accuracy in a filtered dataset B; involving motorcycles, trikes and pedestrians. These training results give an idea of the detection result's accuracy. A precision and recall curve diagram shows the curvature of the learning process to help identify any critical errors in the training process and the model's reliability. The previous research to build this report involved looking into how Autonomous Vehicles, ADAS and V2V communications are currently implemented. This aspect establishes how vehicles currently function and what previous and current technologies are in place. The current findings highlight some dangerous misclassification entries on UK roads, which requires a deeper understanding of enhancing safety infrastructure on Autonomous Vehicles. The hypotheses are covered. Nonetheless, the research is incomplete for a final analysis based on the current research and findings. Future research will involve a more detailed analysis of the footage, emphasising motorcycles in various lighting conditions, particularly nighttime in both well-lit and unlit areas. This approach further investigates the hypothesis that in low light conditions, AVs may struggle to accurately detect and identify motorcycles, potentially leading to safety issues on the road. The research gathered in this final analysis does highlight poor areas of Object Classification and Detection when it comes to vulnerable positioning when riding, which indicates that `Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.' as inaccurate, and `Poor weather conditions, such as heavy rain or poor visibility conditions, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.' as accurate statements, displaying substantial importance of tightening this research gap.
 \end{abstract}
 
 \begin{IEEEkeywords}
-	Artificial Neural Networks, Autonomous Vehicles, 
+	Artificial Neural Networks, Autonomous Vehicles, Motorcycle Safety.
 \end{IEEEkeywords}
 
 \section{Introduction}
-	 Autonomous Vehicles (AVs) are scheduled to roll out to the United Kingdom roads by 2025.~\cite{govuk_self-driving_2022} With the rise of automated vehicles, a safety concern arises, which affects the development of AVs, including government bodies and manufacturers, public safety and the National Health Service (NHS), when it comes to motorcycles and AVs. The research focuses on issues that may have been overlooked already with motorcycles, with new scenarios introduced in many US states, like road widths, filtering and poor weather conditions with British vehicles. 
+	Autonomous Vehicles (AVs) are scheduled to roll out to the United Kingdom roads by 2025.~\cite{govuk_self-driving_2022} With the rise of automated vehicles, a safety concern arises, which affects the development of AVs, including government bodies and manufacturers, public safety and the National Health Service (NHS), when it comes to motorcycles and AVs. The research focuses on issues that may have been overlooked already with motorcycles, with new scenarios introduced in many US states, like road widths, filtering and poor weather conditions with British vehicles. 
 
-	Addressing these issues could be problematic; however, with Object Classification, which is not entirely accurate compared to AV standard, the research could push more extensive research in this area. The study's objectives are to understand the existing dangers with AVs and motorcycles, establish appropriate datasets to train and test the selected models, remove any vehicles that are not necessary for the study, and evaluate the test results of the study.
-	
-	A few study results are showcased to illustrate the current issues that may arise, describing the reasoning the model may have not detected. These results will be cross-referenced to research that did similar tests to support the argument to drive the safety issues that may still exist with AV manufacturers or newly established UK AV manufacturers.
+	Addressing these issues could be problematic; however, using Object Classifications and Neural Networking tools could push for more extensive research in this area. The study's objectives are to understand the existing dangers with AVs and motorcycles, establish appropriate datasets to train and test the selected models, remove any vehicles that are not necessary for the study, and evaluate the test results.
+
+	A few study results are showcased to illustrate the current issues that may arise, describing the reasoning the model may have not detected. These results will be cross-referenced to research that did similar tests to support the argument to drive the safety issues that may still exist or be overlooked by newly established UK AV manufacturers.
 
 \section{Literature Review}
 	\subsection{Autonmous Vehicle Paradigm}
 		An `intelligent vehicles' paradigm has three logical rule statements to follow. Firstly, the system will collect data from the driver, developing the knowledge from itself and the driver. Second, the system will have to perform some judgement. Silviu Ionita~\cite{ionita_autonomous_2017} mentions that it is paramount to filter the data through logical statements and apply multivalent logic to handle uncertainty better, creating a better judgement. ADAS require consistent autonomous behaviour to collect and handle the data even when the system is not in control. This behaviour means that the developers can collect data on what the system would have done if it were in control, allowing any refinement down the line and enabling AVs to work more efficiently.
 
-		Figure~\ref{fig:adasFunctionsIonita} provides the structure of Advanced Driver Assistance Systems (ADAS) functions linking the responsibilities to the decision and action. Strategic Processes are near real-time, Tactical Processes are real-time, and Direct are short as possible. These three functionalities are fundamental when understanding how an ADAS vehicle copes and how an AV will tend to handle situations.~\cite{ionita_autonomous_2017} It is necessary to establish that the AV will only rely on its judgement after the decision to remove human interaction. Some of these system paradigms reflect the capabilities of AVs involving blindspots, low-light and poor weather conditions.
+		Figure~\ref{fig:adasFunctionsIonita} provides the structure of Advanced Driver Assistance Systems (ADAS) functions linking the responsibilities to the decision and action. Strategic Processes are near real-time, Tactical Processes are real-time, and Direct Processes are short as possible. These three functionalities are fundamental when understanding how an ADAS vehicle copes and how an AV will tend to handle situations.~\cite{ionita_autonomous_2017} It is necessary to establish that the AV will only rely on its judgement after the decision to remove human interaction. Some of these system paradigms reflect the capabilities of AVs involving blindspots, low-light and poor weather conditions.
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=\columnwidth]{Figures/SystemFunctionality-3.png}
@@ -123,47 +123,47 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 		Light Detection and Ranging (LiDAR) uses a pulsed laser to gather information about the object surroundings, providing depth that images cannot capture. Within the paper, `Pedestrian recognition and tracking using 3D LiDAR for autonomous vehicle' by Heng Wang~\cite{wang_pedestrian_2017}, a quote ``LiDARs are another kind of commonly used sensors for pedestrian recognition, compared with cameras, LiDARs can provide accurate range information and larger field of view.''. Heng Wang points out that the use of LiDAR widens the field of view.
 		
-		After researching some extra information, it was found within the report `What Happens for a ToF LiDAR in Fog?'~\cite{li_what_2021} that the failure rate of detection is Diffuse Reflection Targets: 2.1\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m, Diffuse Reflection Targets: 10.3\% and Retro-Reflective Objects: 1.1\% in the range of 10-15m, Diffuse Reflection Targets: 15.1\% and Retro-Reflective Objects: 1.1\% in the range of 15-20m, and Diffuse Reflection Targets: 19.5\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m~\cite{royo_overview_2019}
+		After researching some extra information, it was found within the report `What Happens for a ToF LiDAR in Fog?'~\cite{li_what_2021} that the failure rate of detection in Diffuse Reflection Targets: 2.1\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m, Diffuse Reflection Targets: 10.3\% and Retro-Reflective Objects: 1.1\% in the range of 10-15m, Diffuse Reflection Targets: 15.1\% and Retro-Reflective Objects: 1.1\% in the range of 15-20m, and Diffuse Reflection Targets: 19.5\% and Retro-Reflective Objects: 0.7\% in the range of 0-10m~\cite{royo_overview_2019}
 
 \section{Methodology}
 	\subsection{Research Hypothesis}
-		These hypothesis statements assist the explore the research question, `Are AVs a Danger to Motorcycles?':
+		This paper will cover blindspots and poor weather conditions hypothesis statements. The following hypothesis statements are orientated for the dissertation paper exploring the research question, `Are AVs a Danger to Motorcyclists?':
 
 		\begin{enumerate}
 		\item Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.
 		\item In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.
-		\item Poor weather conditions, such as heavy rain, snow, or fog, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.
+		\item Poor weather conditions, such as heavy rain or poor visibility conditions, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.
 		\end{enumerate}
 
 	\subsection{Objectives}
-	The main objectives of this project are to develop an accurate FER model using CNNs and to improve the model's performance on specific tasks. The following steps be undertaken to achieve these objectives:-
+		The main objectives of this project are to develop an accurate UK Motorcycle trained model using Ultralytic's YOLOv5 architecture and to improve the model's performance on specific tasks. The following steps will support the experimentation to answer the research questions:
 
-	\begin{enumerate}
-		\item Dataset Preparation: Object Classification requires a set of labels to correspond to an image, mapping different classified objects wihin the image. Preparation of the data requires being able to select validated data for training and testing purposes.
-		\item Pre-processing: Read in the mapping datasets and extract the sorted datasets to the designated file paths. 
-		\item Architecture Selection and Optimisation: Investigate different object classification architectures, and select a model that could cloisely demonstrate an idea of how Autonomous Vehicles currently initialise object classification.
-		\item Evaluation Techniques: A few methods to analyse and evaluate the model's performance and accuracy regarding the learning and predictive classifications. Classification Reports and Confusion Matrices to identify optimisation issues to improve accuracy results. Training and validation evaluation methods are required to determine the model's learning quality. The Python libraries involved includes history when a model is fitted, which includes `loss' and `val\_loss' to determine the optimisation of the learning state of the model. An evaluation of validation data is essential to highlight any errors within the preparation phase.
-	\end{enumerate}
+        \begin{enumerate}
+            \item Dataset Preparation: Object Classification requires a set of labels to correspond to an image, mapping different classified objects within the image. Preparation of the data requires being able to select validated data for training and testing purposes.
+            \item Pre-processing: Read in the mapping datasets and extract the sorted datasets to the designated file paths. 
+            \item Architecture Selection and Optimisation: Investigate different object classification architectures, and select a model that could closely demonstrate an idea of how AVs currently initialise object classification.
+            \item Evaluation Techniques: Confusion Matrix and PR-Curve are tools to fine-tune and evaluate the model's training performance.
+        \end{enumerate}
 
 	\subsection{Sourcing and Preparation}
 		The datasets being used are arranged in YOLOv7 format and would require additional modifications to work before the training phase. The datasets that have been decided to train the models are `Motorcycle Samples - v1 VMT-V1', sourced from Roboflow~\cite{roboflow_motorcycle_nodate}, and `Road Vehicle Images Dataset', sourced from Kaggle, authored by Ashfak Yeafi~\cite{ashfak_yeafi_road_nodate}.
 
-		The training materials are split into `images' and `labels' categories, which require some preparation. Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get other road conditions and various types of motorcycles. Using the two datasets helped increase the accuracy during the validation process. The materials are separated and combined into a CSV file format, and another Python Snippet can reconstruct the CSV and Image Data into a new directory.
+		The training materials are split into `images' and `labels' categories, which require some preparation. Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get other road conditions and various types of motorcycles. Using the two datasets should help increase the accuracy during the training and validation process. The materials are separated and combined into a CSV file format, and another Python Snippet can reconstruct the CSV and Image Data into a new directory.
 
 	\subsection{Pre-Processing}
 	\label{subsec:preprocessing}
 		Training of two datasets, dataset A with the filter of `bus', `car', `minivan', `motorcycle', `pickup', `scooter', `trike', `truck', `van', `person', whereas dataset B involves; `motorcycle', `tricycle' and `person' filters. The `yolov5s.pts' and `yolov5l.pts' were used during testing, with better results on the `yolov5l.pts' by 25\% when identifying motorcycles. Both weights used a batch of thirty-two and ten epochs.
 
-		Testing materials must include video content, split into multiple frames To test the trained YOLO model, with enough images to create a strong argument. Joining a motorcycle group and exploring various routes across the United Kingdom, including motorways, dual carriageways, A-roads, and backroads, with motorcycles overtaking, filtering, and navigating blindspots, can lead to unexplored scenarios and questions that may have been previously overlooked.
+		Testing materials must include video content, split into multiple frames to test the trained YOLO model, with enough images to create a strong argument. Joining a motorcycle group and exploring various routes across the United Kingdom, including motorways, dual carriageways, A-roads, and backroads, with motorcycles overtaking, filtering, and navigating blindspots, can lead to unexplored scenarios and questions that may have been previously overlooked.
 					
 		A decided factor is to use a Drift Innovation Ghost XL motorcycle camera attached to a motorcycle that rides within the group, then swap the camera with another rider after some time. This way, combining the content helps identify how Object Classification copes with numerous blindspots and draws some questions to further the research concerning the current safety of AV vehicles. 
 		
-		One sports bike and two cruisers are selected for material to test how Object Classification models handle different motorcycle styles. Ideal footage would include Scramblers, Trikes and other similar vehicles to establish how Object Classification models work in an estimated manner. A perfect material would be that during the ride out, conducted on 18$^\text{th}$ July 2023, Tuesday, would capture these vehicles, which either pass by or join us in sections of the rides. The group is instructed to overtake and be undertaken by the camera vehicle to create plenty of footage to put the YOLO model to the test. However, it is worth noting that no rider is pressured into doing anything illegal or unsafe.
+		One sports bike and two cruisers are selected for material to test how Object Classification models handle different motorcycle styles. Ideal footage would include Scramblers, Trikes and other similar vehicles to establish how Object Classification models work in an estimated manner. A perfect material would be that during the ride out, conducted on 18$^\text{th}$ July 2023, Tuesday, would capture these vehicles, which either pass by or join us in sections of the rides. The group is instructed to overtake and be undertaken by the camera vehicle to create plenty of footage to put the YOLO model to the test.
 
 	\subsection{Model Architecture}
-		With the challenge of setting up a high-end model equivalent to a leading AV manufacturer like Tesla, it is essential to use detailed Object Classification training material. Using the Qualitative Research method with video frames and labels to classify the different objects in the video is required. Roboflow and other materials are outsourced and looked into using different sources found in various research journals.
-
-		Using Qualitative Research methods enhances the development of engaging with better architecture concepts. These give us a broad understanding of 
+        With the challenge of setting up a high-end model equivalent to a leading AV manufacturer like Tesla, it is essential to use detailed Object Classification training material. Using the Qualitative Research method with video frames and labels to classify the different objects in the video is required. Roboflow and other materials are outsourced and looked into using different sources in various research journals. 
+        
+        Using Qualitative Research methods enhances the development of engaging with better architectural concepts. Recurrent-CNN, YOLOv4 and Ultralytics YOLOv5 are looked into to achieve the model architecture for the training, validation and testing processes. After gaining access to the datasets mentioned previously, the Ultralytics YOLOv5 felt convenient to use due to the ease of data preparation and software and hardware requirements.
 
 \section{Training Results}
 		\begin{figure}[h]
@@ -286,10 +286,13 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		Figures (\ref{fig:detectionOfOneMotorcycle}~\ref{fig:lateClassificationP1}~\ref{fig:lateClassificationP2}) display the importance of safety when rolling out AVs within the UK. The detection of motorcycles seems to be limited. However, with some tracking implementation, when detection is detected, it could help the process. Although, tracking does not guarantee that the motorcycles are always in sight. A common theme found when performing these detections is that detection was useless when a motorcycle started to be further in the distance. This finding leads to figure~\ref{fig:lateClassificationP1} and~\ref{fig:lateClassificationP2} where the on-coming motorcycle was not immediately detected, and if for some reason the AV had to make a right turn or a swerve to the right, rather than applying the braking system, then the misfortunate rider would have zero to no time to react the intention of the AV.
 
 		Figure~\ref{fig:overtakingSequence} demonstrates four overtake manoeuvres with two motorcyclists. The first three are detecting the presence of motorcycles successfully. Although, in the last sequence, where an overtaking manoeuvre of two tractors was found, the detection failed to find the presence of two motorcyclists. Usually, if a motorcycle `filtered-in' to cancel the overtake, if they detected on-coming vehicles, then a driver would detect this and cancel the overtake manoeuvre and take in, saving potential lives to the traffic flow behind the vehicles. However, an AV may think it is still safe, not having the ability to read the intentions of motorcyclists or perhaps misclassification them, which would help massively to the training process of AVs. Another potential issue is that motorcycles sometimes can `accelerate off', and if an AV loses detection of one and not the other, the AV may also accelerate to make a safer overtake, detecting the motorcycle accelerating at a slower rate at the last minute, putting a life in danger. There are other potential issues, as the motorcycles may tuck in and have issues, causing emergency braking to all vehicles within the stream of traffic. However, drivers are aware of the motorcycles. They can read any likely causes of stops if one happens to be initiated, where an AV seems to have lost classification of a motorcycle the further it is away. 
-
-
 		
 \section{Conclusion}
+	The research paper touched ground on the two hypothesis scenarios. Although, without expanding the research, these hypotheses are not fully explored. The footage gained has not shown blindspots and would require more attention to detail. This attention to detail could include interviewing AV drivers to get their experiences when motorcycles in the UK under ADAS. However, this could also be hard to find in the UK as AVs are not fully implemented in the UK. The experimentations show that if a motorcycle is not on display, hidden by another driver or in direct view of the AV, it does not attempt to detect a motorcycle. The model architecture did struggle to detect motorcycles when overtaking tractors and could be a blindspot of AVs rather than drivers. For example, the motorcycle could blend in with the tractor during the overtake, showing a wide attachment and changing the driving style of the AV.
+
+	Poor weather conditions in the rain performed well unless the waterproof camera got wet. A motorcycle was often detected on single-carriageway roads, whereas dual-carriageways seemed to fail to detect motorcycles in poor visibility within the UK. Spray from other vehicles allowed the footage to become unclear. Conceivably, higher-quality cameras overcome these classification issues. However, the equipment on the vehicles may generate defects overtime, which could create foggy blindspots during wet conditions that may detect larger vehicles well but struggle to detect motorcycles.
+
+	Such findings, especially instances of late classification, challenge the assertion that ``Motorcycles have blindspots often overlooked by human drivers, which AVs can detect and avoid.'' show an inaccurate build-up, and ``Poor weather conditions, such as heavy rain or poor visibility conditions, can make it difficult for AVs to detect and react to motorcycles, increasing risk of accidents'' showing an accurate build-up, based on the current research development. The overall experimentations concern the way motorcycles are detected in the UK, and this concern needs to be addressed with more extensive research experimentations and applications.
 
 \section{Further Research}
 	The increasing prevalence of AVs on the roads presents a wide array of challenges and questions, particularly when it comes to their interactions with vulnerable road users like motorcyclists. The mentioned questions and concerns provide an excellent starting point for further research. Here's a deeper dive into the potential areas of research:
@@ -299,7 +302,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 		\begin{itemize}
 			\item How do AVs' emergency braking systems currently detect and react to motorcycles?
 			\item What circumstances could lead an AV to detect a motorcycle late, necessitating emergency braking?
-			\item Does the size, speed, or color of the motorcycle affect detection?
+			\item Does the size, speed, or colour of the motorcycle affect detection?
 		\end{itemize}
 		\item Blindspot Detection and Mitigation:
 		\begin{itemize}
@@ -336,6 +339,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 	List of terminologies used in this document:-
 	\begin{itemize}
 		\item AV - Autonomous Vehicles.
+		\item ADAS - Advanced Driver Assistance Systems.
 		\item LiDAR - Light Detection and Ranging.
 		\item MOT - Ministry of Transport.
 	\end{itemize}
