@@ -162,5 +162,6 @@ workbench/datasets/model/output.f_rcnn/*
 *.xmpi
 *.bbl
 
-# YOLOv5 - Weights
-weights/
+y-weights/
+indian-all1/
+indian-all2/

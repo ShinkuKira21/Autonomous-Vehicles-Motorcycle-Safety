@@ -28,5 +28,9 @@ After dataset/model/output.yolo is created, copy the contents into your Ultralyt
 **Step 8:**
 Use Ultralytics YOLOv5, copy the contents of dataset/model/output.yolo to the Ultralytics YOLO directory and begin training/testing. (other ways available too!)
 
+To Train: python train.py --img 640 --batch 16 --epochs 300 --data mydata.yaml --cfg yolov5s.yaml --weights yolov5s.pt
+
+To Detect: python detect.py --source /path/to/your/images --weights /path/to/yolov3/weights
+
 **Development Process**
 Not optimised for Darknet anmd F_RCNN has not been focused on, so far.
