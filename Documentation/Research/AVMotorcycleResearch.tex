@@ -281,8 +281,44 @@ hmargin=3cm
 
 \chapter{Introduction}
 
+\chapter{Project Objectives}
+\label{chap:projectObjectives}
+	% REREAD through each section and adjust accordingly.
+	
+	The project involves the research, design, experimentations and findings to answer the research question. The hypothesis statements will drive the development of the study and investigations to provide a statistical analysis of any potential safety issues.
+
+	\section{Outline}
+        The study will select relevant Machine Learning/Deep Learning (ML/DL) models, hyper-parameters and techniques, with some existing research to support the experimentation results. Some initial research papers and datasets are enclosed in this paper. However, if any new research developments are established during the experimentation, then consideration of the research would include in the research section that backs up the investigation. The study will uncover and cover some of the existing research. However, expand on any technicalities to help prove the established hypothesis statements.
+
+	\section{Aim and Objectives}
+        The aim of the study is to address the problems with AVs to fulfill the research gap. The problems have been addressed within conference papers and even when it comes to object classifications. Although, with the lowest of incidents, whether it is due to the safety training of motorcyclists or population that actually ride, dependent on the country, the problem is rarely addressed thoroughly. If AVs roll out into regions like Southeast Asia: Indonesia, Vietnam, Thailand and others, and European countries: Italy, Spain, Brazil and others, then the problem will appear more, not allowing organisations to brush the problem `under the rug'. The objective is to find some theoretical logic of the underlying problems and potential solutions or considerations for ADAS/AVs to adapt decreasing any potential tragic accidents.
+
+	\section{Project Structure}
+        The research during the project must justify tools to support image preprocessing, analysing and classification to provide an understanding of the problems taking place. Image preprocessing is a significant consideration in the project to answer all the hypotheses, as motorcycles may be in a blind spot, but with better adjustments, the image classification could see blur or shadows easier with sharper settings or if the time and weather have poor visibility, then dangerous the image to greyscale, and increasing edge sharpness could help make the motorcycle outline more clear. Different classification methods can improve the accuracy of a data model, including using various layers, hyper-parameters, and techniques during the training of a dataset.
+
+        The experiment would look into image classification with the selected dataset providing information on possible misclassifications from the chosen dataset. The image classification structure would follow some standards that AVs use. However, AVs would use object classification libraries that support real-time footage. Image classification aims to see how motorcycles are identified among other vehicles to extend the research.
+
+        Some of the strategies to determine the hypothesis statements is to select a model like DBN and CNN or R-CNN and to compare the results with the corresponding research results. Find image classification research papers for example, `An Analysis of Convolutional Neural Networks For Image Classification' researched by Neha Sharma~\cite{sharma_analysis_2018} demonstrates a good example of a CNN structure. 
+
+        This AI project will involve seven phases in accordance with the paper `Developing ML/DL Models: A Design Framework' authored by Meenu Mary John~\cite{john_developing_2020} involving Business Case Specification, Data Exploration, Feature Engineering, Experimentation, Development, Deployment and Operational. The Business Case Specification, in this case, is to find out if motorcycles are in danger around AVs and find suggestions or research pathways to answer the hypothesis that supports the research question thoroughly. It is essential to find datasets that support the business case specifications. During the data exploration phase, exploring some available datasets and filtering them out to better back the research question is essential. 
+        
+        Feature engineering takes place to determine the relevant data fields or features that benefit the study. For example, non-vehicle objects like traffic lights and pedestrians are not required if the focus is on motorcycles. Although, it can be equally argued that when AVs function, they process many objects simultaneously for better awareness. 
+      
+        The experimentation phase includes developing a model for the dataset, compiling the model and reviewing the data to optimise the model for the dataset. This experimentation will already shape potential issues with the dataset. Each time the data is run with different tunings, it will help develop an idea of the potential issues with the dataset. 
+      
+        The development phase is where findings from the experimentation are presented. This phase will formalise the results and suggest to the target audience the project's future work. 
+      
+        The Deployment and Operational phases are not required. However, a replacement of a Review phase may be where results and findings can be discussed, and any suggestions to optimise the experimentations for future work.
+
+	\section{Evaluation Metrics}
+        During the experimentation, it is necessary to discuss of how the analyst of experimental data may take place. This information will guide the project with relevant data backing up the optimisation and accuracy during the ML prototyping, and gathering feedback for the research question to present the findings and develop any potential solutions or future work.
+
+        Two common methods of observing performance and accuracy among the different classes available within a dataset is Confusion Matrices and Classification Reports. These tools provide a clear indication of overfiting, underfitting and accuracy. The confusion matrix does this by demonstrating true positives and false positives, which the main focus to back up the research question would be the Motocycle feature to see where any false positives are detected. The Classification Report displays a range of information involving `Precision', `Recall', `F1-Score' and `Support' of each features; detailing any potential issues of outliers. Three averages: `Accuracy', `Macro Avg' and `Weighted Avg.' are included to show the overall accuracy of the model.~\cite{liang_confusion_2022}~\cite{panigrahi_deep_2018}
+
+        As Neural Networks train with a given epoch, meaning how many iterations the test data would go through training. A history of these iterations will be on record and displayed on a `Validation and Training Loss' graph to indicate the loss gap of the initial learning and the fitness of the trained and validation data to indicate the performance and any potential improvements,~\cite{panigrahi_deep_2018}
+
 \chapter{Literature Review}
-\label{sec:literatureReview}
+\label{chap:literatureReview}
 	\section{Autonomous Vehicle Paradigm and Legalities}
 		Firstly, it is essential to understand how vision works on AV and what techniques are in place to allow vehicles to function correctly and safely. Journal Article, `AVs: from paradigms to technology', authored by Silviu Ionita~\cite{ionita_autonomous_2017}, offers underlying information about the foundation of autonomous vehicle systems. It is equally important to understand how motorcycles function within traffic and the reasoning behind motorcyclist mentality.
 
@@ -332,6 +368,35 @@ hmargin=3cm
 
 \chapter{Research Methodology}
 \label{chap:researchMethodology}
+	\section{Fundamental Research}
+		Fundamental research methodology builds a directive of a research area driven by curiousity. This type of research collection increases the understanding of a selected research topic, which is vital in cases where not many research papers exist. Fundamental research papers alone are not substantial to start developing towards a research project, as the name suggests, it creates a foundation and provides insights to understanding any problems found during the research study. These papers tend to cover basic understandings of phenomenon's, which in turn backs up the research question. These research materials may include surveys, interviews, observations and experiments.~\cite{saunders_research_2012}
+
+		In the context of AVs and motorcycles, the research methodology seeks to understand any underlying principles of the interaction of these vehicle types on the road. It may even contain discussions and analytics of crash data or theoretical requirements that AV organisations should follow. For example, a study of how drivers and rider perceive each other on the road would impact the research approach, taking in account of the AVs visibility requirements. For the project, consideration of conference papers, case studies and surveys should help form any research directives to approach the testing of the hypotheses statements.
+
+	\section{Statistical Research}
+		Statistical research is a critical component of this research project, as interpreting the analytical data generated from the Neural Network is important. AVs and ADAS are complex systems, and require a good understanding of the statistics of real life events to understand hypothetical situations. The goal of statistical research is to identify patterns, relationships and trends within the data. These three variables allow the testing about each individual hypothesis and forming the conclusions of the research method.
+
+		Statistical research could involve comparing other object classifications papers involved with AVs and motorcycles, taking account of the design plan, neural network model and layers, results and discussions to give an understanding of industry standard results. This also gives a great way to test the findings from the research project against the statistical findings and then form a detailed report of the findings, and provide a useful further work section. Statistical research has been demonstrated to make sure that the datasets are relevant and up-to-date Use Cases, and to understand the initial problems with motorcycles and ADAS/AVs to develop the research question.
+
+	\section{Quantitative Research}
+		Quantitative research involves the numerical data to collect and analyse data. This has a secondary importance similarly to the fundamental research methodology. This research collection appears a few times whether it is working with the algorithm, Confusion Matrix or understanding numerical data gathered from fundamental and statistical research papers to understand of variables in relation of AVs and motorcycles. Quantitative research methodology can help with identifying and aids with developing evidence-based recommendations for improving motorcycle safety.
+
+		Quantitative research methodology tends to involve surveys, questionnaires and user studies. The methods enable the research to contain a large amounts of numerical data related to the research question. Numerical techniques can also provide tools to conduct correlation analysis and hypothesis testing, in accordance with research from the statistical side and experimental results. The quantitative methods has been applied to check performance, size and other key factors when it comes to preparing the Neural Network to make sure that the hypotheses are accurate and workable.
+
+	\section{Qualitative Research}
+		Qualitative research is a crucial factor of this project. As seen in this proposal, datasets had to be observed to make sure they could withstand the hypotheses. During the prototyping and evaluating of the model, observations will be made and cross-referenced to make sure that the findings are accurate. This type of testing could help work out any potential issues with current data structures or even provide some awareness of problems that may have not been considered before. It is also important to make notes from other research projects with qualitative research to consider any key points.
+
+		In addition, observation studies could help enhance the research development. This could be finding case studies that provide videos of AVs in process with descriptions of what the program is doing and what systems are in place. This content could involve indepth interviews with experts and stakeholders to understand AVs and motorcycle's current interactions and known concerns. It could also be a useful tool communicating to some motorcycle instructors or experts to understand if there is any on-going issues with ADAS vehicles and motorcycles. These could aid the study further in seeing or hearing the experiences.
+
+\chapter{Development Methodology}
+\label{chap:developmentMethodology}
+	Due to the nature of the AI project, the Agile development methodology does not fit. Although, if the project involves a team of developers, then the Agile development methodology will make the better fit. The AI project has a small team and requires a lot of repetition to find the best fit and results for the experimentation. The Iterative development methodology is the best approach. The Agile Methodology could cost anywhere from £422.91 (Freelancer Team Members) to £2085.04 (Payroll Team Members)~\cite{owais_effort_2016} 
+	
+	Where usually, Agile development methodology has an initial cost factor, and the development saves coordination, flexibility and performance within a team development environment. However, it does not fit in a project that aims to deliver results to address a safety issue. The Agile methodologies, Iterative and Rapid Application Development (RAD) development methodologies address this project better, with the ability to make a prototype model, test and refine it. 
+
+	RAD is a risky methodology as it does not allow the flexibility to redesign the plans to enable definition when addressing the given safety concern. Therefore, the Iteration development model is an ideal solution, allowing the ability of initial planning and then additional planning and requirement changes, also continuously updating the analysis and design, testing and evaluation. This key methodology cycle will benefit the ideology of setting the layers up and evaluating the results. Agile Methodology also uses User Stories, which is excellent if a platform is being made. However, the user stories would get repetitive during the research project, which wastes time in this specific scenario.
+
+	\section{Iterative Development Methodology}
 
 \chapter{Reflection}
 
