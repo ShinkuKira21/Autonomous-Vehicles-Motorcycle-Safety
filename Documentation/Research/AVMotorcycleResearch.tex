@@ -224,9 +224,12 @@ hmargin=3cm
 \thispagestyle{empty}
 \mbox{}
 %----------
-%	Dedication
+%	Acknowledgements
 %----------	
-\chapter*{Dedication}
+\chapter*{Acknowledgements}
+	We extend our deepest gratitude to Kaden Summers and Jonathon Patch, whose invaluable contributions as motorcyclists greatly enriched this project. Their tireless efforts in capturing testing footage from Carmarthenshire to Powys in Wales, under rainy and clear conditions provided critical qualitative data to our research. The visual material they obtained was instrumental in offering a comprehensive understanding of the subject.
+	
+	Special appreciation goes to Jonathon Patch, who participated in the fieldwork and generously provided the camera equipment necessary to record the footage. Their collaboration and unwavering support have played a pivotal role in advancing this research; for that, we are profoundly thankful.
 
 \setcounter{page}{5}
 
@@ -287,11 +290,29 @@ hmargin=3cm
 	
 	The project involves the research, design, experimentations and findings to answer the research question. The hypothesis statements will drive the development of the study and investigations to provide a statistical analysis of any potential safety issues.
 
+	\section{Research Hypothesis}
+		This paper will cover blindspots and poor weather conditions hypothesis statements. The following hypothesis statements are orientated for the dissertation paper exploring the research question, `Are AVs a Danger to Motorcyclists?':
+
+		\begin{enumerate}
+			\item Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.
+			\item In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.
+			\item Poor weather conditions, such as heavy rain or poor visibility, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.
+		\end{enumerate}
+
 	\section{Outline}
         The study will select relevant Machine Learning/Deep Learning (ML/DL) models, hyper-parameters and techniques, with some existing research to support the experimentation results. Some initial research papers and datasets are enclosed in this paper. However, if any new research developments are established during the experimentation, then consideration of the research would include in the research section that backs up the investigation. The study will uncover and cover some of the existing research. However, expand on any technicalities to help prove the established hypothesis statements.
 
 	\section{Aim and Objectives}
         The aim of the study is to address the problems with AVs to fulfill the research gap. The problems have been addressed within conference papers and even when it comes to object classifications. Although, with the lowest of incidents, whether it is due to the safety training of motorcyclists or population that actually ride, dependent on the country, the problem is rarely addressed thoroughly. If AVs roll out into regions like Southeast Asia: Indonesia, Vietnam, Thailand and others, and European countries: Italy, Spain, Brazil and others, then the problem will appear more, not allowing organisations to brush the problem `under the rug'. The objective is to find some theoretical logic of the underlying problems and potential solutions or considerations for ADAS/AVs to adapt decreasing any potential tragic accidents.
+
+		The main objectives of this project are to develop an accurate UK Motorcycle trained model using Ultralytic's YOLOv5 architecture and to improve the model's performance on specific tasks. The following steps will support the experimentation to answer the research questions:
+
+        \begin{enumerate}
+            \item \textbf{Dataset Preparation:} Object Classification requires a set of labels to correspond to an image, mapping different classified objects within the image. Preparation of the data requires being able to select validated data for training and testing purposes.
+            \item \textbf{Pre-processing:} Read in the mapping datasets and extract the sorted datasets to the designated file paths. 
+            \item \textbf{Architecture Selection and Optimisation:} Investigate different object classification architectures, and select a model that could closely demonstrate an idea of how AVs currently initialise object classification.
+            \item \textbf{Evaluation Techniques:} Confusion Matrix and PR-Curve are tools to fine-tune and evaluate the model's training performance.
+        \end{enumerate}
 
 	\section{Project Structure}
         The research during the project must justify tools to support image preprocessing, analysing and classification to provide an understanding of the problems taking place. Image preprocessing is a significant consideration in the project to answer all the hypotheses, as motorcycles may be in a blind spot, but with better adjustments, the image classification could see blur or shadows easier with sharper settings or if the time and weather have poor visibility, then dangerous the image to greyscale, and increasing edge sharpness could help make the motorcycle outline more clear. Different classification methods can improve the accuracy of a data model, including using various layers, hyper-parameters, and techniques during the training of a dataset.
@@ -309,6 +330,20 @@ hmargin=3cm
         The development phase is where findings from the experimentation are presented. This phase will formalise the results and suggest to the target audience the project's future work. 
       
         The Deployment and Operational phases are not required. However, a replacement of a Review phase may be where results and findings can be discussed, and any suggestions to optimise the experimentations for future work.
+
+	\section{Sourcing and Preparation}
+		The datasets being used are arranged in YOLOv7 format and would require additional modifications to work before the training phase. The datasets that have been decided to train the models are `Motorcycle Samples - v1 VMT-V1', sourced from Roboflow~\cite{roboflow_motorcycle_nodate}, and `Road Vehicle Images Dataset', sourced from Kaggle, authored by Ashfak Yeafi~\cite{ashfak_yeafi_road_nodate}.
+
+		The training materials are split into `images' and `labels' categories, which require some preparation. Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get other road conditions and various types of motorcycles. Using the two datasets should help increase the accuracy during the training and validation process. The materials are separated and combined into a CSV file format, and another Python Snippet can reconstruct the CSV and Image Data into a new directory.
+
+	\section{Pre-Processing}
+		Training of two datasets, dataset A with the filter of `bus', `car', `minivan', `motorcycle', `pickup', `scooter', `trike', `truck', `van', `person', whereas dataset B involves; `motorcycle', `tricycle' and `person' filters. The `yolov5s.pts' and `yolov5l.pts' were used during testing, with better results on the `yolov5l.pts' by 25\% when identifying motorcycles. Both weights used a batch of thirty-two and ten epochs.
+
+		Testing materials must include video content, split into multiple frames to test the trained YOLO model, with enough images to create a strong argument. Joining a motorcycle group and exploring various routes across the United Kingdom, including motorways, dual carriageways, A-roads, and backroads, with motorcycles overtaking, filtering, and navigating blindspots, can lead to unexplored scenarios and questions that may have been previously overlooked.
+					
+		A decided factor is to use a Drift Innovation Ghost XL motorcycle camera attached to a motorcycle that rides within the group, then swap the camera with another rider after some time. This way, combining the content helps identify how Object Classification copes with numerous blindspots and draws some questions to further the research concerning the current safety of AV vehicles. 
+		
+		One sports bike and two cruisers are selected for material to test how Object Classification models handle different motorcycle styles. Ideal footage would include Scramblers, Trikes and other similar vehicles to establish how Object Classification models work in an estimated manner. A perfect material would be that during the ride out, conducted on 18$^\text{th}$ July 2023, Tuesday, would capture these vehicles, which either pass by or join us in sections of the rides. The group is instructed to overtake and be undertaken by the camera vehicle to create plenty of footage to put the YOLO model to the test.
 
 	\section{Evaluation Metrics}
         During the experimentation, it is necessary to discuss of how the analyst of experimental data may take place. This information will guide the project with relevant data backing up the optimisation and accuracy during the ML prototyping, and gathering feedback for the research question to present the findings and develop any potential solutions or future work.
@@ -399,8 +434,6 @@ hmargin=3cm
 	\section{Iterative Development Methodology}
 
 \chapter{Reflection}
-
-\chapter*{Acknowledgements}
 
 \chapter*{Terminology}
 List of terminologies used in this document:-
