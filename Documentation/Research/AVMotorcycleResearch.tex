@@ -227,19 +227,31 @@ hmargin=3cm
 %	Acknowledgements
 %----------	
 \chapter*{Acknowledgements}
-	We extend our deepest gratitude to Kaden Summers and Jonathon Patch, whose invaluable contributions as motorcyclists greatly enriched this project. Their tireless efforts in capturing testing footage from Carmarthenshire to Powys in Wales, under rainy and clear conditions provided critical qualitative data to our research. The visual material they obtained was instrumental in offering a comprehensive understanding of the subject.
-	
-	Special appreciation goes to Jonathon Patch, who participated in the fieldwork and generously provided the camera equipment necessary to record the footage. Their collaboration and unwavering support have played a pivotal role in advancing this research; for that, we are profoundly thankful.
 
 \setcounter{page}{5}
-
-% Write here	
+We extend our deepest gratitude to Kaden Summers and Jonathon Patch, whose invaluable contributions as motorcyclists greatly enriched this project. Their tireless efforts in capturing testing footage from Carmarthenshire to Powys in Wales, under rainy and clear conditions provided critical qualitative data to our research. The visual material they obtained was instrumental in offering a comprehensive understanding of the subject.
+	
+Special appreciation goes to Jonathon Patch, who participated in the fieldwork and generously provided the camera equipment necessary to record the footage. Their collaboration and unwavering support have played a pivotal role in advancing this research; for that, we are profoundly thankful.	
 \vfill
 
 \newpage % blank page
 \thispagestyle{empty}
 \mbox{}
 
+%-----------
+%	Project Details
+%-----------
+\chapter*{Repository and Project Resources}
+\setcounter{page}{6}
+	\begin{description}
+		\item[Repository:] \href{https://github.com/ShinkuKira21/Autonomous-Vehicles-Motorcycle-Safety}{https://github.com/ShinkuKira21/Autonomous-Vehicles-Motorcycle-Safety}
+		\item[Project:] \href{https://github.com/users/ShinkuKira21/projects/2/}{https://github.com/users/ShinkuKira21/projects/2/}
+  	\end{description}
+\vfill
+
+\newpage % blank page
+\thispagestyle{empty}
+\mbox{}
 
 %----------
 %	TOC
@@ -283,11 +295,45 @@ hmargin=3cm
 \pagenumbering{arabic} % numbering with Arabic numerals for the rest of the document.	
 
 \chapter{Introduction}
+	Autonomous Vehicles (AVs) are scheduled to roll out to the United Kingdom roads by 2025.~\cite{govuk_self-driving_2022} With the rise of automated vehicles, a safety concern arises, which affects the development of AVs, including government bodies and manufacturers, public safety and the National Health Service (NHS), when it comes to motorcycles and AVs. The research focuses on issues that may have been overlooked already with motorcycles, with new scenarios introduced in many US states, like road widths, filtering and poor weather conditions with British vehicles. 
+	www.example.com/project
+	Addressing these issues could be problematic; however, using Object Classifications and Neural Networking tools could push for more extensive research in this area. The study's objectives are to understand the existing dangers with AVs and motorcycles, establish appropriate datasets to train and test the selected models, remove any vehicles that are not necessary for the study, and evaluate the test results.
+
+	The primary focus audience for this research project is AV manufacturers, motorcycle safety advocates and Government agencies responsible for regulating AVs. The target audience is crucial to meet to advance the research and understanding of how to make roads safer around all types of vehicles. The dissertation will help forward experimental and thought processes for future work toward these research groups. Any findings, results, discussions and conclusions will help identify the current issues and potential adaptations to integrate safety. AV manufacturers can use any findings, techniques and results mentioned in the report to determine potential safety features to increase road safety. Motorcycle safety advocates can use any findings and discussions to support motorcycle trainers to devise awareness and safety around AVs and teach motorcyclists safety tips and manoeuvres to prevent fatalities. Finally, Government agencies can develop legal strategies to help AV manufacturers consider any safety issues in this research, making motorways and dual-carriageways safer around motorcycles.
+
+	A few study results are showcased to illustrate the current issues that may arise, describing the reasoning the model may have not detected. These results will be cross-referenced to research that did similar tests to support the argument to drive the safety issues that may still exist or be overlooked by newly established UK AV manufacturers.
+
+	Some critical research areas include the reliability of AV motorcycle detection within a lane. AVs interact with motorcycles in different situations, whether lane changes or merging, considering weather and visibility conditions. The research will explore the potential risks posed to motorcycles by AVs and investigate strategies to mitigate these risks.
+
+	The blog by Dolf Willigers, published by BMF~\cite{dolf_willigers_autopilot_2022} in 2012, `Autopilot Still Kills Motorcyclists' provides a generalisation of the current issues and worries British motorcyclists deal with when it comes to the idea of Fully and Lane Assisted Autonomous EVs. An idea that is raised in the article, `In both situations, the motorcycles, riding in the dark...'. This statement already raises the known problem of motorcycles being hard to see at night; hence, the drive for development with Hi-Vis reflection clothing, helmets and `always on' dip beam laws. However, an interesting problem that could be happening here is that the Image Classification algorithm implemented identifies motorcycle lights as street lights, street reflections (indicating danger), or cyclist/pedestrian bright lights that can aim directly into the vehicle's lane. Usually, small things like this can blind a standard driver driving at night. 
+
+	Figures (\ref{fig:c2cMotorcycleLaneChange},~\ref{fig:c2cBlindspotOfAV}) visualise some of the potential impacts AVs may have to undergo. The diagram sourced from~\cite{aecm__the_motorcycle_industry_in_europe_looking_nodate}, illustrated by~\cite{connected_motorcycle_consortium_applications_nodate} demonstrates a potential problem, where if the AV misjudges the upcoming lane merge, and fails to detect motorcycle within any potential blindspots could involve in fatalities with multiple road users. Understanding why systems may break down is essential, especially when drivers behind the AV may not be active and paying attention.
+
+	The company, Tesla, announced in 2021 that the company would remove a sensor called Ultrasonic (LiDAR) Sensor, replacing the sensor with `Tesla Vision' by 2022. Within this time, motorcycle incidents were rising with Tesla vehicles, including motorcycle fatalities. Rather than suggesting going back to Ultrasonic Sensor. Henceforth, the importance of understanding object classification's problems when identifying motorcycles.
+
+	These hypothesis statements assist in exploring the research question, `Are AVs a Danger to Motorcycles?':
+
+	\begin{enumerate}
+		\item Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.
+		\item In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.
+		\item Poor weather conditions, such as heavy rain, snow, or fog, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.
+	\end{enumerate}
+
+	\begin{figure}[htp]
+		\centering
+		\includegraphics[width=\columnwidth]{Figures/literature_review/proposal/MotorcycleLaneChanges.png}
+		\caption{C2C's Illustration of Car Changing Lanes: Representation shows that a AV may misjudge the speed of the other vehicle with limited visibility.~\cite{aecm__the_motorcycle_industry_in_europe_looking_nodate}}
+		\label{fig:c2cMotorcycleLaneChange}
+	\end{figure}
+
+	\begin{figure}[htp]
+		\centering
+		\includegraphics[width=\columnwidth]{Figures/literature_review/proposal/BlindSpotOfAnotherVehicle.png}
+		\caption{C2C's Illustration of Motorcycle within Car's Blindspot: Representation displays that a AV could pull out, not detecting the motorcycle.~\cite{connected_motorcycle_consortium_application_2020}}
+		\label{fig:c2cBlindspotOfAV}
+	\end{figure}
 
 \chapter{Project Objectives}
-\label{chap:projectObjectives}
-	% REREAD through each section and adjust accordingly.
-	
 	The project involves the research, design, experimentations and findings to answer the research question. The hypothesis statements will drive the development of the study and investigations to provide a statistical analysis of any potential safety issues.
 
 	\section{Research Hypothesis}
@@ -300,12 +346,12 @@ hmargin=3cm
 		\end{enumerate}
 
 	\section{Outline}
-        The study will select relevant Machine Learning/Deep Learning (ML/DL) models, hyper-parameters and techniques, with some existing research to support the experimentation results. Some initial research papers and datasets are enclosed in this paper. However, if any new research developments are established during the experimentation, then consideration of the research would include in the research section that backs up the investigation. The study will uncover and cover some of the existing research. However, expand on any technicalities to help prove the established hypothesis statements.
+		The study will select relevant Machine Learning/Deep Learning (ML/DL) models, hyper-parameters and techniques, with some existing research to support the experimentation results. Some initial research papers and datasets are enclosed in this paper. However, if any new research developments are established during the experimentation, then consideration of the research would be included in the research section that backs up the investigation. The study will uncover and cover some of the existing research. However, expand on any technicalities to help prove the established hypothesis statements. The research dives into the current implementations of AVs, the training methods used to test Object Classification similarly to what is currently implemented into AVs, using a CNN model to identify the objects, and develops an understanding of the decision models provided. The model used is a Deep Belief Network (DBN) model, used to understand the context and make a filtered, educated decision based on the situation unfolding.
 
 	\section{Aim and Objectives}
-        The aim of the study is to address the problems with AVs to fulfill the research gap. The problems have been addressed within conference papers and even when it comes to object classifications. Although, with the lowest of incidents, whether it is due to the safety training of motorcyclists or population that actually ride, dependent on the country, the problem is rarely addressed thoroughly. If AVs roll out into regions like Southeast Asia: Indonesia, Vietnam, Thailand and others, and European countries: Italy, Spain, Brazil and others, then the problem will appear more, not allowing organisations to brush the problem `under the rug'. The objective is to find some theoretical logic of the underlying problems and potential solutions or considerations for ADAS/AVs to adapt decreasing any potential tragic accidents.
+        The aim of the study is to address the problems with AVs to fulfill the research gap. The problems have been addressed within conference papers and even when it comes to object classifications. Although, with the lowest of incidents, whether it is due to the safety training of motorcyclists or population that actually ride, dependent on the country, the problem is rarely addressed thoroughly. If AVs roll out into regions like Southeast Asia: Indonesia, Vietnam, Thailand and others, and European countries: Italy, Spain, Brazil and others, then the problem will appear more, not allowing organisations to brush the problem `under the rug'. The objective is to find some theoretical logic of the underlying problems and potential solutions or considerations for Advanced Driver-Assistance System (ADAS)/AVs to adapt decreasing any potential tragic accidents.
 
-		The main objectives of this project are to develop an accurate UK Motorcycle trained model using Ultralytic's YOLOv5 architecture and to improve the model's performance on specific tasks. The following steps will support the experimentation to answer the research questions:
+		The main objectives of this project are to develop an accurate UK Motorcycle trained model using Ultralytic's YOLOv5 (You Only Look Once) architecture and to improve the model's performance on specific tasks. The following steps will support the experimentation to answer the research questions:
 
         \begin{enumerate}
             \item \textbf{Dataset Preparation:} Object Classification requires a set of labels to correspond to an image, mapping different classified objects within the image. Preparation of the data requires being able to select validated data for training and testing purposes.
@@ -337,13 +383,20 @@ hmargin=3cm
 		The training materials are split into `images' and `labels' categories, which require some preparation. Using Python scripts, the selected training material is taken and processed together, allowing the model to see different motorcycles in different scenarios. A US and Indian dataset was used to get other road conditions and various types of motorcycles. Using the two datasets should help increase the accuracy during the training and validation process. The materials are separated and combined into a CSV file format, and another Python Snippet can reconstruct the CSV and Image Data into a new directory.
 
 	\section{Pre-Processing}
-		Training of two datasets, dataset A with the filter of `bus', `car', `minivan', `motorcycle', `pickup', `scooter', `trike', `truck', `van', `person', whereas dataset B involves; `motorcycle', `tricycle' and `person' filters. The `yolov5s.pts' and `yolov5l.pts' were used during testing, with better results on the `yolov5l.pts' by 25\% when identifying motorcycles. Both weights used a batch of thirty-two and ten epochs.
-
+		Three datasets would be trained using Ultralytic's YoloV5 model. The training of two daylight datasets, `Dataset A', with the filter of `bus', `car', `minivan', `motorcycle', `pickup', `scooter', `trike', `truck', `van', `person', whereas `Dataset B' involves; `motorcycle', `trike' and `person' filters. However, the third dataset, `Dataset C', uses the `Dataset A' filter with some data augmentations. Although `Road Vehicle Images Datasets' provided some night-time images that included motorcycles, the settings provided were in lit-up areas, and there were not enough night-time images,  skewing the testing results. The training images used a darkness factor of 0.5. Refer to chapter~\ref{chap:scriptingProcess}, page~\pageref{chap:scriptingProcess} for the logic reference. Unfortunately, a dataset that contained low visibility images would have been ideal, as data augmentation could include making the training images more visible and, thus, be given better feedback for data augmentation for the testing images.
+			
+		The `yolov5s.pts' and `yolov5l.pts' weights were applied within the training phase for both `Dataset A' and `Dataset B', with better results on the `yolov5l.pts' by 25\% when identifying motorcycles. Whereas `Dataset C' was trained on `yolov5m.pts', achieving the lowest detection rate of 67\% when detecting motorcycles in night-time instances. All training phases of the listed models used a batch of thirty-two and ten epochs.
+		
 		Testing materials must include video content, split into multiple frames to test the trained YOLO model, with enough images to create a strong argument. Joining a motorcycle group and exploring various routes across the United Kingdom, including motorways, dual carriageways, A-roads, and backroads, with motorcycles overtaking, filtering, and navigating blindspots, can lead to unexplored scenarios and questions that may have been previously overlooked.
 					
 		A decided factor is to use a Drift Innovation Ghost XL motorcycle camera attached to a motorcycle that rides within the group, then swap the camera with another rider after some time. This way, combining the content helps identify how Object Classification copes with numerous blindspots and draws some questions to further the research concerning the current safety of AV vehicles. 
 		
 		One sports bike and two cruisers are selected for material to test how Object Classification models handle different motorcycle styles. Ideal footage would include Scramblers, Trikes and other similar vehicles to establish how Object Classification models work in an estimated manner. A perfect material would be that during the ride out, conducted on 18$^\text{th}$ July 2023, Tuesday, would capture these vehicles, which either pass by or join us in sections of the rides. The group is instructed to overtake and be undertaken by the camera vehicle to create plenty of footage to put the YOLO model to the test.
+
+	\section{Model Architecture}
+		With the challenge of setting up a high-end model equivalent to a leading AV manufacturer like Tesla, it is essential to use detailed Object Classification training material. Using the Qualitative Research method with video frames and labels to classify the different objects in the video is required. Roboflow and other materials are outsourced and looked into using different sources in various research journals. 
+			
+		Using Qualitative Research methods enhances the development of engaging with better architectural concepts. Recurrent-CNN, YOLOv4 and Ultralytics YOLOv5 are looked into to achieve the model architecture for the training, validation and testing processes. After gaining access to the datasets mentioned previously, the Ultralytics YOLOv5 felt convenient to use due to the ease of data preparation and software and hardware requirements.
 
 	\section{Evaluation Metrics}
         During the experimentation, it is necessary to discuss of how the analyst of experimental data may take place. This information will guide the project with relevant data backing up the optimisation and accuracy during the ML prototyping, and gathering feedback for the research question to present the findings and develop any potential solutions or future work.
@@ -352,10 +405,128 @@ hmargin=3cm
 
         As Neural Networks train with a given epoch, meaning how many iterations the test data would go through training. A history of these iterations will be on record and displayed on a `Validation and Training Loss' graph to indicate the loss gap of the initial learning and the fitness of the trained and validation data to indicate the performance and any potential improvements,~\cite{panigrahi_deep_2018}
 
+		The Evaluation Metrics used to train the model, include the Confusion Matrix, F1-Confidence, P and R Curves, Label Correlograms to identify any potential improvements. The Ultralytic YOLOv5 Model Architecture generates these evaluation matrics in PNG image format to allow for the evaluation of the model training optimisation. The model did not generate or offer ability to allow for a classification report, which was included in the proposal to see the prediction performance. Whereas, the R-CNN architecture would have allowed for this. The Ultralytic YOLOv5 model architecture did offer hyperparameter tuning such as learning, architecture, data augmentation, loss function components, training process and other parameters. The parameters that were used and experimented to optimise the training process include:-
+		\begin{enumerate}
+			\item Learning Parameters.
+			\begin{itemize}
+				\item \textbf{lr} - (Learning Rate): The step size used in optimization.
+				\item \textbf{lrf} - (Final Learning Rate): Sometimes used for learning rate annealing schedules.
+				\item \textbf{momentum} - Momentum term for the optimizer, commonly used with Stochastic Gradient Descent (SGD).
+			\end{itemize}
+			\item Architecture Parameters.
+			\begin{itemize}
+				\item \textbf{depth\_multiple} - Depth scaling factor for the architecture. Found within the weights configuration file.
+				\item \textbf{width\_multiple} - Width scaling factor for the architecture. Found within the weights configuration file.
+			\end{itemize}
+			\item Training Process.
+			\begin{itemize}
+				\item \textbf{epochs} - Number of epochs to train.
+				\item \textbf{batch\_size} - Size of mini-batches during training.
+				\item \textbf{img\_size} - Dimensions to which images will be resized for training and inference.
+			\end{itemize}
+		\end{enumerate}
+
+\chapter{Legal Concerns}
+\label{chap:legalConcerns}
+	Legal concerns describe the current legalisation that currently impact the project, motorcycles and motorcyclists. It is equally important to look at how motorcyclists are trained legally to understand how motorcyclists may react around self-driving vehicles.
+
+	\section{Data Collection and Usage}
+		It is also important to note that gathering and publishing such materials publicly in Britain could infringe the Data Protection Act 2018 (...meeting the standards to the EU GDPR guidelines)~\cite{govuk_data_2018} law, including but not limited to:
+
+		\begin{itemize}
+			\item Must inform the member of public how the data is being used.
+			\item Must allow the member of public to access personal data.
+			\item Must have incorrect data updated. - This is important for the member of public to access personal data.
+			\item Must allow the member of public to erase data. Which can impede the training process in one way or another.
+			\item The member of public has right to stop or restrict processing of your data. - Which impacts the training process.
+			\item Data portability, to allow the data to be used for different purposes.
+			\item Member of public has rights to object to how your data is processed in certain situations.
+		\end{itemize}
+
+		Furthermore, member of the public has rights when it comes to automated decision-making processes (without human involvement), which could suggest Machine Learning purposes, and profiling, to predict behaviour or interests. These all matter regarding British legislation and could impede AVs from being trained in the UK when fetching video data from pedestrians, cyclists, car drivers and other motorists. This finding could indicate the lack of public datasets available for motorcyclists or any other vehicles in the UK, complicating the training process.
+	
+	\section{Ministry of Transport}
+		The Ministry of Transport (MOT)~\cite{govuk_mot_nodate} has different requirements for a motorcycle. Motorcycles can potentially lack headlamps and primary beams and offer a range of colours; white, yellow and mainly white light with a blue tinge. Direction indicators are not required to pass the MOT if the vehicle, particularly, `do not have front and rear position lamps'. However, there are other exemptions too. Motorcycles electronics are not always reliable; in some cases, riders accept this `risk', and even though it is stated a `Minor', `Major' to `Dangerous' categories on the MOT, motorcycles may use hand signals to communicate to other road users that the vehicle is slowing down. That said, as British road users, this is a common practice we are taught if any indication equipment goes wrong to keep vehicles the road safe. British road users deal with these things subconsciously, and AVs should be expected to understand road safety rulings, especially for more vulnerable users such as motorcyclists, cyclists, and horse riders.
+
+	\section{Rider Practices and Road Safety}
+	\label{sec:lcRiderPracticesRoadSafety}
+		Three critical areas of the Compulsory Basic Training (CBT), `Element B: Practical On-Site Training'~\cite{govuk_compulsory_2016}, `Element C: Practical On-Site Riding'~\cite{govuk_compulsory_2016-1}, `Element D: Practical On-Road Training Preparation'~\cite{govuk_compulsory_2016-2}, and `Element E: Practical On-Road Riding'~\cite{govuk_compulsory_2016-3}, will help how a CBT is executed during the day for trainee motorcyclists. CBT days are quartered with the said four elements, allowing trainees to complete a full training day, and trainees are encouraged to understand basic highway codes and road principles before attending. A trainee is trained by an instructor hired by an Approved Training Body (ATB).
+			
+		However, before going into the specifics of how a CBT is executed, it is essential to understand how the CBT works. A CBT enables a provisional learner to ride a 125CC (Cubic Capacity), restricted up to 14BHP (Braking Horse-Power) motorcycle if over the age of sixteen. If a motorcyclist is sixteen years old, then the motorcyclist is entitled to ride up to a 50cc motorcycle, which is limited to 30MPH. It is worth noting that provisional drivers, riders, and farm traffic can operate their vehicles on Dual Carriageways set to the national speed limit of seventy miles per hour. All provisional riders are not prohibited from riding with a pillion (passenger). The provisional motorcyclist falls under the \textbf{AM} category within the Provisional driver's license.
+		
+		\textbf{Element B} focuses on the trainee's understanding, experience and motorcycle riding skills. `Element B: Practical On-Site Training'~\cite{govuk_compulsory_2016} states the trainee must understand how the vehicle works, involving the maintenance and systems the motorcycle entails (`...does it have ABS?', `..show me the brakes, clutch and throttle'). The maintenance checks ensure the vehicle is safe on the road and give the rider the confidence to avoid any potential crashes down to mechanical failure. The section then focuses on the control of the motorcycle; the rider is trained in the following:-
+
+		\begin{itemize}
+			\item to take the vehicle off and on the side-stand or centre-stand.
+			\item to slowly control the vehicle forward and bring the vehicle to a controlled stop.
+			\item to start and stop the vehicle safely.
+		\end{itemize}
+
+		\textbf{Element C} teaches the trainee's control of the vehicle and observational skills. `Element C: Practical On-Site Riding '~\cite {govuk_compulsory_2016-1} mentions the use of verbal instructions on the radio to communicate manoeuvrability tasks for the trainee to execute. The trainee learns how to observe and manoeuvre out of the way of any obstacles that may exist or have developed. The trainee learns how to:-
+		
+		\begin{itemize}
+			\item move away.
+			\item ride slowly.
+			\item riding in a straight line and coming to a controlled stop.
+			\item riding a figure of eight.
+			\item carrying out a U-turn.
+			\item bringing their vehicle to a stop in an emergency.
+			\item carrying out stimulated left and right-hand turns.
+		\end{itemize}
+
+		\textbf{Element D and E} takes the trainee through the basic road theory to make sure the trainee can read signs and specific hazards that may take place. The instructor then takes the motorcyclists out on the road and spends two to three hours going over the following road types, and situational areas:-
+
+		\begin{itemize}
+			\item Traffic lights.
+			\item Roundabouts.
+			\item Junctions.
+			\item Pedestrian crossings.
+			\item Gradients.
+			\item Bends.
+		\item Perform a U-Turn Manoeuvre.
+		\item Perform an Emergency Brake Manoeuvre.
+		\end{itemize}
+
+	The following points are instilled within the rider, including how that knowledge and understanding applies in a range of real-world applications and the limits of their competence. This practical training helps motorcyclists avoid danger if they are not over-competent. This methodology helps the reader understand the mindset given to motorcyclists on British roads. It shows how a motorcyclist is trained to avoid driver error as much as possible.
+
 \chapter{Literature Review}
 \label{chap:literatureReview}
+	\section{Motorcycle Legalities and Safety Regulations}
+	\label{sec:lrMotorcycleLegalitiesSafetyRegulations}
+		\subsection*{Motorcycle Licensing}
+			The CBT takes a day or two before handing a certificate, depending on the rider's confidence on and off-road. CBTs last for two years. A CBT can cost roughly Â£120 and be refunded by certain councils around the UK. A provisional motorcyclist must have a valid CBT certificate to progress to a full license. The motorcyclist has to pass the Theory, practical off-road and on-road training, and practical off-road and on-road tests. The process could take a month or two to complete, and each training/test takes one day. However, the tests involve using a more considerable capacity bike and spending a whole day on off-road and on-road training and tests, compared to one day fitting the four elements into it. 
+
+			There are three full license categories for the motorcyclist, that is also restricted to the age of the motorcyclist. These categories include an \textbf{A1}, \textbf{A2}, and \textbf{A}. The A1 license category entitles the motorcyclist, aged 17, to an unrestricted 125cc motorcycle, allowing access to the motorway and the rider to carry pillions. The A2 license category entitles the motorcyclist, aged 19, to a restricted 47BHP \textit{(or if 95BHP, can be restricted to 47BHP with certification)} motorcycle. A category license has two access entry types; the first access entry is that the motorcyclist must be twenty-four years old, or the second access entry is that after the motorcyclist holds the A2 license category for two years, then the motorcyclist can retake the practical tests, without the need for a Theory to upgrade their license. For a visual representation, refer to the UK Government's Flowchart~\cite{govuk_motorcycle_nodate}.
+
+		\subsection*{Employing Official Instructors}
+			Driving Standards Agency (DSA)~\cite{driving_standards_agency_compulsory_nodate} releases an article, `COMPULSORY BASIC TRAINING (CBT) ASSESSMENT FOR MOTORCYCLE INSTRUCTORS', to give an understanding of how ATBs select the right instructors that guarantee the safety of trainees that proceed with the CBT. DSA enforces the following statement:-
+            \begin{center}
+                ``DSA operates `fit and proper' criteria, which requires an individual applying to be authorised,
+                to give details of any motoring or non-motoring offences not yet spent. Details of offences will
+                be taken into account when assessing their suitability to be authorised as a certified
+                motorcycle instructor. Applicants should, therefore, note that successful attendance on the 2-
+                day CBT assessment does not provide automatic acceptance of an application to be a
+                certified motorcycle instructor.'' - Driving Standards Agency~\cite{driving_standards_agency_compulsory_nodate}
+            \end{center}
+            
+            The report states, `All Approved Training Bodies (ATB`s) must employ at least one instructor who has successfully attended the DSA assessment.', which indicates that once a motorcycle instructor passes the Motorcycle Instructor assessment, then the ATB employs a motorcycle instructor. This approach guarantees a demand and supply for the role and means motorcycle instructors are encouraged to fall into this line of work.
+            
+            During the assessment, the instructor is encouraged to understand `The Official DSA Guide to Learning to Ride', `The Official DSA Guide to Riding - The Essential Skills', and `The Official Theory Test for Motorcyclists', which allows the driving instructor to teach trainees with an understanding of safety when it comes to the road.
+
+			DSA~\cite{driving_standards_agency_compulsory_nodate} provides the mindset instilled into motorcyclists, which briefly mentions the concepts involved within the CBT practices taught to the instructors. The DSA mentions the concepts explained in the section~\ref{sec:lcRiderPracticesRoadSafety}, page~\pageref{sec:lcRiderPracticesRoadSafety}, and reinforces the principles with more detailed information. This ideology can add volume to the level of detail that goes into Motorcycle Training and provides a reason that the system already available is enforced to a strong level of detail.
+
+            To be an approved motorcycle instructor, nine steps must be completed. The first step requires to be de-briefed with the syllabus for the assessment. The second step introduces the assessment and is then told to de-brief the DSA assessor on the ongoing lesson. The third step involves the machine introduction, and in this case, the DSA assessor will simulate being a CBT Instructor, whilst the candidate will act as a learner. The candidate is then expected to de-brief the DSA assessor. The fourth to fifth step involves practical on-site training, in which the DSA assessor will act as a learner, the candidate will give the instructions to the DSA assessor, and then a de-brief will follow. The sixth to eighth step is the same principle as before, although it will be conducted on the road. The last step of the process involves receiving a full de-brief from the DSA assessor, and the assessment result is given after seven to ten days.
+
 	\section{Autonomous Vehicle Paradigm and Legalities}
 		Firstly, it is essential to understand how vision works on AV and what techniques are in place to allow vehicles to function correctly and safely. Journal Article, `AVs: from paradigms to technology', authored by Silviu Ionita~\cite{ionita_autonomous_2017}, offers underlying information about the foundation of autonomous vehicle systems. It is equally important to understand how motorcycles function within traffic and the reasoning behind motorcyclist mentality.
+
+		Silviu Ionita~\cite{ionita_autonomous_2017} describes that for a ADAS/AV system to be `intelligent', then the system must meet the following requirements:
+		\begin{enumerate}
+			\item ``To learn in `teaching mode' but also from own experience. This is a necessary condition but not sufficient.''~\cite{ionita_autonomous_2017}
+			\item ``To perform approximate reasoning. This suppose more than true/false logic in formal
+			reasoning, it requires the use of multivalent logic that deals better with the uncertainty.''~\cite{ionita_autonomous_2017}
+			\item ``To behave autonomously. This is the aggregate performance that includes many operational functions based on the first two conditions in order to put in practice the intelligence, which is equivalent with the intelligent behavior.''~\cite{ionita_autonomous_2017}
+		\end{enumerate}
 
 		Motorcycling filtering laws vary in different countries globally. Australia and USA states have different definitions of filtering. Some states declare filtering legal, whereas other states declare filtering illegal. Thailand country made filtering illegal. However, some of these states or countries where filtering is illegal are poorly policed, indicating that motorcyclists may filter if an opportunity arises. That means AV vehicles should anticipate filtering even in countries/states where filtering is illegal to minimize the number of casualties and incidents.~\cite{promraksa_lane-filtering_2022}
 
@@ -379,7 +550,7 @@ hmargin=3cm
 		When investigating how AVs handle blindspot handling compared to human drivers, the paper `Automated driving: Safety blind spots' by Ian Y. Noy~\cite{noy_automated_2018} suggests the current implementations within ADAS and compares it to standard driving errors. Although the paper does not directly reflect on motorcycles, the paper details ADAS systems and how the transition from ADAS to AVs is possible. An important quote from the paper is that `AD technologies are suboptimal in that they fail to address critical blind spots and will likely lead to unnecessary losses and injuries because insufficient consideration is given to integrating the human element into overall sociotechnical road transportation system'~\cite{noy_automated_2018} suggests that transitioning from ADAS to AVs is relatively dangerous if blindspot judgements are overlooked. Further research in this area will provide more information to understand if AVs are safer than human drivers on the road.
 
 	\section{Model Architectures}
-		Yen-Yi Wu~\cite{wu_pedestrian_2016} suggests using a Deep Belief Networks (DBN) model for object classification. The model correctly classifies images: pedestrians, bikes, motorcycles and other vehicles. The model thrives an 89.53\% accuracy.
+		Yen-Yi Wu~\cite{wu_pedestrian_2016} suggests using a DBN model for object classification. The model correctly classifies images: pedestrians, bikes, motorcycles and other vehicles. The model thrives an 89.53\% accuracy.
 
 		The r-CNN model merges a CNN approached model with a Region-based model to create a deeper layered one. The aim is to increase accuracy and performance regarding object classification. The R-CNN uses a selective search algorithm to find certain features within the set of images and focus on the objects that match the specified features using diverse strategies. This approach means that when training the model, it is equally important to understand what the layers do and how they filter the image to change the test data to analyse the different performances and accuracies of the training and testing.~\cite{uijlings_selective_2013}~\cite{ren_faster_2015}
 
@@ -391,7 +562,7 @@ hmargin=3cm
 
 		\begin{figure}[htp]
 			\centering
-			\includegraphics[width=\columnwidth]{Figures/literature_review/proposal/DBNRBMLayers.png}
+			\includegraphics[width=0.75\columnwidth]{Figures/literature_review/proposal/DBNRBMLayers.png}
 			\caption{DBN and RBM Model Layers~\cite{zhao_parallel_2019}}
 			\label{fig:dbnRBMLayers}
 		\end{figure}
@@ -432,14 +603,422 @@ hmargin=3cm
 	RAD is a risky methodology as it does not allow the flexibility to redesign the plans to enable definition when addressing the given safety concern. Therefore, the Iteration development model is an ideal solution, allowing the ability of initial planning and then additional planning and requirement changes, also continuously updating the analysis and design, testing and evaluation. This key methodology cycle will benefit the ideology of setting the layers up and evaluating the results. Agile Methodology also uses User Stories, which is excellent if a platform is being made. However, the user stories would get repetitive during the research project, which wastes time in this specific scenario.
 
 	\section{Iterative Development Methodology}
+		The choice of an Iterative development methodology aligns well with the project's requirements. This methodology ensures that all project materials meet the predefined milestone goals. From the traditional Iterative development methodology approach, an adaptation of Continuous Integration (CI) and a Test-Driven Development (TDD) structure allows the tests to be written before the project code to optimise workflow quality and performance. The idea of this is to accelerate the project time.
+
+		The GitHub platform provides the project tools to carry out the Iterative development methodology, including CI tools, allowing the advantage of `code repositories', `branching strategies', `dependency management', `compilation', `linting; Python Black, and pre-commit, `automated testing', `documentation', and `project management' tools that, that really push the Iterative and CI approach forward into the workflow.
+
+		Unit Testing and CI is a challenge for an object classification project. The purpose of Unit Testing is to create a library that is suitable for the required datasets and model architectures. The absence of Unit Testing allows for the creation of poorly modified versions of CSV datasets within the pre-processing and combination stages. The goal is to provide reliable results before beginning the actual work. Another challenge would include wasting lines of code and having to redo a backlog of issues, allowing the project to be more challenging rather than efficient. The solution involves PyTest, with a CI to ensure each push to GitHub passed the tests, and using Python Modules helped ensure reusable code. This approach meant that the code could be run in a notebook, with certainty that the code quality of the modules created was to the quality required by the set milestones and tasks at hand available from the project Kanban chart. 
+		
+		If a series of codes needed to change or the test did not meet the next iteration of tasks, the tests were updated before any module codes were implemented. This application of TDD proves that TDD is beneficial not only in Software or Gaming specific for productivity but also in the set rules for AI engineering and module tuning.
+
+		The research project involved a series of automation task tracking methods available from GitHub Project, involving the use of iterations to track the iterations; milestones customised to track the elements iterations; Kanban chart allowing the movement of tasks per iteration, and a Start and End Date to allow the project's Gantt chart to work allowing the Project Stakeholders and developers to monitor to allow the timescale of the project in-check.
+
+		The iterations on the project are set up to support the different iteration phases of the project, involving `Initial', `Data Collection and Preparation', `Iteration $n$', and `Project Close'. Each iteration is configured to support a week's timeframe per iteration and rolls over automatically as the weeks go on. Each iteration is split into four stages to support the Iterative development methodology. After some experimentation, a good way of setting up a GitHub Project to achieve this is using GitHub Project Milestones, which can be assigned to the Repository pull requests. The milestones for the project included `Project Kickoff', `Data Collection and Preparation', `Research (Iterative)', `Model Development and Training (Iterative)', `Model Evaluation and Testing (Iterative)', `Documentation and Reporting (Iterative)', and `Research Findings (Project Closed)'. The statements are listed in order of how an iteration cycle was commenced within the project, and the remarks are a combination of Scrum and Iterative development methodologies to help the tracking per Iterative development methodology whilst also keeping the workflow very compact and easy to follow for a small team environment.
+
+		The Kanban layout allowed for the ease of an Agile approach to the project. The Kanban chart is set up in a few ways. The task columns include `Todo', `Backlog', `In Progress | WIP: 0/2', `Priority Progress | WIP: 0/2', `Testing | WIP: 0/2' and, `Done', with the use of a Work-In-Progress (WIP) limit, limiting the three columns to three number of tasks. These Agile implementations to the traditional Iterative workflow helped the project to cause any bottlenecks during the iterations.
+
+		A reflection of the project workflow overall works for the section of trying to complete research for a small team environment and is well managed with the suggestions mentioned. However, looking into Scrum, Agile, or even DevOps and CI/CD approaches is beneficial if the team environment grows. However, if there were no additional support, such as a well-managed test environment and CI work environment, then the Iterative development methodology would be problematic in its traditional form.
+
+\chapter{AV Legalities}
+\label{chap:legalConcerns}
+	
+			
+
+\chapter{Autonomous Vehicle Methodology}
+\label{chap:autonomousVehicleMethodology}
+	AVs are designed in accordance to existing policies to ensure safety, so to gather the methodology of an AV, the Law Commision's~\cite{noauthor_automated_nodate} helps highlight key recommendations that AV manufacturers should follow. It includes that the governe
+
+	\section{Testing Methodology}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.60\columnwidth]{Figures/literature_review/Research/Testing_Methodology.png}
+			\caption{Testing Methodology: Block Diagram of the Proposed Model-Based Testing
+			Methodology. Proposed and tested by Mohammad Hejase~\cite{hejase_methodology_2020}}
+			\label{fig:avmTestingMethodology}
+		\end{figure}
+
+	\section{Model Methodology}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.60\columnwidth]{Figures/literature_review/Research/DBN_Model.png}
+			\caption{Model Methodology: Graphical representation of a typical DBN-based interaction aware. Illustrated by Christos Katrakazas~\cite{katrakazas_new_2019}}
+			\label{fig:avmModelMethodology}
+		\end{figure}
+
+	\section{Operational Methodology}
+		Silviu Ionita~\cite{ionita_autonomous_2017} shows the basic AV methodology fabricated from the ADAS functionality to give an understanding of how a AV prioritises the driving tasks. 	
+		
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-1.png}
+			\caption{Safety Methodology: Basic tasks and functions of vehicle driving~\cite{ionita_autonomous_2017}}
+			\label{fig:avmOperationalMethodology-SF1}
+		\end{figure}
+
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-2.png}
+			\caption{Safety Methodology: Three ways of knowledge usage in driving actions~\cite{ionita_autonomous_2017}}
+			\label{fig:avmOperationalMethodology-SF2}
+		\end{figure}
+
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-3.png}
+			\caption{Safety Methodology: Classes of ADAS and their Requirements for Decision and Execution~\cite{ionita_autonomous_2017}}
+			\label{fig:avmOperationalMethodology-SF3}
+		\end{figure}
+
+
+
+\chapter{Scripting Process}
+\label{chap:scriptingProcess}
+	\section{}
+
+\chapter{Training Process}
+\label{chap:trainingProcess}
+	\section{Confusion Matrices}
+		Figures (\ref{fig:ukDatasetYolov5LargeWeight},~\ref{fig:mtpDatasetYolov5LargeWeight},~\ref{fig:ntDatasetYolov5MediumWeight}) display a confusion matrix for `Dataset A', `Dataset B', and `Dataset C'. The confusion matrix shows a clear sign of any outliers. According to the Confusion Matrices, the motorcycle had an 81\% accuracy within fig~\ref{fig:ukDatasetYolov5LargeWeight}, with 39\% outliers identifying motorcycle objects as Scooters, with a minimum of 15\% outliers identifying as background. Compared to the Motorcycle, Trike and Person model, found in fig~\ref{fig:mtpDatasetYolov5LargeWeight}, the motorcycle had a 77\% accuracy, with 32\% of outliers identifying as background. Dataset C, found in fig~\ref{fig:ntDatasetYolov5MediumWeight} showed the lowest accuracy, with the datasets having a much darker vision, having a 67\% accuracy, with outliers falling into `trike' and `background' categories, with 2\% falling into `trike', and 24\% falling into `background' classifications. Although, it is impressive that the dataset had less of a chance than Dataset B to misidentify motorcycles for background noise.
+
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=1\columnwidth]{Figures/dataset_a/a_confusion_matrix.png}
+			\caption{Dataset A: Confusion Matrix of YOLOv5 model}
+			\label{fig:ukDatasetYolov5LargeWeight}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=0.95\columnwidth]{Figures/dataset_b/b_confusion_matrix.png}
+			\caption{Dataset B: Confusion Matrix of YOLOv5 model}
+			\label{fig:mtpDatasetYolov5LargeWeight}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=0.95\columnwidth]{Figures/dataset_c/confusion_matrix.png}
+			\caption{Dataset C: Confusion Matrix of YOLOv5 model}
+			\label{fig:ntDatasetYolov5MediumWeight}
+		\end{figure}
+
+	\clearpage
+	\section{PR Curves}
+		Figures (\ref{fig:ukDatasetYolov5LargeWeightPRCurve},~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}) show the Precision and Recall curves plotted on a graph, giving information on any performance issues with the training models. The PR curves for both models demonstrate high precision across varying levels of recall, indicative of robust performance. Although, figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve} appears to have a higher precision for the longer part of the training process, compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The worst performers of the model are scooters, vans, person and minivans in precision and perform well when it comes to recall. In comparison, figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve} shows a similar illustration. According to the key of figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve}, motorcycles had a higher precision peak at 77.5\% compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The model architecture performs well when training the given dataset scenarios. Perhaps larger weights could increase the precision and recall curve during training. It is worth mentioning that the preparation of the datasets functions well during the training process, and no underlying problems are showing, especially for motorcycle data. `Dataset C', fig~\ref{fig:ntDatasetYolov5MediumWeight} appears to have a curve to `Dataset B' when looking into the `motorcycle' classification. However, the overall Precision-to-Recall is poor and suggests that the model struggled in identifying the overall classifications.
+
+		\begin{figure}[ht]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[0.80\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_a/PR_curve.png}
+				}
+				{
+					\caption{Dataset A: Performance and Recall Curve of YOLOv5 model}
+					\label{fig:ukDatasetYolov5LargeWeightPRCurve}
+				}
+			
+				\ffigbox[0.80\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_b/PR_curve.png}
+				}
+				{
+					\caption{Dataset B: Performance and Recall of YOLOv5 model}
+					\label{fig:mtpDatasetYolov5LargeWeightPRCurve}
+				}
+			\end{floatrow}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=.50\columnwidth]{Figures/dataset_c/PR_curve.png}
+			\caption{Dataset C: Performance and Recall of YOLOv5 model}
+			\label{fig:ntDatasetYolov5MediumWeightPRCurve}
+		\end{figure}
+
+	\clearpage
+	\section{F1 Confidence Curves}
+		Figures (\ref{fig:ukDatasetYolov5LargeWeightF1Curve},~\ref{fig:mtpDatasetYolov5LargeWeightF1Curve}) showcase the `Dataset A' and `Dataset B' datasets on an F1-Confidence curve. The F1-Score is calculated with the following equations:-
+		\begin{center}
+			\textbf{\textit{TP:}} True Positives | \textbf{\textit{FP:}} False Positives
+
+			\textbf{Precision:} $\mathcal{P} = \frac{\text{TP}}{\text{TP} + \text{FP}}$
+
+			\textbf{Recall:} $\mathcal{R} = \frac{\text{TP}}{\text{TP} + \text{FN}}$
+			
+			\textbf{F1-Score:} $\mathcal{F\textit{1}} = \frac{2 \times \mathcal{P} \times \mathcal{R}}{\mathcal{P} + \mathcal{R}}$
+		\end{center}
+
+		The daylight learning curves of the model are healthy and optimal. The F1-Score of fig~\ref{fig:ukDatasetYolov5LargeWeightF1Curve} performs better for motorcycles, compared to fig~\ref{fig:mtpDatasetYolov5LargeWeightF1Curve} achieving a higher F1-Score and confidence level. The night-time learning curves show a lower F1-Score to confidence level, shown in fig~\ref{fig:ntDatasetYolov5MediumWeightF1Curve}, which is terrible compared to the daylight dataset models learning curves. The low F1-Score shows a bigger Recall.
+
+		\begin{figure}[ht]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[0.85\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_a/F1_curve.png}
+				}
+				{
+					\caption{Dataset A: F1 Confidence Curve of YOLOv5 model}
+					\label{fig:ukDatasetYolov5LargeWeightF1Curve}
+				}
+			
+				\ffigbox[0.85\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_b/F1_curve.png}
+				}
+				{
+					\caption{Dataset B: F1 Confidence Curve of YOLOv5 model}
+					\label{fig:mtpDatasetYolov5LargeWeightF1Curve}
+				}
+			\end{floatrow}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=.65\columnwidth]{Figures/dataset_c/F1_curve.png}
+			\caption{Dataset C: F1 Confidence Curve of YOLOv5 model}
+			\label{fig:ntDatasetYolov5MediumWeightF1Curve}
+		\end{figure}
+
+	\clearpage
+	\section{Train vs. Prediction Batches}
+		\subsection*{Daylight Models}
+			Figures (\ref{fig:ukTrainBatchTwo},~\ref{fig:ukValBatchTwo},~\ref{fig:mtpTrainBatchTwo},~\ref{fig:mtpValBatchTwo}) show the training process of the third batch of the training and validation process. The training process of Dataset A, fig~\ref{fig:ukTrainBatchTwo}, classifies ten types of objects and applies a bounding box around the objects, labelling each bounding box with a classification number with an offset of minus one. Whereas the training process of Dataset B, fig~\ref{fig:mtpTrainBatchTwo}, classifies three objects with the same properties as the previous training process.
+
+			For the validation process, the model tries to predict a selection of images and tries to detect objects within the image. This validation process helps us understand where the training process may be going wrong and helps us improve the training process. The validation figures (\ref{fig:ukValBatchTwo},~\ref{fig:mtpValBatchTwo}) have a new element on the bounding box, which indicates the confidence of the prediction. This information is next to the classification label, which is no longer a classification number. 
+			\begin{figure}[ht]
+				\floatsetup{valign=t, heightadjust=object}
+				\begin{floatrow}
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_a/train_batch2.jpg}
+					}
+					{
+						\caption{Dataset A: Train Batch Two}
+						\label{fig:ukTrainBatchTwo}
+					}
+				
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_a/val_batch2_pred.jpg}
+					}
+					{
+						\caption{Dataset A: Validation Batch Two}
+						\label{fig:ukValBatchTwo}
+					}
+				\end{floatrow}
+			\end{figure}
+
+			\begin{figure}[hb]
+				\floatsetup{valign=t, heightadjust=object}
+				\begin{floatrow}
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_b/train_batch2.jpg}
+					}
+					{
+						\caption{Dataset B: Train Batch Two}
+						\label{fig:mtpTrainBatchTwo}
+					}
+				
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_b/val_batch2_pred.jpg}
+					}
+					{
+						\caption{Dataset B: Validation Batch Two}
+						\label{fig:mtpValBatchTwo}
+					}
+				\end{floatrow}
+			\end{figure}
+		
+		\subsection*{Nigh-time Models}
+			Figures (\ref{fig:ntTrainBatchTwo},~\ref{fig:ntValBatchTwo}) illustrate the training and validation process of the night-time model, showing some key areas of how the dataset is modified. The illustration also shows the quality of the night-time simulation that the Python script achieved. From an observation, the images are harder to see motorcycles. However, it does not simulate the real night-time situation, on pitch-black roads. It is impressive to know that the model picks up motorcycles in this setup and should be the following best ideal environment for testing the model with actual footage.
+			\begin{figure}[hb]
+				\floatsetup{valign=t, heightadjust=object}
+				\begin{floatrow}
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_c/train_batch2.jpg}
+					}
+					{
+						\caption{Dataset C: Train Batch Two}
+						\label{fig:ntTrainBatchTwo}
+					}
+				
+					\ffigbox[0.60\linewidth]
+					{
+						\includegraphics[width=1\linewidth]{Figures/dataset_c/val_batch2_pred.jpg}
+					}
+					{
+						\caption{Dataset C: Validation Batch Two}
+						\label{fig:ntValBatchTwo}
+					}
+				\end{floatrow}
+			\end{figure}
+		
+	\clearpage
+	\section{Labels}
+		Figures (\ref{fig:ukDatasetYolov5LargeWeightLabels},~\ref{fig:mtpDatasetYolov5LargeWeightLabels},~\ref{fig:ntDatasetYolov5MediumWeightLabels}) showcases the four methods of identification of labels. The top-left chart depicts the instances when a class was plotted. The top-right displays the sizes of the labels in correspondence with the colour key from the top-left. The bottom-left scatter graphs show the positioning of where the labels were plotted, and the bottom-right displays the size of the labels. The main focus areas would be the labelling, box size, and volume of the sizes to indicate if the labels were plotted accurately. Each of the datasets did a decent job of choosing the box dimensions. However, some dimensions were not vertical and were horizontal, which is evident that a problem the model was doing was detecting the handlebars on the camera as a motorcycle, which indicates why the labels were horizontal. This observation explains why its labels appear horizontal and do not necessarily mislabel a car. Another reason for this is that motorcycles may be parked or detected sideways, allowing a rendering of a horizontal bounding box.
+		\begin{figure}[ht]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[0.63\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_a/labels.jpg}
+				}
+				{
+					\caption{Dataset A: Performance and Recall Curve of YOLOv5 model}
+					\label{fig:ukDatasetYolov5LargeWeightLabels}
+				}
+			
+				\ffigbox[0.63\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/dataset_b/labels.jpg}
+				}
+				{
+					\caption{Dataset B: Performance and Recall of YOLOv5 model}
+					\label{fig:mtpDatasetYolov5LargeWeightLabels}
+				}
+			\end{floatrow}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=.43\columnwidth]{Figures/dataset_c/labels.jpg}
+			\caption{Dataset C: Performance and Recall of YOLOv5 model}
+			\label{fig:ntDatasetYolov5MediumWeightLabels}
+		\end{figure}
+
+\chapter{Findings}
+\label{chap:findings}
+	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
+
+	Figure~\ref{fig:detectionOfMotorcycleW1} of a motorcycle in wet weather conditions, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle.
+
+	Figure~\ref{fig:detectionOfMotorcycleW2} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. This scenario happened when the water content blurred the camera, which could simulate current problems with vision technology within AVs.
+
+	Figure~\ref{fig:detectionOfMotorcycleW3} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. The visibility is moderate; human eyesight can easily see more than eight to ten meters ahead. Another observation of this footage was that the vehicles are visible, although the architecture failed to recognise the motorcycle.
+	\begin{figure}[h]
+		\floatsetup{valign=t, heightadjust=object}
+		\begin{floatrow}
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_correct.png}
+			}
+			{
+				\caption{Good Detection of Motorcycle - Wet and Multi Lane}
+				\label{fig:detectionOfMotorcycleW1}
+			}
+		
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_incorrect.png}
+			}
+			{
+				\caption{Classification Error - Camera Blinded}
+				\label{fig:detectionOfMotorcycleW2}
+			}
+		
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_danger.png}
+			}
+			{
+				\caption{Classification Error - Water Spray from Other Vehicles}
+				\label{fig:detectionOfMotorcycleW3}
+			}
+		\end{floatrow}
+	\end{figure}
+
+	Figure~\ref{fig:detectionOfOneMotorcycle} of detecting one motorcycle may not seem dangerous. However, if an AV misclassifies or does not detect the motorcycle after the first motorcycle, the AV may not be able to foresee any sudden traffic actions, causing fatal collisions.
+
+    Figures~\ref{fig:lateClassificationP1},~\ref{fig:lateClassificationP2} demonstrates the dangers of motorcycle misclassification near a junction. If the AV were to turn right, coming out of the junction, then due to the AV not anticipating the motorcyclist, then the AV may pull out on the motorcycle, causing a fatality. The Object Classification did, however, detect the motorcycle when it was closer to the motorcycle.
+	\begin{figure}[h]
+		\floatsetup{valign=t, heightadjust=object}
+		\begin{floatrow}
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=1\linewidth]{Figures/scenarios/fail.png}
+			}
+			{
+				\caption{Detection of One Motorcycle}
+				\label{fig:detectionOfOneMotorcycle}
+			}
+		
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=0.9\linewidth]{Figures/scenarios/left_turn.png}
+			}
+			{
+				\caption{Late Classification - Part 1}
+				\label{fig:lateClassificationP1}
+			}
+		
+			\ffigbox[0.70\linewidth]
+			{
+				\includegraphics[width=0.9\linewidth]{Figures/scenarios/motorcycle.png}
+			}
+			{
+				\caption{Late Classification - Part 2}
+				\label{fig:lateClassificationP2}
+			}
+		\end{floatrow}
+	\end{figure}
+
+	Figure~\ref{fig:overtakingSequence} shows a 75\% accuracy of correctly identifying two motorcycles after two overtakes. However, the last sequence shows an overtaking procedure involving two tractors and two motorcycles. The classification process is concerning, considering the motorcycles were not detected. This concern arises from a few things, the AV could perform an overtaking manoeuvre and accelerate unsafely, or if an AV started approaching at the speed limit, the AV might not slow down, even though other traffic is overtaking behind the riders to get by tractors safely.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\columnwidth]{Figures/scenarios/motorcycle_overtaking_sequence.png}
+		\caption{Overtaking Sequence}
+		\label{fig:overtakingSequence}
+	\end{figure}
+
+\chapter{Dicussion}
+\label{chap:discussion}
+	\section{Training Sequence}
+		The trained classification uses Asian and US footage to train the model. According to the classification models found in figures (\ref{fig:ukDatasetYolov5LargeWeight},~\ref{fig:mtpDatasetYolov5LargeWeight}), the motorcycle had an 81\% accuracy within fig~\ref{fig:ukDatasetYolov5LargeWeight}, with 39\% outliers identifying motorcycle objects as Scooters, with a minimal of 15\% outliers identifying as background. In comparison to the Motorcycle, Trike and Person model, found in fig~\ref{fig:mtpDatasetYolov5LargeWeight}, the motorcycle had a 77\% accuracy, with 32\% of outliers identifying as background.
+
+		Figures (\ref{fig:ukDatasetYolov5LargeWeightPRCurve},~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}) show the Precision and Recall curves plotted on a graph, giving information on any performance issues with the training models. The PR curves for both models demonstrate high precision across varying levels of recall, indicative of robust performance. Although, figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve} appears to have a higher precision for the longer part of the training process, compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The worse performers of the model are scooters, vans, person and minivans in precision and perform well when it comes to recall. In comparison, figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve} shows a similar illustration. According to the key of figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve}, motorcycles had a higher precision peak at 77.5\% compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The model architecture performs well when training the given dataset scenarios. Perhaps larger weights could increase the precision and recall curve during training. It is worth mentioning that the preparation of the datasets functions well during the training process, and no underlying problems are showing, especially for motorcycle data.
+
+		During the testing sequence, the larger trained model was selected. Arguably, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than having most motorcycles identified as background objects. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK. 
+
+		% Talk about the other ones!
+
+	\section{Testing Sequence}
+		A few issues come to light after running through the gathered test results. The footage involves mixed scenarios, including wet, dry and overtaking procedures. There are a few prospects that need addressing when observing the test footage. Before going into a deeper level of understanding why accurate classifications are essential, and it does not stop at detecting a motorcycle, as hand gestures and a person's body are equally important when it comes to indicating, warning they are braking, or if a fortunate accident were to happen, including a pillion (passenger of the vehicle) or operator was to come off in the road suddenly. A critical emphasis would include whether the AV would detect this or only register the motorcycle still riding in a straight line, causing the AV not to stop, avoiding potential death.
+
+	\subsection*{Hypothesis A - Blindspots and Reaction Time}
+		Figures (\ref{fig:detectionOfOneMotorcycle}~\ref{fig:lateClassificationP1}~\ref{fig:lateClassificationP2}) display the importance of safety when rolling out AVs within the UK. The detection of motorcycles seems to be limited. However, with some tracking implementation, when detection is detected, it could help the process. Although, tracking does not guarantee that the motorcycles are always in sight. A common theme found when performing these detections is that detection was useless when a motorcycle started to be further in the distance. This finding leads to figure~\ref{fig:lateClassificationP1} and~\ref{fig:lateClassificationP2} where the on-coming motorcycle was not immediately detected, and if for some reason the AV had to make a right turn or a swerve to the right, rather than applying the braking system, then the misfortunate rider would have zero to no time to react the intention of the AV.
+
+	\subsection*{Hypothesis B - Low Visibility Conditions}
+
+	\subsection*{Hypothesis C - Poor Weather Conditions}
+		In figures (\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2},~\ref{fig:detectionOfMotorcycleW3}) display three scenarios. The evident problem is that the camera used kept getting water on, so the camera used in AVs must have the resilience to repel water to remain safe on the road. However, the camera fails to pick up the motorcycle in figure~\ref{fig:detectionOfMotorcycleW3}, noting that not all motorcycles may have their lights on. In this case, the light is on. However, fog lights were not required, so even having any implementation on the vehicle would not help, as it was not the right condition for the given scenario and could cause blindness and eye fatigue to other road users.
 
 \chapter{Reflection}
+	\subsection*{Hypothesis A - Blindspots and Reaction Time}
+	\subsection*{Hypothesis B - Low Visibility Conditions}
+
+	\subsection*{Hypothesis C - Poor Weather Conditions}
 
 \chapter*{Terminology}
 List of terminologies used in this document:-
 \begin{itemize}
+	\item ADAS - Advanced Driver-Assistance System.
+	\item ATB - Approved Trained Body.
 	\item AV - Autonomous Vehicles.
+	\item CBT - Compulsory Basic Training.
+	\item CI - Continuous Integration.
+	\item DSA - Driving Standards Agency.
+	\item MOT - Ministry of Transport.
+	\item NHS - National Health Services.
+	\item NIUC - Not-In-User-Control.
+	\item RAD - Rapid Application Development.
+	\item TDD - Test-Driven Development.
+	\item YOLO - You Only Look Once.
 \end{itemize}
+  
 
 %----------
 %	Bibliography
