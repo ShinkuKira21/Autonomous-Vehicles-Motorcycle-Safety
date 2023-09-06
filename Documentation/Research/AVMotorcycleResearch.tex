@@ -673,7 +673,395 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 
 \chapter{Scripting Process}
 \label{chap:scriptingProcess}
-	\section{}
+	For the scripting process to successfully achieve the given experiments to the given workflow mentioned previously, all have a role in making this project successful. The workflow helped provide a consistent format and guaranteed successful builds and tests. The libraries helped achieve the results during each step and played a vast role in saving time in the pre-processing section of the project. The development process allowed the creation of libraries to make modules that could be executed within a notebook, allowing a step-by-step process when starting from scratch. Notebooks are designed to create the given datasets and testing tools, allowing the ML engineering phase to commence to train the given models.
+
+	\section{Libraries}
+		The libraries that formulate the workflow to allow system functionality, code quality and testing, data manipulation and analysis, machine learning and data modelling, image processing, and interactive development processes are listed below, briefly explaining why they were used.
+
+		\subsection*{System Functionality}
+			YOLOv5 datasets use a file system technique to store each video frame; these images are stored in `images/'. The labels identify the objects within txt format, stored in `labels/', with a `data.yaml' configuration file to help YOLOv5 architecture understand where the file locations are, including what and how many classes exist. The purpose of the configuration file is to map the class IDs from YOLOv5 text labels to the corresponding configuration class names. The formats gathered from Roboflow were already split into `train/', `test/', and `val/'. The `os' library helped with file reorganisation techniques.
+
+		\subsection*{Code Quality and Testing}
+			This project involves the practice of an iterative development methodology complemented by Continuous Integration (CI) practices to run this project. This strategy is to help prevent the code quality from deteriorating over time and any backlogs that may start stacking up, with the use of a TDD environment and CI modifications. `flake8' Python library prevents any bad styles found within the code, like any possible syntax errors or bad coding practices to keep the code consistent and clean. `black' Python library formats the code to a given house-style setting from a configuration file, which makes the code easier to read. The Python library, `pytest', allows configuring the testing environment. The `pre-commit' module hooked the `black' code format library if `flake8' reports any errors when `git commit' is called. Finally, a CI was set up on GitHub to install Python and run the tests to test if the project was eligible for any merges, which was updated on Kanban. This process allowed for automated tasks and ensured positive project quality.
+		
+
+		\subsection*{Data Manipulation, Machine Learning, Image Processing and Data Modelling}
+			Data manipulation libraries are essential for DL practices. `numpy' and `pandas' are powerful libraries. `pandas' offer data structure tools to help load CSV data into memory. Where `numpy' offers numerical computations in Python. These are used in multiple areas, including the loading and combination of different datasets together. The use of `cv2' and `numpy' allowed converting a daylight image dataset into a night-time image dataset, which helped the training phase of `Dataset C'.
+
+			`Tensorflow' and `Keras', including splitting the image data to `train/', `test/' and `val/' categories, and pre-processing images. These helped choose a random series of images and labels from the combined dataset and train the model, giving a decent amount of test images to see the training outcome. `Pillow' was a library used to create fake images for the testing phases, and reading images into the notebook
+		
+	\section{Testing and Implementation}
+		Developing the code in this project involved reading through the following current tasks and creating a test that would fail, with a brief description. The aim was to get the test to pass at a bare minimum, then review the following stages. This methodology meant the test was built over time and worked well during development. This method guaranteed that any outcome of the test would be as expected and changed the dynamics of the development process. Python modules in `./workbench/modules' were used in the tests. If a function existed in a notebook or for testing purposes, a test was not wasted on the tasks. The form of testing used was component tests. However, there are aspects of unit testing in cases where component testing was insignificant.
+
+		\begin{lstlisting}[tabsize=1]
+			import unittest
+			import os
+			import csv
+			from PIL import Image
+			import tempfile
+			from modules.pre_processing.CSV_Creation_YOLO import (
+				read_image,
+				read_labels,
+				normalise_labels,
+				get_config,
+				get_data,
+			)
+
+			from modules.pre_processing.CSV_PreProcessor import preprocess_to_csv
+
+
+			# YOLO uses <object-class> <x> <y> <width> <height> classification labels to identify the frames.
+			# The test case ensures that the methods implemented will work properly for YOLO classification.
+			class TestPreprocessing(unittest.TestCase):
+				def setUp(self) -> None:
+					# Create a temporary directory
+					self.test_dir: str = tempfile.mkdtemp()
+
+					# Create images and labels subdirectories
+					self.images_dir: str = os.path.join(self.test_dir, "images")
+					self.labels_dir: str = os.path.join(self.test_dir, "labels")
+					os.makedirs(self.images_dir, exist_ok=True)
+					os.makedirs(self.labels_dir, exist_ok=True)
+
+					# Create a dummy config file
+					self.config_path: str = os.path.join(self.test_dir, "data.yml")
+					with open(self.config_path, "w") as f:
+						f.write("names: ['car', 'bus', 'motorcycle']\nnc: 3")
+
+					# Create a dummy image file in the images subdirectory
+					self.image_path: str = os.path.join(self.images_dir, "image.jpg")
+					image: Image = Image.new("RGB", (100, 100))
+					image.save(self.image_path)
+
+					# Create a dummy label file in the labels subdirectory
+					self.label_path: str = os.path.join(self.labels_dir, "image.txt")
+					with open(self.label_path, "w") as f:
+						f.write("0 0.5 0.5 0.2 0.2\n2 0.7 0.7 0.3 0.3")
+
+					# Define output_path as a temporary CSV file
+					self.output_dir: str = os.path.join(self.test_dir, "output.csv")
+
+				# Test 1: Failed (No Implementation)
+				# Test 2: Passed (Implemented)
+				def test_read_labels(self) -> None:
+					labels: list = read_labels(self.label_path)
+					self.assertEqual(len(labels), 2)
+					self.assertEqual(labels[0], (0, 0.5, 0.5, 0.2, 0.2))
+
+			if __name__ == "__main__":
+				unittest.main()
+		\end{lstlisting}
+
+		The nature of component testing means that after a component is passed, the component has confidence that it will work successfully within a production environment. This process quickened up the development process and meant that once any merge requests were finalised, the development process for the Notebooks could commence. 
+
+		The modules to achieve the experiment objectives include:-
+		\begin{itemize}
+            \item \textbf{CSV\_PreProcessor} - Providing the modules to \textbf{load}, \textbf{preprocess}, \textbf{combine} to a CSV. Other tools included loading and pre-processing an image, which allowed for the CSV Creation phase. This module design allows leeway to put the necessary `Image Path' and `Label' in a CSV file to be converted into YOLO or another format later. \textbf{Note:} At this stage, Ultralytics YOLOv5 and R-CNN architectures were on the table.
+            \item \textbf{CSV\_Creation\_YOLO} - Providing the models to read existing YOLO data and create new YOLO datasets.
+            \item \textbf{CSV\_Conversion} - Uses the \textbf{CSV\_Creation\_YOLO} module to convert the combined unformatted CSV data and then compile it into YOLO or RCNN format, depending on the arguments provided.
+            \item \textbf{CSV\_Night} - Offers the conversion from day to night based on the paths provided. The formula is `np.clip(image * darkness factor, 0, 255)' to get a false night feel.
+			\item \textbf{CSV\_TrainTestSplit} - Holds two features: TrainTestSplit function that works with YOLO to move the relevant files over, and a function to provide a feature to move files, with the use of a list of files, output directory and target subdirectory.
+        \end{itemize}
+
+	\section{Notebooks | Training}
+		Five notebook components were required to gather the data necessary for the training process. These includes `DS\_ReGroup', `CSV\_Creation', `CSV\_NightMode', and `CSV\_TrainTestSplit' notebooks.
+
+		\subsection*{Dataset Re-Group Notebook}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				# Note: Scripts doesn't fully support 'Traffic.zip', copy the contents within traffic_data into ../ (root directory)
+
+				# Script contains a clean_up module, so that empty sub_directories are removed.
+
+				# Note: Rename 'Motorcycle Samples...' to 'Roboflow', and 'traffic' to 'Traffic', otherwise other scripts will fail!
+
+				# If interested in applying different datasets and models, create an issue to show interest, and a config file will be added to roadmap, to make the project universal. #
+
+				# Block 1
+				import os
+				import shutil
+
+
+				def group_files(base_dir, exts, new_folder):
+					new_dir = os.path.join(base_dir, new_folder)
+					if not os.path.exists(new_dir):
+						os.makedirs(new_dir)
+
+					for root, dirs, files in os.walk(base_dir):
+						for file in files:
+							if file.split(".")[-1] in exts:
+								old_file_path = os.path.join(root, file)
+								new_file_path = os.path.join(new_dir, file)
+								shutil.move(old_file_path, new_file_path)
+
+
+				def clean_up(base_dir):
+					for root, dirs, files in os.walk(base_dir):
+						for file in files:
+							if file == "labels.cache":
+								file_path = os.path.join(root, file)
+								os.remove(file_path)
+
+					for dirpath, dirnames, filenames in os.walk(base_dir, topdown=False):
+						for dirname in dirnames:
+							dir_path = os.path.join(dirpath, dirname)
+							if not os.listdir(dir_path):
+								os.rmdir(dir_path)
+
+				# Block 2
+				base_dir = "../../datasets/raw/Roboflow"
+				group_files(base_dir, ["png", "jpg", "jpeg", "gif"], "images")
+				group_files(base_dir, ["txt"], "labels")
+				clean_up(base_dir)
+
+				# Block 3
+				base_dir = "../../datasets/raw/Traffic"
+				group_files(base_dir, ["png", "jpg", "jpeg", "gif"], "images")
+				group_files(base_dir, ["txt"], "labels")
+				clean_up(base_dir)
+			\end{lstlisting}
+
+			This notebook aims to find the YOLOv5 datasets under `/raw/Roboflow' and `/raw/Traffic'. Once the datasets are found, the notebook finds all images that use one of the following formats: PNG, JPG, JPEG, GIF, and moves the images to the `images/' directory. The same thing is applied to labels. However, the program finds the `TXT' format and moves the files into `labels'. This notebook sorts the YOLO datasets, groups all images and labels, and calls the clean\_up function to delete the `train/', `test/' and `val/' empty directories. This method allows the combination of the two datasets to commence.
+
+		\subsection*{CSV Creation}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				# Block 1
+				allowed_classes = [
+					"bus",
+					"car",
+					"minivan",
+					"motorcycle",
+					"pickup",
+					"scooter",
+					"trike",
+					"truck",
+					"van",
+					"person",
+				]
+
+				# allowed_classes = ["motorcycle", "trike", "person"] # comment out if you want to train for all above
+
+				# Block 2
+				from path import *
+				from modules.pre_processing.CSV_PreProcessor import preprocess_to_csv
+
+				input_dir = "../../datasets/raw/Roboflow/"
+				output_file = "../../datasets/csv/mapping/roboflow.csv"
+
+				preprocess_to_csv(input_dir, output_file, allowed_classes)
+
+				# Block 3
+				import path
+				from modules.pre_processing.CSV_PreProcessor import preprocess_to_csv
+
+				input_dir = "../../datasets/raw/Traffic/"
+				output_file = "../../datasets/csv/mapping/traffic.csv"
+
+				preprocess_to_csv(input_dir, output_file, allowed_classes)
+
+				# Block 4
+				import path
+				from modules.pre_processing.CSV_PreProcessor import combine_csv
+
+				input_dir = [
+					"../../datasets/csv/mapping/roboflow.csv",
+					"../../datasets/csv/mapping/traffic.csv",
+				]
+				combine_csv(input_dir, "../../datasets/csv/mapping/prepared.csv")
+				
+				# Block 4
+				# Creates the YOLOv5 Configuration
+				import pandas as pd
+
+				df = pd.read_csv("../../datasets/csv/mapping/prepared.csv")
+
+				df["class_name"] = df["Label"].apply(lambda x: x.split()[0])
+
+				class_names = df["class_name"].unique()
+
+				names_string = ", ".join(f"'{name}'" for name in class_names)
+				data_string = f"nc: {len(class_names)}\nnames: [{names_string}]"
+
+				with open("../../datasets/csv/mapping/prepared.yaml", "w") as f:
+					f.write(data_string)
+			\end{lstlisting}
+
+			This notebook does a few unique things regarding the preparation phase. Firstly, notice the filter options; this is how the filter between motorcycle, trike and person is selected as optional. The active filter eliminates some original vehicle objects, such as `rickshaw', as these vehicles are not found on British roads. Secondly, the notebook converts the `Roboflow' and `Traffic' datasets and filters out any given vehicle objects that are not required for the experiment. The pre-processed data is stored in both `roboflow.csv' and `traffic.csv', simply mapping the image path and the label next to the image path, allowing the TXT files not required. The label structure uses `<labelname center\_x center\_y width height>' to identify the bounding box surrounding the object.
+
+			\begin{lstlisting}[tabsize=1]
+				Image Path,Label
+				../../datasets/raw/Roboflow/images/2022_0310_161409_048A-c1002_jpg.rf.1c9a31387bf99de4d1af59361d220eac.jpg,motorcycle 0.363281 0.1875 0.0484375 0.0328125
+				../../datasets/raw/Roboflow/images/2022_0310_161409_048A-c1002_jpg.rf.1c9a31387bf99de4d1af59361d220eac.jpg,person 0.361719 0.15 0.021875 0.0320312
+			\end{lstlisting}
+
+			CSV Creation notebook calls the last code snippet to combine the two mappings CSV files finally. It is done by combining `roboflow.csv' and `traffic.csv' together and then creating a YOLOv5 configuration file, `prepared.yaml', which helps keep a record of the recorded classes and number of classes rather than anything in particular. The code block below demonstrates the `prepared.yaml' contents:
+			\begin{lstlisting}[tabsize=1]
+				nc: 10
+				names: ['motorcycle', 'person', 'trike', 'van', 'pickup', 'bus', 'car', 'truck', 'minivan', 'scooter']
+			\end{lstlisting}
+
+		\subsection*{CSV Conversion}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				# Block 1
+				from path import *
+				from modules.pre_processing.CSV_Conversion import csv_to_model_format
+
+				input_dir = "../../datasets/csv/mapping/prepared.csv"
+				output_dir = "../../datasets/model/output.yolo/labels"
+
+				csv_to_model_format(input_dir, output_dir)
+
+				# Block 2
+				import pandas as pd
+
+				df = pd.read_csv("../../datasets/csv/mapping/prepared.csv")
+
+
+				sub_dirs = ["train/", "valid/", "test/"]
+
+				df["class_name"] = df["Label"].apply(lambda x: x.split()[0])
+
+				class_names = df["class_name"].unique()
+
+				data_string = f"train: {sub_dirs[0]}\nval: {sub_dirs[1]}\ntest: {sub_dirs[2]}\n\n"
+
+				names_string = ", ".join(f"'{name}'" for name in class_names)
+				data_string += f"nc: {len(class_names)}\nnames: [{names_string}]"
+
+				with open("../../datasets/model/output.yolo/data.yaml", "w") as f:
+					f.write(data_string)
+
+				# Block 3
+				import shutil
+				import os
+				import pandas as pd
+
+
+				df = pd.read_csv("../../datasets/csv/mapping/prepared.csv")
+
+				image_paths = df["Image Path"].values
+
+				dest_dir = "../../datasets/model/output.yolo/images/"
+
+				os.makedirs(dest_dir, exist_ok=True)
+
+				for image_path in image_paths:
+					source_path = os.path.join("../../datasets/raw/", image_path)
+
+					if os.path.exists(source_path):
+						shutil.copy2(source_path, dest_dir)
+			\end{lstlisting}
+
+			The first snippet focuses on processing the `prepared.csv' file, and converts the combined CSV to the YOLOv5 format. This moves the relevant text labels found in the `prepared.csv' and appends them to a text file, that corresponds to the frame name, storing them into `output.yolo/labels/' directory. The contents of the output file of\\`02\_jpg.rf.65a084066fc353cd023eb5c953f40efe.txt':
+
+			\begin{lstlisting}[tabsize=1]
+				2 0.954688 0.689252 0.0859375 0.116822
+				3 0.721875 0.560748 0.0953125 0.114486
+				2 0.367188 0.663551 0.05625 0.10514
+				0 0.282813 0.481308 0.0171875 0.0373832
+				0 0.401562 0.53271 0.01875 0.0490654
+				0 0.675 0.476636 0.0234375 0.0397196
+				0 0.696875 0.46028 0.0171875 0.0303738
+				0 0.339062 0.331776 0.0078125 0.0140187
+				0 0.401562 0.308411 0.00625 0.00934579
+				0 0.478125 0.331776 0.0078125 0.0163551
+				4 0.315625 0.308411 0.0140625 0.0233645
+				5 0.282813 0.299065 0.01875 0.0373832
+				5 0.279687 0.273364 0.0171875 0.0140187
+				2 0.329688 0.436916 0.021875 0.046729
+				2 0.30625 0.380841 0.0171875 0.0303738
+				2 0.495312 0.39486 0.021875 0.0350467
+				2 0.43125 0.343458 0.0125 0.0257009
+				6 0.367188 0.415888 0.03125 0.0327103
+				6 0.304688 0.336449 0.0171875 0.0233645
+				6 0.415625 0.315421 0.0171875 0.0186916
+				6 0.371875 0.315421 0.0140625 0.021028
+				6 0.323437 0.292056 0.0078125 0.00934579
+				6 0.3125 0.273364 0.0078125 0.00934579
+				6 0.339062 0.280374 0.009375 0.0116822
+				6 0.303125 0.294393 0.00625 0.0116822
+				2 0.390625 0.310748 0.009375 0.0163551
+				6 0.357812 0.348131 0.0203125 0.0257009
+				2 0.360938 0.287383 0.0046875 0.0116822
+				5 0.5125 0.359813 0.0515625 0.0443925
+			\end{lstlisting}
+			
+			
+			The second snippet focuses on the creation of the `data.yaml' configuration file for YOLOv5. The output file looks like this:
+
+			\begin{lstlisting}[tabsize=1]
+				train: train/
+				val: valid/
+				test: test/
+
+				nc: 10
+				names: ['motorcycle', 'person', 'trike', 'van', 'pickup', 'bus', 'car', 'truck', 'minivan', 'scooter']
+			\end{lstlisting}
+		
+			Before continuation, the first top objects are trike, van, and trike objects, as the ID from the label corresponds with the object name found in the configuration file. The third snippet copies the images found in the mapping file, and copies the relevant images over to `output.yolo/images', which completes the YOLOv5 file.
+
+		\subsection*{Night-Time Modification}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				from path import *
+				import os
+				from modules.pre_processing.CSV_Night import apply_image_modifications
+
+				output_dir = "../../datasets/model/output.yolo/"
+				sub_dirs = ["train", "valid", "test"]
+
+				image_paths = []
+
+				for sub_dir in sub_dirs:
+					images_sub_dir = os.path.join(output_dir, sub_dir, "images")
+					if os.path.exists(images_sub_dir):
+						image_files = [f for f in os.listdir(images_sub_dir) if f.lower().endswith('.jpg')]
+						image_paths.extend([os.path.join(images_sub_dir, image_file) for image_file in image_files])
+
+				apply_image_modifications(image_paths, darkness_factor=0.5)
+			\end{lstlisting}
+
+			This snippet scans the image files available inside the YOLOv5 dataset prepared in the last step. The image paths are stored in memory and passed over to the image modification modules prepared previously, and darkened the image files by point five darkness factor.
+
+		\subsection*{Train Test Split | YOLOv5 Style}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				# Block 1
+				# open the config file
+				from path import *
+				import os
+				import yaml
+				from modules.pre_processing.CSV_TrainTestSplit import yolo_train_test_split, move_files
+
+				output_dir = "../../datasets/model/output.yolo/images"
+
+				# Safe Load seems to be a decent method for those that do not trust the repository in sense of loading the data #
+				with open(os.path.join(output_dir, "../", "data.yaml"), "r") as file:
+					yaml_data = yaml.safe_load(file)
+
+				sub_dirs = [yaml_data["train"], yaml_data["val"], yaml_data["test"]]
+
+				# Block 2
+				train_files, val_files, test_files = yolo_train_test_split(output_dir)
+
+				# Block 3
+				import os
+
+				sub_dirs = ["train/", "valid/", "test/"]
+				output_dir = "../../datasets/model/output.yolo/"
+				move_files(train_files, output_dir, sub_dirs[0])
+				move_files(val_files, output_dir, sub_dirs[1])
+				move_files(test_files, output_dir, sub_dirs[2])
+
+				os.rmdir(os.path.join(output_dir, "images/"))
+				os.rmdir(os.path.join(output_dir, "labels/"))
+			\end{lstlisting}
+
+			The three blocks of codes perform a simple test, train and split operation by SciKit-Learn. This process is important to train a architectural model, it selects a random selection of images, labels, splitting them into train, test and validation materials. The start of the application loads up the `data.yaml' file to find out the train, test and validation directories. The last block moves the files in the chosen directories assigned to them. This is the last process, and the YOLOv5 is now ready to be trained. 
+
+	\section{Notebooks | Testing}
 
 \chapter{Training Process}
 \label{chap:trainingProcess}
