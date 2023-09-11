@@ -214,7 +214,7 @@ hmargin=3cm
 	\setcounter{page}{3}
 
 	% Write your abstract
-	Abstract
+	 This dissertation focuses on the safety development of Autonomous Vehicles and Motorcycles using Artificial Neural Networks. The research question involves, `Are AVs a danger to motorcyclists?' hypothesising the safety aspects of blindspots, poor visibility and poor weather conditions to support the research question. The datasets used a combination of Asian and US road footage. The training performance of the model within the report achieves 81\% accuracy for motorcycles in a filtered Dataset A involving pedestrians and a wide range of vehicles, 77.5\% accuracy in a filtered Dataset B involving motorcycles, trikes and pedestrians, and 61\% accuracy in Dataset C including a simulated night-time version of Dataset A. These training results give an idea of the detection result's accuracy. A precision and recall curve diagram shows the curvature of the learning process to help identify any critical errors in the training process and the model's reliability. The previous research to build this report involved looking into how Autonomous Vehicles, ADAS and V2V communications are currently implemented. This aspect establishes how vehicles currently function and what previous and current technologies are in place. The current findings highlight some dangerous misclassification entries on UK roads, which requires a deeper understanding of enhancing safety infrastructure on Autonomous Vehicles. The hypotheses are covered. Hypothesis A, `Motorcycles have blindspots that are often overlooked by human drivers, which AVs can detect and avoid.' was found to be untrue from the limited research and experimentations conducted in this thesis. Hypothesis B, `In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.' was proven to fall in the factual category, not down to low light conditions such as the model did exceptionally well at detecting the motorcycle, even if the time frame was not in the ideal zones, but more down to light glare from upcoming vehicles. This fact meant that the motorcyclist was hidden, and the object classification could not detect the motorcycle until the glare calmed down. Hypothesis C, `Poor weather conditions, such as heavy rain or poor visibility, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.' was proven to be authentic as camera glare, water droplets, and spray caused classifications for motorcycles to misidentify, pursuing potential emergency braking when late classification proceeds. Overall, the experiments went better than expected, and the results, establishing the Legal Issues, Motorcycle Safety Training, and AV Methodology, helped identify how these risks are mitigated.
 
 	\textbf{Keywords:} % add the keywords
 	Artificial Neural Networks, Autonomous Vehicles, Motorcycle Safety.
@@ -708,6 +708,8 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 		The diagram shown in fig~\ref{fig:avmOperationalMethodology-SF1} displays the details involved with the AV operational methodology, involving the safety methodology of basic tasks and functions of vehicle driving. The `Vehicle Driving' involves the `Rules, Knowledge and Models'; splitting down to three processes, \textbf{navigation}, \textbf{monitoring and processing of driving environment}, and \textbf{maneuver and dynamics control}. These processes are cruicial when it comes to navigating the vehicle on roads, taking in account traffic rules and regulations, whilst also monitoring potential hazards, dangers, and calculating other road users actions.
 
 		The navigation process focuses on the planning, optimisation, route selection and reconfiguring of the vehicle's directives. At the same time, the monitoring and processing of driving environment filters focuses on the perception of road signs and markings, situational events such as legal signals, traffic lights, traffic agents and pedestrians, and perception of events such as the sudden appearance of any hazards to prevent incidents. Finally, the manoeuvre and dynamics control involves the vehicle's steering, distance, speed/acceleration and braking. 
+
+		Figure~\ref{fig:avmOperationalMethodology-SF2} shows the structure of how ADAS currently functions, using a three-way knowledge including unsupervised and supervised features. This information includes a Deep Learning model, CNN, and human intelligence. This concept includes human intuitive reasoning and expert input. Deep Learning and expert knowledge are used to create structured knowledge and formal reasoning to provide driving actions. Intuitive reasoning is the driver stepping in to override the self-driving principles to input the driving actions to avoid potential accidents, ensuring the reduced risk of fatalities.
 		\begin{figure}[ht]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-1.png}
@@ -715,7 +717,6 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 			\label{fig:avmOperationalMethodology-SF1}
 		\end{figure}
 
-		Figure~
 		\begin{figure}[hb]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-2.png}
@@ -1562,13 +1563,20 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 		In figures (\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2},~\ref{fig:detectionOfMotorcycleW3}) display three scenarios. The evident problem is that the camera used kept getting water on, so the camera used in AVs must have the resilience to repel water to remain safe on the road. However, the camera fails to pick up the motorcycle in figure~\ref{fig:detectionOfMotorcycleW3}, noting that not all motorcycles may have their lights on. In this case, the light is on. However, fog lights were not required, so even having any implementation on the vehicle would not help, as it was not the right condition for the given scenario and could cause blindness and eye fatigue to other road users.
 
 \chapter{Reflection}
-	\subsection*{Hypothesis A - Blindspots and Reaction Time}
-	
-	\subsection*{Hypothesis B - Low Visibility Conditions}
+\label{chap:reflection}
+	After reviewing the findings and discussion referring to blindspots, it was found that motorcycle detection struggled when the vehicle was distant or had poor visibility. Motorcyclists had the potential of poor recognition, causing a visible blindspot scenario, and still have the potential to hide in AV camera blind spots. This fact meant that no matter the technology that the self-driving vehicle adopted, it was not a hundred percent that the motorcycle was recognised. This poor indication could impact the AV's reaction time, or the AV may not even react if any scenarios within the findings played out. 
+		
+	After observing the situation, ADAS systems will help provide research on this impact. However, it means that drivers will have to pay close attention to their surroundings and cannot get complacent as motorcycles can filter within the UK and are getting more popular on the UK roads. Relying solely on the current models and camera equipment may not fully account for blindspots. It may reduce the AV or even driver reaction time as motorcycles are already hard to see by drivers thoroughly in charge of the vehicle.
 
-	\subsection*{Hypothesis C - Poor Weather Conditions}
+	The findings and discussion show concern for when a motorcyclist was in the distance or when the motorcycle was riding at night. The classification was late, and this means that the AV may not be able to recognise an issue to counter-move. Also, a scenario where LiDAR would have been helpful was when a car's headlights caused glare to the camera, which hid the motorcycle that was turning right. This fact meant the AV could continue driving forward, killing the motorcyclist as the motorcyclist was hidden with glare, where human intelligence would have still seen the motorcyclist clear as day, slowing down.
 
-	, and it is questionable that LiDAR could help classify the motorcyclist better, and that perhaps the issues AV manufacturers were suffering with, still needed to be ironed out and furthered in development. Rather than just abandoning the early stages of the technology, which could ultimately save a motorcyclists life.
+	Hypothesis A: `Motorcycles have blindspots often overlooked by human drivers, which AVs can detect and avoid.' This statement is true. AVs can detect and avoid motorcycle dangers. However, this is under the impression that the driver is in control most of the time. Suppose a self-driving car had full access to the vehicle most of the time. In that case, this statement is misleading, as the vehicle will most likely have a slight chance of detecting every motorcyclist on the road or reacting wrongly when a motorcyclist reacts. This described scenario is due to the motorcyclist training involved. Riders are continuously trained to analyse and react, so a rider has accessed their mistake and has an idea to react. In contrast, the AV may have a similar idea to preserve itself, causing both vehicles to block each other, causing a deadly fatality. This issue is another reason why research must be prioritised across many organisations to get awareness. 
+
+	Hypothesis B: `In low light conditions, AVs may struggle to accurately detect and identify motorcycles, leading to potential safety issues on the road.' This statement appears to be true. However, not in the sense of low light conditions, as the model did exceptionally well to detect the motorcyclist after potential blindspot areas. Although more of an unconventional stance of light glare on the camera. With further editing, the glare could be reduced and solving this issue. However, from the experiments, the object classification struggles when glare appears.
+
+	Hypothesis C: `Poor weather conditions, such as heavy rain or poor visibility, can make it difficult for AVs to detect and react to motorcycles, increasing the risk of accidents.' This statement is proven to be valid from the experiments. Camera glare, water droplets, and spray influence this fact. Even if the AV camera technology can repel water, the statement stands true, as the vehicle spray makes it very hard to see, affecting the classification side. 
+
+	It is questionable whether LiDAR could help classify the motorcyclist better and that the issues AV manufacturers were suffering with still needed to be ironed out and furthered in development. Rather than abandoning the technology's early stages, which could ultimately save a motorcyclist's life.
 
 \chapter*{Terminology}
 List of terminologies used in this document:-
@@ -1581,11 +1589,15 @@ List of terminologies used in this document:-
 	\item CBT - Compulsory Basic Training.
 	\item CI - Continuous Integration.
 	\item DSA - Driving Standards Agency.
+	\item HSS - Hybrid State System.
+	\item HMM - Hidden Markov Models.
+	\item KFM - Kalman Filter Models.
 	\item MOT - Ministry of Transport.
 	\item NHS - National Health Services.
-	\item NIUC - Not-In-User-Control.
+	\item NUIC - No-User-In-Charge.
 	\item RAD - Rapid Application Development.
 	\item TDD - Test-Driven Development.
+	\item UIC - User-In-Charge
 	\item VCA - Vehicle Certification Authority.
 	\item YOLO - You Only Look Once.
 \end{itemize}
