@@ -619,16 +619,61 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 
 		A reflection of the project workflow overall works for the section of trying to complete research for a small team environment and is well managed with the suggestions mentioned. However, looking into Scrum, Agile, or even DevOps and CI/CD approaches is beneficial if the team environment grows. However, if there were no additional support, such as a well-managed test environment and CI work environment, then the Iterative development methodology would be problematic in its traditional form.
 
-\chapter{AV Legalities}
-\label{chap:legalConcerns}
-	
+\chapter{Autonomous Vehicle Legalities}
+\label{chap:avLegalities}
+	AVs are designed according to existing policies to ensure safety, so to gather the methodology of an AV, the Law Commision's~\cite{govuk_automated_2022} helps highlight key recommendations that help shape AV methodologies. `Automated vehicles: joint report' report from the Law Commision's~\cite{govuk_automated_2022} shows some law suggestions to benefit AV safety, including the liability of the vehicle operator.
+
+		\section{Safety Regulations}
+			`Automated vehicles: joint report' report from the Law Commision's~\cite{govuk_automated_2022} recommends two regulatory schemes to enforce AV safety, which includes verification that the AV is road worthy and a scheme that guarantees safety whilst operating that said AV.
+
+			The report states that {pre-deployment} safety includes the approval and authorisation processes. National and international standards determine vehicle approval, including AVs, to enter the market. Before registration, an AV must undergo a series of endorsements for its systems, components, and then as a whole. A vehicle "type" can be approved for limited or unlimited production. The UK also has a scheme for individual vehicle approvals. Post-Brexit, Great Britain has more autonomy over vehicle approvals. Manufacturers aiming to integrate an Automated Driving System (ADS) can choose between international acceptance via a UNECE regulation or a new domestic AV technical approval. Regardless of the choice, the vehicle must also obtain the recent GB whole vehicle approval, which has replaced the EU's version for most motor vehicles.
+
+			Before a vehicle is legally recognised as self-driving, it must undergo a distinct \textbf{authorisation} phase. This process is crucial to differentiate between vehicles that merely assist the driver and those that can genuinely drive themselves. After a vehicle receives approval, it may enter the market but cannot operate autonomously. It must undergo a separate authorisation stage to be regarded as self-driving, ensuring its autonomous driving systems can safely and legally control the vehicle without human intervention. The authorisation authority, initially the Vehicle Certification Agency (VCA), assesses each self-driving feature, specifies its operational domain, and determines whether it can operate with or without a user-in-charge. Once satisfied, the authority authorises the vehicle for self-driving and registers an entity as the Autonomous System Design Entity (ASDE). The process aims to distinguish between driver assistance and true self-driving capabilities for legal purposes.
+
+			\subsection*{The Authorised Self-Driving Entity}
+				An ASDE is responsible for obtaining authorisation for autonomous vehicles and can be a vehicle manufacturer, a software developer, or a partnership between the two. The ASDE must actively assess the vehicle's safety, maintain a good reputation, and possess sufficient financial resources to address regulatory actions, including recalls. To gain authorisation, the ASDE must present a safety case, which is a comprehensive argument ensuring the system's safety, and an equality impact assessment to address potential unequal impacts. The ASDE's duties include:-
+
+                \begin{itemize}
+                    \item ongoing safety assurance.
+                    \item updating the vehicle to comply with road rules.
+                    \item informing users about self-driving features and limitations.
+                    \item ensuring data accessibility for insurers and regulators.
+                \end{itemize}
+
+                An in-use safety regulator is recommended to oversee ongoing safety and legal compliance, investigate traffic infractions, and gather data comparing automated and conventional driving. The ASDE's communication with users regarding their responsibilities and liabilities is also emphasised. The specific organisation performing regulatory functions may vary but would initially be undertaken by existing agencies like the Vehicle Certification Agency and the Driver and Vehicle Standards Agency.~\cite{govuk_automated_2022}
+
+		\section{Liability Regulations}
+			Introduction of two new roles to identify the vehicle operator, \textbf{User-In-Charge (UIC)}, and \textbf{No User-In-Charge (NUIC)}, these roles help determine whether the blame lies on the ASDE (manufacturer/developer liability) or the human operator. UICs oversee a vehicle's operation in autonomous mode, except when explicitly authorised without one. They must be physically in the vehicle, capable of taking control, and qualified and fit to drive. UICs retain responsibilities for non-dynamic driver tasks, such as ensuring passenger safety, insurance, and vehicle legality.
+
+			\subsection*{UIC}
+				While the autonomous driving system (ADS) is engaged, UICs are not responsible for dynamic driving tasks like steering or braking and are immune from dynamic driving offences unless they intentionally interfere with the ADS. However, they remain accountable for non-dynamic driver responsibilities, such as child passenger safety, accident reporting, and vehicle legality.
+
+				Following a handover from the ADS, UICs assume the driver's role and should have a specific defence against driving offences if they couldn't reasonably prevent a violation caused by the ADS. If a UIC fails to respond to a transition demand issued by the ADS, it can be held criminally liable for subsequent vehicle actions, emphasising the importance of prompt responses to transition demands.
+				
+				Furthermore, there is a possibility that a driver will not react in time to transition to prevent potential accidents. Programmatically, AVs should mitigate risks to lessen the impact. However, it is not emphasised that this process is guaranteed safe and that the UIC operator should respond. However, it is not considered illegal if an operator does not transition to override the AVs, which protects the UIC operator if the software malfunctions.
+
+				The document also addresses concerns about UICs facing medical emergencies, suggesting specific defences to driving offences in such cases. Overall, it outlines the roles and responsibilities of UICs in autonomous vehicles, highlighting legal aspects related to dynamic and non-dynamic violations, handover situations, and medical emergencies.
+
+		\subsection*{NUIC}
+			Overseeing AVs remotely presents challenges, including connectivity, cybersecurity, and equipment effectiveness. Practical communication skills are essential, especially in emergencies. The document acknowledges potential issues like information overload and operator motion sickness.
+
+			The document outlines the licensing process for NUIC operators, requiring them to demonstrate competence, financial stability, and safety measures. Regulatory sanctions, such as civil penalties and suspension of authorisation, are in place to enforce compliance. Emphasis is placed on safety and accountability in AV operations.
 			
+			Addressing passenger services in AV without human drivers, the document recommends the issuance of interim passenger permits. These permits aim to gather evidence on safety and accessibility and whether fares are charged. Local authorities' involvement is crucial to align services with regulations.
+
+	\section{Summary of the Defined Proposals}
+		The proposed safety regulations are brought forward to ensure AVs are developed and operated by traffic laws, providing awareness and appropriate avoidance procedures. The reports provide key recommendations to shape the AV methodologies and settle the liability side, eliminating the grey area of defining an operation.
+
+		\subsection*{Safety Regulations}
+			The two recommendations of the regulatory schemes implement the AV safety before they are released, to the releasement of the vehicle to the members of the public. Pre-deployment security requires approval and authorisation for an AV to be released on the roads. This security phase requires the vehicle to pass appropriate tests to identify as a self-driving vehicle. ASDE aims to ensure safety assurance, updating the vehicles to comply with road rules, user communication, and data accessibility.
+	
+		\subsection*{Liability Regulations}
+			The introduction of UIC and NUIC determines whether the vehicle operator, manufacturers, and developers are to blame for any liability. This directive helps insurance, legal teams, and courts know where their clients stand and helps settle a potentially clear-cut case that's harder to identify with the new systems. UICs are not responsible for dynamic driving tasks when ADS is engaged, and UICs can be held criminally for due care and attention.
 
 \chapter{Autonomous Vehicle Methodology}
 \label{chap:autonomousVehicleMethodology}
-	AVs are designed in accordance to existing policies to ensure safety, so to gather the methodology of an AV, the Law Commision's~\cite{noauthor_automated_nodate} helps highlight key recommendations that AV manufacturers should follow. It includes that the governe
-
 	\section{Testing Methodology}
+		A proposed testing methodology by Mohammad Hejase~\cite{hejase_methodology_2020} uses research, testing and simulation methods to verify that the model is fit for purpose. The fundamental process involves scenario specification, functional decomposition and a system representation using a Hybrid State System (HSS) to simulate an AV behaviour. HSS applies a Discrete Event System (FBS), Low-level Control, and System Model. Each HSS process is filtered through testing layers, including Unit, Integration, and Scenario Testing. Unit Testing includes the testing of individual low-level functions. Whereas Integration Testing for units that require transactional definitions. Scenario Testing focuses on generating scenarios to cover a range of system operations. These proposed methods are an excellent general combination when officially implementing driving methods within an AV. However, this methodology is not officially implemented. It does show a level of detail of fundamental processes that ensure that situational testing is validated and accurate, which does come under the assumption that AVs follow a similar methodology pattern during development.
 		\begin{figure}[ht]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/Research/Testing_Methodology.png}
@@ -638,6 +683,16 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 		\end{figure}
 
 	\section{Model Methodology}
+		Using Christos Katrakazas~\cite{katrakazas_new_2019} research within the Using Christos Katrakazas~\cite{katrakazas_new_2019} research within the Journal Article, `A new integrated collision risk assessment methodology for autonomous vehicles', talks about the levels of layers available within AVs model architecture. Christos Katrakazas~\cite{katrakazas_new_2019} mentions Hidden Markov Models (HMMs) and Kalman Filter Models (KFMs). These models are optimised to analyse situations and data problems in finite time windows. These models handle discrete and multivariate input and output, which can be easily extended. Christos Katrakazas~\cite{katrakazas_new_2019} mentions that HMMs have high sample and computational complexity, making learning and probability inference time-consuming. Simple HMMs also struggle with dynamic environments like traffic scenes because they rely on a single discrete random variable.
+
+		DBNs involve a three dimensional layering system, where each row has a unique function. The layers of a typical Deep Belief Network (DBN) are as follows:
+		\begin{enumerate}
+			\item \textbf{Layer 1 (Contextual Level):} This layer represents the vehicle's motion context and includes a symbolic representation of the vehicle's state. It contains information about the vehicle's manoeuvre or the relationships between vehicles. The variables in this layer, such as the type of manoeuvre or adherence to traffic rules, are typically discrete and hidden.~\cite{katrakazas_new_2019}
+			\item \textbf{Layer 2 (Physical State Level):} This layer relates to the vehicle's physical state, including its kinematics and dynamics. It includes information like position, speed, and heading, and might also incorporate data from a dynamic motion model, such as the bicycle model. The variables in this layer, such as speed, position, and acceleration, are typically continuous and hidden.~\cite{katrakazas_new_2019}
+			\item \textbf{Layer 3 (Sensor Measurement Level):} This layer represents the raw sensor measurements. The data is processed to remove any noise and derive the physical state. The variables at this level are always observable.~\cite{katrakazas_new_2019}
+		\end{enumerate}
+
+		During the DBN process, the data is given context, moved to the physical state, and then filtered back to the context layer to provide a new context for the state. Eventually, this data that is being filtered will be pushed to the observation layer, which provides the result of what the model decided to do with the data. Furthermore, this model is responsible for taking in the scenario and giving an educated response from the available road context and physical state of the vehicle to decide the best action available.
 		\begin{figure}[ht]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/Research/DBN_Model.png}
@@ -645,9 +700,14 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 			\label{fig:avmModelMethodology}
 		\end{figure}
 
+		This finding helps to understand the interaction layer of the AV when it is in self-driving mode. It gives an idea of the complexity of the current AV models, how they perceive traffic, and situational events if the vehicle is given a potential hazard event to avoid. This research helps understand the level of detail in place to prevent any life-threatening road collisions with road users.
+
 	\section{Operational Methodology}
-		Silviu Ionita~\cite{ionita_autonomous_2017} shows the basic AV methodology fabricated from the ADAS functionality to give an understanding of how a AV prioritises the driving tasks. 	
+		Silviu Ionita~\cite{ionita_autonomous_2017} shows the basic AV methodology fabricated from the ADAS functionality to give an understanding of how a AV prioritises the driving tasks. 
 		
+		The diagram shown in fig~\ref{fig:avmOperationalMethodology-SF1} displays the details involved with the AV operational methodology, involving the safety methodology of basic tasks and functions of vehicle driving. The `Vehicle Driving' involves the `Rules, Knowledge and Models'; splitting down to three processes, \textbf{navigation}, \textbf{monitoring and processing of driving environment}, and \textbf{maneuver and dynamics control}. These processes are cruicial when it comes to navigating the vehicle on roads, taking in account traffic rules and regulations, whilst also monitoring potential hazards, dangers, and calculating other road users actions.
+
+		The navigation process focuses on the planning, optimisation, route selection and reconfiguring of the vehicle's directives. At the same time, the monitoring and processing of driving environment filters focuses on the perception of road signs and markings, situational events such as legal signals, traffic lights, traffic agents and pedestrians, and perception of events such as the sudden appearance of any hazards to prevent incidents. Finally, the manoeuvre and dynamics control involves the vehicle's steering, distance, speed/acceleration and braking. 
 		\begin{figure}[ht]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-1.png}
@@ -655,20 +715,13 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 			\label{fig:avmOperationalMethodology-SF1}
 		\end{figure}
 
-		\begin{figure}[ht]
+		Figure~
+		\begin{figure}[hb]
 			\centering
 			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-2.png}
 			\caption{Safety Methodology: Three ways of knowledge usage in driving actions~\cite{ionita_autonomous_2017}}
 			\label{fig:avmOperationalMethodology-SF2}
 		\end{figure}
-
-		\begin{figure}[ht]
-			\centering
-			\includegraphics[width=.60\columnwidth]{Figures/literature_review/proposal/SystemFunctionality-3.png}
-			\caption{Safety Methodology: Classes of ADAS and their Requirements for Decision and Execution~\cite{ionita_autonomous_2017}}
-			\label{fig:avmOperationalMethodology-SF3}
-		\end{figure}
-
 
 
 \chapter{Scripting Process}
@@ -1062,6 +1115,22 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 			The three blocks of codes perform a simple test, train and split operation by SciKit-Learn. This process is important to train a architectural model, it selects a random selection of images, labels, splitting them into train, test and validation materials. The start of the application loads up the `data.yaml' file to find out the train, test and validation directories. The last block moves the files in the chosen directories assigned to them. This is the last process, and the YOLOv5 is now ready to be trained. 
 
 	\section{Notebooks | Testing}
+		\subsection*{Video to Frames}
+			The code of the notebook:
+			\begin{lstlisting}[tabsize=1]
+				from path import *
+				from modules.video_processing.video_to_image import video_to_frames
+
+				# Change Paths to Absolute Location
+				video_path = "/home/skira21/University of Wales Trinity St. Davids/MSc/Year 4/Project/test_videos/MISC_MP4/NIGHT2.mp4"  # replace with your video path
+				output_dir = "/home/skira21/University of Wales Trinity St. Davids/MSc/Year 4/Project/test_videos/NIGHT_T2"  # replace with your output directory
+
+				video_to_frames(
+					video_path, output_dir, sample_name="Night_t2", limiter=720, start_time=0, end_time=120
+				)
+			\end{lstlisting}
+
+			The path variables use absolute rather than relative paths, allowing open-source researchers to modify and convert test videos into frames easily. This project uses a third-party tool, Ultralytics YOLOv5, to train and test the files. It is imperative to code each library to adjust output paths so that users can efficiently train and test the model.
 
 \chapter{Training Process}
 \label{chap:trainingProcess}
@@ -1220,7 +1289,7 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 				\end{floatrow}
 			\end{figure}
 		
-		\subsection*{Nigh-time Models}
+		\subsection*{Night-Time Models}
 			Figures (\ref{fig:ntTrainBatchTwo},~\ref{fig:ntValBatchTwo}) illustrate the training and validation process of the night-time model, showing some key areas of how the dataset is modified. The illustration also shows the quality of the night-time simulation that the Python script achieved. From an observation, the images are harder to see motorcycles. However, it does not simulate the real night-time situation, on pitch-black roads. It is impressive to know that the model picks up motorcycles in this setup and should be the following best ideal environment for testing the model with actual footage.
 			\begin{figure}[hb]
 				\floatsetup{valign=t, heightadjust=object}
@@ -1280,87 +1349,189 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 
 \chapter{Findings}
 \label{chap:findings}
-	The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
+	\section{Wet and Poor Visibility}
+		The following images of~\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2} and~\ref{fig:detectionOfMotorcycleW3} show different wet condition scenarios. Due to previous research conducted, according to Tesla, ``Tesla announces in 2021 that the company would remove a sensor called Ultrasonic Sensors, replacing the sensor with `Tesla Vision' by 2022''.~\cite{noauthor_tesla_nodate} This only means according to ``Self-Driving Cars and The Law: Putting autonomous vehicles on the road isn't just a matter of fine-tuning technology'' by Nathan A. Greenblatt, that AVs used `...thanks to lidar, radar, and ultrasonic sensors, they can see through fog and in the dark.', meaning that Tesla AVs for example, only use a visual aid to see. However, this raises concerns about the reliability of AVs solely using visual input. In situations where the camera's view is obscured by wet patches or heavy fog, a human driver could outperform the technology.
 
-	Figure~\ref{fig:detectionOfMotorcycleW1} of a motorcycle in wet weather conditions, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle.
+		Figure~\ref{fig:detectionOfMotorcycleW1} of a motorcycle in wet weather conditions, the architecture trained weight has successfully found the motorcycle with 75\% positiveness that it is a motorcycle.
 
-	Figure~\ref{fig:detectionOfMotorcycleW2} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. This scenario happened when the water content blurred the camera, which could simulate current problems with vision technology within AVs.
+		Figure~\ref{fig:detectionOfMotorcycleW2} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. This scenario happened when the water content blurred the camera, which could simulate current problems with vision technology within AVs.
 
-	Figure~\ref{fig:detectionOfMotorcycleW3} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. The visibility is moderate; human eyesight can easily see more than eight to ten meters ahead. Another observation of this footage was that the vehicles are visible, although the architecture failed to recognise the motorcycle.
-	\begin{figure}[h]
-		\floatsetup{valign=t, heightadjust=object}
-		\begin{floatrow}
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_correct.png}
-			}
-			{
-				\caption{Good Detection of Motorcycle - Wet and Multi Lane}
-				\label{fig:detectionOfMotorcycleW1}
-			}
+		Figure~\ref{fig:detectionOfMotorcycleW3} of a motorcycle in wet weather conditions, the architecture failed to find the motorcycle. The visibility is moderate; human eyesight can easily see more than eight to ten meters ahead. Another observation of this footage was that the vehicles are visible, although the architecture failed to recognise the motorcycle.
+		\begin{figure}[hb]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_correct.png}
+				}
+				{
+					\caption{Good Detection of Motorcycle - Wet and Multi Lane}
+					\label{fig:detectionOfMotorcycleW1}
+				}
+			
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_incorrect.png}
+				}
+				{
+					\caption{Classification Error - Camera Blinded}
+					\label{fig:detectionOfMotorcycleW2}
+				}
+			
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_danger.png}
+				}
+				{
+					\caption{Classification Error - Water Spray from Other Vehicles}
+					\label{fig:detectionOfMotorcycleW3}
+				}
+			\end{floatrow}
+		\end{figure}
+
+	\section{Blindspot and Late Classifications}
+		Figure~\ref{fig:detectionOfOneMotorcycle} of detecting one motorcycle may not seem dangerous. However, if an AV misclassifies or does not detect the motorcycle after the first motorcycle, the AV may not be able to foresee any sudden traffic actions, causing fatal collisions.
+
+		Figures~\ref{fig:lateClassificationP1},~\ref{fig:lateClassificationP2} demonstrates the dangers of motorcycle misclassification near a junction. If the AV were to turn right, coming out of the junction, then due to the AV not anticipating the motorcyclist, then the AV may pull out on the motorcycle, causing a fatality. The Object Classification did, however, detect the motorcycle when it was closer to the motorcycle.
+		\begin{figure}[ht]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/fail.png}
+				}
+				{
+					\caption{Detection of One Motorcycle}
+					\label{fig:detectionOfOneMotorcycle}
+				}
+			
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=0.9\linewidth]{Figures/scenarios/left_turn.png}
+				}
+				{
+					\caption{Late Classification - Part 1}
+					\label{fig:lateClassificationP1}
+				}
+			
+				\ffigbox[0.70\linewidth]
+				{
+					\includegraphics[width=0.9\linewidth]{Figures/scenarios/motorcycle.png}
+				}
+				{
+					\caption{Late Classification - Part 2}
+					\label{fig:lateClassificationP2}
+				}
+			\end{floatrow}
+		\end{figure}
+
+
+		Figure~\ref{fig:overtakingSequence} shows a 75\% accuracy of correctly identifying two motorcycles after two overtakes. However, the last sequence shows an overtaking procedure involving two tractors and two motorcycles. The classification process is concerning, considering the motorcycles were not detected. This concern arises from a few things, the AV could perform an overtaking manoeuvre and accelerate unsafely, or if an AV started approaching at the speed limit, the AV might not slow down, even though other traffic is overtaking behind the riders to get by tractors safely.
+		\begin{figure}[hb]
+			\centering
+			\includegraphics[width=\columnwidth]{Figures/scenarios/motorcycle_overtaking_sequence.png}
+			\caption{Overtaking Sequence}
+			\label{fig:overtakingSequence}
+		\end{figure}
+
+		\clearpage
+		Figures (\ref{fig:dtSimulatedBlindspotP1},~\ref{fig:dtSimulatedBlindspotP2},~\ref{fig:dtSimulatedBlindspotP3}) simulates a blindspot to the left side of the camera to capture any motorcyclists. A pillion with a mounted camera was used as an idea that the helmet could lesson the area available, which could make simulated blindspots for the model to try to detect. The experiment idea appears to works well when simulating blindspots with the resources available.
 		
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_incorrect.png}
-			}
-			{
-				\caption{Classification Error - Camera Blinded}
-				\label{fig:detectionOfMotorcycleW2}
-			}
-		
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=1.1\linewidth]{Figures/scenarios/wet_danger.png}
-			}
-			{
-				\caption{Classification Error - Water Spray from Other Vehicles}
-				\label{fig:detectionOfMotorcycleW3}
-			}
-		\end{floatrow}
-	\end{figure}
+		Each figure has a motorcyclist located on the left position. The motorcyclist is wearing black, with white reflectors safety gear. Even though human intelligence can easily see the motorcyclist, the object classification may not be as it blends in the camera footage. The sun is coming down, allowing the motorcyclist to blend in. As the motorcyclist and vehicle appear in fig~\ref{fig:dtSimulatedBlindspotP2}, the object classification still has not got enough information to detect the object until fig~\ref{fig:dtSimulatedBlindspotP3}, where the motorcyclist is fully seen. A problem located in this scenario is that the motorcyclist is breaking the whole way, but if a motorcyclist was in any blindspots of cameras, the AV may never know, and if the motorcyclist was indicating, then the motorcyclist stands no chance if an evasive manoeuvre had to happen.
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.74\columnwidth]{Figures/scenarios/blindspot_day_t1/Misc_T4-334.jpg}
+			\caption{Daytime Simulated Blindspot - Part 1}
+			\label{fig:dtSimulatedBlindspotP1}
+		\end{figure}
 
-	Figure~\ref{fig:detectionOfOneMotorcycle} of detecting one motorcycle may not seem dangerous. However, if an AV misclassifies or does not detect the motorcycle after the first motorcycle, the AV may not be able to foresee any sudden traffic actions, causing fatal collisions.
+		\begin{figure}[hb]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/blindspot_day_t1/Misc_T4-342.jpg}
+				}
+				{
+					\caption{Daytime Simulated Blindspot - Part 2}
+					\label{fig:dtSimulatedBlindspotP2}
+				}
+			
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/blindspot_day_t1/Misc_T4-349.jpg}
+				}
+				{
+					\caption{Daytime Simulated Blindspot - Part 3}
+					\label{fig:dtSimulatedBlindspotP3}
+				}
+			\end{floatrow}
+		\end{figure}
 
-    Figures~\ref{fig:lateClassificationP1},~\ref{fig:lateClassificationP2} demonstrates the dangers of motorcycle misclassification near a junction. If the AV were to turn right, coming out of the junction, then due to the AV not anticipating the motorcyclist, then the AV may pull out on the motorcycle, causing a fatality. The Object Classification did, however, detect the motorcycle when it was closer to the motorcycle.
-	\begin{figure}[h]
-		\floatsetup{valign=t, heightadjust=object}
-		\begin{floatrow}
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=1\linewidth]{Figures/scenarios/fail.png}
-			}
-			{
-				\caption{Detection of One Motorcycle}
-				\label{fig:detectionOfOneMotorcycle}
-			}
-		
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=0.9\linewidth]{Figures/scenarios/left_turn.png}
-			}
-			{
-				\caption{Late Classification - Part 1}
-				\label{fig:lateClassificationP1}
-			}
-		
-			\ffigbox[0.70\linewidth]
-			{
-				\includegraphics[width=0.9\linewidth]{Figures/scenarios/motorcycle.png}
-			}
-			{
-				\caption{Late Classification - Part 2}
-				\label{fig:lateClassificationP2}
-			}
-		\end{floatrow}
-	\end{figure}
+		\clearpage
+		Figures (\ref{fig:ntBlindspotP1},~\ref{fig:ntBlindspotP2},~\ref{fig:ntBlindspotP3}) showcases a overtake manoeuvre by a motorcyclist with the environment being dark. The results perform similarly to the previous example of a simulated daytime blindspot. However, it is important to take note that the `Dataset C' model has a poorer recognition accuracy. The first part shows the motorcycle just infront of the camera. This is described as a blindspot due to the lack of detection and visibility of the motorcycle. If a AV failed to recognise the motorcyclist prepared to overtake, then the AV may not adjust the speed in a safe manner. Successful classification of the motorcyclist with a 43\% uncertainty happened on the third scene.
 
-	Figure~\ref{fig:overtakingSequence} shows a 75\% accuracy of correctly identifying two motorcycles after two overtakes. However, the last sequence shows an overtaking procedure involving two tractors and two motorcycles. The classification process is concerning, considering the motorcycles were not detected. This concern arises from a few things, the AV could perform an overtaking manoeuvre and accelerate unsafely, or if an AV started approaching at the speed limit, the AV might not slow down, even though other traffic is overtaking behind the riders to get by tractors safely.
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=\columnwidth]{Figures/scenarios/motorcycle_overtaking_sequence.png}
-		\caption{Overtaking Sequence}
-		\label{fig:overtakingSequence}
-	\end{figure}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.74\columnwidth]{Figures/scenarios/blindspot_night_t1/Night_BST1-191.jpg}
+			\caption{Night-time Blindspot - Part 1}
+			\label{fig:ntBlindspotP1}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/blindspot_night_t1/Night_BST1-202.jpg}
+				}
+				{
+					\caption{Night-time Blindspot - Part 2}
+					\label{fig:ntBlindspotP2}
+				}
+			
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/blindspot_night_t1/Night_BST1-211.jpg}
+				}
+				{
+					\caption{Night-time Blindspot - Part 3}
+					\label{fig:ntBlindspotP3}
+				}
+			\end{floatrow}
+		\end{figure}
+
+		\clearpage
+		Figures (\ref{fig:ntReflectionP1},~\ref{fig:ntReflectionP2},~\ref{fig:ntReflectionP3}) demonstrate three scenarios involving on-coming vehicle lights, creating a `light' simulated blindspot. The motorcyclist is successfully detected in the first scenario, where the motorcyclist indicates to make a right turn. However, as a car approaches the motorcyclist, the camera fails to pick up the motorcyclist. The car flashed the motorcyclist to make the right turn, which, as the motorcyclist blocked the beam of the car, the motorcyclist was reidentified.
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.74\columnwidth]{Figures/scenarios/night_t1/Night_T1-505.jpg}
+			\caption{Night-time Reflection - Part 1}
+			\label{fig:ntReflectionP1}
+		\end{figure}
+
+		\begin{figure}[hb]
+			\floatsetup{valign=t, heightadjust=object}
+			\begin{floatrow}
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/night_t1/Night_T1-526.jpg}
+				}
+				{
+					\caption{Night-time Reflection - Part 2}
+					\label{fig:ntReflectionP2}
+				}
+			
+				\ffigbox[1\linewidth]
+				{
+					\includegraphics[width=1\linewidth]{Figures/scenarios/night_t1/Night_T1-529.jpg}
+				}
+				{
+					\caption{Night-time Reflection - Part 3}
+					\label{fig:ntReflectionP3}
+				}
+			\end{floatrow}
+		\end{figure}
 
 \chapter{Dicussion}
 \label{chap:discussion}
@@ -1369,9 +1540,9 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 
 		Figures (\ref{fig:ukDatasetYolov5LargeWeightPRCurve},~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}) show the Precision and Recall curves plotted on a graph, giving information on any performance issues with the training models. The PR curves for both models demonstrate high precision across varying levels of recall, indicative of robust performance. Although, figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve} appears to have a higher precision for the longer part of the training process, compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The worse performers of the model are scooters, vans, person and minivans in precision and perform well when it comes to recall. In comparison, figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve} shows a similar illustration. According to the key of figure~\ref{fig:ukDatasetYolov5LargeWeightPRCurve}, motorcycles had a higher precision peak at 77.5\% compared to figure~\ref{fig:mtpDatasetYolov5LargeWeightPRCurve}. The model architecture performs well when training the given dataset scenarios. Perhaps larger weights could increase the precision and recall curve during training. It is worth mentioning that the preparation of the datasets functions well during the training process, and no underlying problems are showing, especially for motorcycle data.
 
-		During the testing sequence, the larger trained model was selected. Arguably, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than having most motorcycles identified as background objects. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK. 
+		Figure~\ref{fig:ntDatasetYolov5MediumWeight} displays the confusion matrix of the fake night-time training to see if the quality of the results would increase. The model has a lower detection percentage, with a 67\% accuracy of picking up a motorcycle. However, the model should have a higher accuracy of night-time detection, whereas the other datasets may struggle. This model is unoptimised for day-time scenarios and gives us an understanding of any issues that may occur at night-time when LiDAR sensors are indispensable compared to vision alone. This dataset lowered the accuracy down to the visibility levels, and motorcycles are hard to see in general, down to the reduced size and light systems. An ideal solution to this problem, is having real night footage of motorcycles, mixed with other vehicles, and applying contrast, embevels and other image filters to make the outlines stand out. Although, in this practical sense, the datasets needed to be modified to symbolise a dark feel to see if this would help detection rate for night-time use. The model overall achieves good results and is suitable to carry out theoretical experiments.
 
-		% Talk about the other ones!
+		During the testing sequence, the larger trained model was selected. Arguably, the 81\% accuracy for motorcycles, with 39\% outliers identifying as scooters or even a 3\% as a trike, is still safer than having most motorcycles identified as background objects. The accuracy of this training may come under a few situations, including better object classification training material for motorcycles, especially in foggy, wet, overtaking and filtering situations within the UK.
 
 	\section{Testing Sequence}
 		A few issues come to light after running through the gathered test results. The footage involves mixed scenarios, including wet, dry and overtaking procedures. There are a few prospects that need addressing when observing the test footage. Before going into a deeper level of understanding why accurate classifications are essential, and it does not stop at detecting a motorcycle, as hand gestures and a person's body are equally important when it comes to indicating, warning they are braking, or if a fortunate accident were to happen, including a pillion (passenger of the vehicle) or operator was to come off in the road suddenly. A critical emphasis would include whether the AV would detect this or only register the motorcycle still riding in a straight line, causing the AV not to stop, avoiding potential death.
@@ -1379,21 +1550,32 @@ Special appreciation goes to Jonathon Patch, who participated in the fieldwork a
 	\subsection*{Hypothesis A - Blindspots and Reaction Time}
 		Figures (\ref{fig:detectionOfOneMotorcycle}~\ref{fig:lateClassificationP1}~\ref{fig:lateClassificationP2}) display the importance of safety when rolling out AVs within the UK. The detection of motorcycles seems to be limited. However, with some tracking implementation, when detection is detected, it could help the process. Although, tracking does not guarantee that the motorcycles are always in sight. A common theme found when performing these detections is that detection was useless when a motorcycle started to be further in the distance. This finding leads to figure~\ref{fig:lateClassificationP1} and~\ref{fig:lateClassificationP2} where the on-coming motorcycle was not immediately detected, and if for some reason the AV had to make a right turn or a swerve to the right, rather than applying the braking system, then the misfortunate rider would have zero to no time to react the intention of the AV.
 
+		Figures (\ref{fig:dtSimulatedBlindspotP1},~\ref{fig:dtSimulatedBlindspotP2},~\ref{fig:dtSimulatedBlindspotP3}) use a Pillion to generate a blindspot scenario to test out the theory. A vehicle will have a clear view based on where the cameras are mounted. Although that vehicle will have designated blindspot locations when a motorcycle passes, this method is meant to restrict the picture to the road to test side views. The experiment works as expected, and during the first figure~\ref{fig:dtSimulatedBlindspotP1}, the motorcyclist is on camera, although, perhaps with the darkness of the rider, the model fails to classify the motorcycle. During the second figure~\ref{fig:dtSimulatedBlindspotP2}, the motorcyclist is still undetected, and during each frame, the motorcyclist has been braking. This scenario is considered dangerous if the motorcyclist were to move to the right lane by dangerously overtaking, or if a situation in front had happened, the AV may not identify this situation and cause a potential collision.
+
+		Figures (\ref{fig:ntBlindspotP1},~\ref{fig:ntBlindspotP2},~\ref{fig:ntBlindspotP3}) identifies the dangers of motorcyclists at night. Motorcyclists are hard to see at night. However, human intelligence can detect motorcyclists by noticing headlights in rearview mirrors. However, when a motorcyclist overtakes, the motorcyclist knows that the human driver can identify the motorcyclist's bright clothing, reflective areas on the helmet, or front headlights, giving them a sense of security that the driver will slow and acknowledge the motorcyclist to continue a safe overtake. However, in the scenarios showcased, the model fails to identify the motorcycle on the initial passing, and it also fails to acknowledge the motorcyclist when it moves into a lane. This observation could explain the issues AV manufacturers started seeing when LiDAR was removed.
+
 	\subsection*{Hypothesis B - Low Visibility Conditions}
+		Figures (\ref{fig:ntReflectionP1},~\ref{fig:ntReflectionP2},~\ref{fig:ntReflectionP3}) indicate a potential camera issue that the AV policies must not overlook. The motorcyclist indicating to turn right is correctly identified in fig~\ref{fig:ntReflectionP1} before any vehicle appears. When a car approaches, the car flashes the motorcyclist out. However, the camera loses all vision of the motorcyclist. The motorcyclist is reclassified when they make the turn. However, as mentioned in the findings, the big problem is that when the camera loses vision due to reflection of the oncoming vehicle, would the AV pick up speed to 30MPH, not realising the motorcyclist has not yet made a move? Another situation could include that the motorcyclist never made the turn and stopped, awaiting the car to pass. Would the AV continue and ram the motorcyclist?
+
 
 	\subsection*{Hypothesis C - Poor Weather Conditions}
 		In figures (\ref{fig:detectionOfMotorcycleW1},~\ref{fig:detectionOfMotorcycleW2},~\ref{fig:detectionOfMotorcycleW3}) display three scenarios. The evident problem is that the camera used kept getting water on, so the camera used in AVs must have the resilience to repel water to remain safe on the road. However, the camera fails to pick up the motorcycle in figure~\ref{fig:detectionOfMotorcycleW3}, noting that not all motorcycles may have their lights on. In this case, the light is on. However, fog lights were not required, so even having any implementation on the vehicle would not help, as it was not the right condition for the given scenario and could cause blindness and eye fatigue to other road users.
 
 \chapter{Reflection}
 	\subsection*{Hypothesis A - Blindspots and Reaction Time}
+	
 	\subsection*{Hypothesis B - Low Visibility Conditions}
 
 	\subsection*{Hypothesis C - Poor Weather Conditions}
 
+	, and it is questionable that LiDAR could help classify the motorcyclist better, and that perhaps the issues AV manufacturers were suffering with, still needed to be ironed out and furthered in development. Rather than just abandoning the early stages of the technology, which could ultimately save a motorcyclists life.
+
 \chapter*{Terminology}
 List of terminologies used in this document:-
 \begin{itemize}
+	\item ADS - Advanced Driving System. 
 	\item ADAS - Advanced Driver-Assistance System.
+	\item ASDE - Autonomous System Design Entity.
 	\item ATB - Approved Trained Body.
 	\item AV - Autonomous Vehicles.
 	\item CBT - Compulsory Basic Training.
@@ -1404,6 +1586,7 @@ List of terminologies used in this document:-
 	\item NIUC - Not-In-User-Control.
 	\item RAD - Rapid Application Development.
 	\item TDD - Test-Driven Development.
+	\item VCA - Vehicle Certification Authority.
 	\item YOLO - You Only Look Once.
 \end{itemize}
   
